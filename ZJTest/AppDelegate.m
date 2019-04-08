@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "ZJMainTabBarViewController.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +18,16 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
+
+    ZJMainTabBarViewController *vc  = [ZJMainTabBarViewController new];
+    self.window.rootViewController = vc;
+    
     return YES;
 }
 

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ZJAboutView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="320"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ig6-PK-Abe">
+                    <rect key="frame" x="20" y="198" width="335" height="0.0"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q7Y-DS-dfu">
+                    <rect key="frame" x="137.5" y="90" width="100" height="100"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="A9w-Mm-ieP"/>
+                        <constraint firstAttribute="width" secondItem="Q7Y-DS-dfu" secondAttribute="height" multiplier="1:1" id="hY0-eB-2yT"/>
+                    </constraints>
+                    <connections>
+                        <action selector="btnEvent:" destination="iN0-l3-epB" eventType="touchUpInside" id="Kxt-Az-z23"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Q7Y-DS-dfu" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-20" id="IKz-Ai-dIC"/>
+                <constraint firstItem="ig6-PK-Abe" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="Q2l-z6-3ct"/>
+                <constraint firstItem="Q7Y-DS-dfu" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="bns-2C-Jpx"/>
+                <constraint firstAttribute="trailing" secondItem="ig6-PK-Abe" secondAttribute="trailing" constant="20" id="sFR-zd-hJ7"/>
+                <constraint firstItem="ig6-PK-Abe" firstAttribute="top" secondItem="Q7Y-DS-dfu" secondAttribute="bottom" constant="8" id="zO6-eZ-T4L"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="btn" destination="Q7Y-DS-dfu" id="lhv-U5-1Tz"/>
+                <outlet property="centerConstraint" destination="IKz-Ai-dIC" id="ANk-Kw-Dqg"/>
+                <outlet property="titleLabel" destination="ig6-PK-Abe" id="MJ7-Lg-edk"/>
+                <outlet property="titleTopConstraint" destination="zO6-eZ-T4L" id="UfE-NR-pna"/>
+                <outlet property="widthConstraint" destination="A9w-Mm-ieP" id="GZU-5Q-XRK"/>
+            </connections>
+            <point key="canvasLocation" x="-1633" y="-703"/>
+        </view>
+    </objects>
+</document>
