@@ -22,8 +22,8 @@
 }
 
 - (void)initAry {
-    self.cellTitles = @[@"UINavigationBar", @"UIRectEdge"];
-    self.vcNames = @[@"ZJTestNavigationBarViewController", @"ZJTestUIRectEdgeTableViewController"];
+    self.cellTitles = @[@"layout加载顺序", @"UINavigationBar", @"UIRectEdge", @"ZJSelectButton", @"ZJAlertObject"];
+    self.vcNames = @[@"", @"ZJTestNavigationBarViewController", @"ZJTestUIRectEdgeTableViewController", @"ZJTestSelectBtnViewController", @"ZJTestAlertViewController"];
 }
 
 - (void)initSettiing {
@@ -37,9 +37,9 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SystemTableViewCell];
+    ZJNormalTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SystemTableViewCell];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SystemTableViewCell];
+        cell = [[ZJNormalTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SystemTableViewCell];
     }
     cell.textLabel.text = self.cellTitles[indexPath.row];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;

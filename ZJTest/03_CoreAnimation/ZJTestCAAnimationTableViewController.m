@@ -1,18 +1,18 @@
 //
-//  ZJTestUIRectEdgeTableViewController.m
+//  ZJTestCAAnimationTableViewController.m
 //  ZJTest
 //
-//  Created by ZJ on 2019/4/3.
+//  Created by ZJ on 2019/3/26.
 //  Copyright © 2019 HY. All rights reserved.
 //
 
-#import "ZJTestUIRectEdgeTableViewController.h"
+#import "ZJTestCAAnimationTableViewController.h"
 
-@interface ZJTestUIRectEdgeTableViewController ()
+@interface ZJTestCAAnimationTableViewController ()
 
 @end
 
-@implementation ZJTestUIRectEdgeTableViewController
+@implementation ZJTestCAAnimationTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -22,18 +22,12 @@
 }
 
 - (void)initAry {
-    
+    self.cellTitles = @[@"CAGradientLayer", @"CATransition"];
+    self.vcNames = @[@"ZJTestCAGradientLayerViewController", @"ZJTestPushTransitionTableViewController"];
 }
 
 - (void)initSettiing {
-    ZJWrapView *view = (ZJWrapView *)[ZJWrapView createSysViewWithName:@"UIImageView" frame:CGRectMake(0, 0, kScreenW, kScreenW) needWrap:YES];
-    UIImageView *headView = (UIImageView *)view.wrapView;
-    headView.clipsToBounds = YES;
-    headView.image = [UIImage imageNamed:@"mm_01"];
-    headView.contentMode = UIViewContentModeScaleAspectFill;
-    self.tableView.tableHeaderView = view;
     
-    self.navigationItem.title = @"";
 }
 
 #pragma mark - UITableViewDataSource
@@ -43,11 +37,12 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SystemTableViewCell];
+    ZJNormalTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SystemTableViewCell];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SystemTableViewCell];
+        cell = [[ZJNormalTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SystemTableViewCell];
     }
     cell.textLabel.text = self.cellTitles[indexPath.row];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
 }
@@ -57,6 +52,16 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+    UIViewController *vc = [self createVCWithName:self.vcNames[indexPath.row] title:self.cellTitles[indexPath.row] isGroupTableVC:YES];
+    [self showViewController:vc sender:nil];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return DefaultSectionHeaderHeight;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return FLT_EPSILON;
 }
 
 /*

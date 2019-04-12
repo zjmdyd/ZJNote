@@ -38,28 +38,8 @@
     }
     
     free(properties);
-    
-    return propertiesArray;
-}
 
-- (NSString *)nameWithInstance:(id)instance {
-    unsigned int numIvars = 0;
-    NSString *key = nil;
-    Ivar * ivars = class_copyIvarList([self class], &numIvars);
-    for(int i = 0; i < numIvars; i++) {
-        Ivar thisIvar = ivars[i];
-        const char *type = ivar_getTypeEncoding(thisIvar);
-        NSString *stringType =  [NSString stringWithCString:type encoding:NSUTF8StringEncoding];
-        if (![stringType hasPrefix:@"@"]) {
-            continue;
-        }
-        if ((object_getIvar(self, thisIvar) == instance)) {
-            key = [NSString stringWithUTF8String:ivar_getName(thisIvar)];
-            break;
-        }
-    }
-    free(ivars);
-    return key;
+    return propertiesArray;
 }
 
 - (id)nextResponderWithTargetClassName:(NSString *)className {
@@ -75,7 +55,7 @@
     NSString *documentsPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
     NSData *data = [NSJSONSerialization dataWithJSONObject:self options:NSJSONWritingPrettyPrinted error:nil];
     NSError *error;
-    NSLog(@"wpath = %@", [documentsPath stringByAppendingPathComponent:name]);
+    NSLog(@"writePath = %@", [documentsPath stringByAppendingPathComponent:name]);
     [data writeToFile:[documentsPath stringByAppendingPathComponent:name] options:NSDataWritingAtomic error:&error];
     
     if (error) {
@@ -88,7 +68,7 @@
 - (id)readFileWithPathComponent:(NSString *)name {
     NSString *documentsPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
     NSData *data = [NSData dataWithContentsOfFile:[documentsPath stringByAppendingPathComponent:name]];
-    NSLog(@"rpath = %@", [documentsPath stringByAppendingPathComponent:name]);
+    NSLog(@"readPath = %@", [documentsPath stringByAppendingPathComponent:name]);
 
     id value;
     if (data) {
@@ -123,14 +103,6 @@
     return str;
 }
 
-- (UIViewController *)createVCWithName:(NSString *)name {
-    return [self createVCWithName:name title:@""];
-}
-
-- (UIViewController *)createVCWithName:(NSString *)name isGroupTableVC:(BOOL)isGroup {
-    return [self createVCWithName:name title:@"" isGroupTableVC:isGroup];
-}
-
 - (UIViewController *)createVCWithName:(NSString *)name title:(NSString *)title {
     return [self createVCWithName:name title:title isGroupTableVC:NO];
 }
@@ -141,8 +113,7 @@
         vc = [(UITableViewController *)vc initWithStyle:isGroup ? UITableViewStyleGrouped : UITableViewStylePlain];
     }else {
         vc = [vc init];
-        UIColor *color = [UIColor whiteColor];
-        vc.view.backgroundColor = color;
+        vc.view.backgroundColor = [UIColor whiteColor];;
     }
     
     if ([vc isKindOfClass:[UIViewController class]]) {
@@ -215,8 +186,8 @@
     NSMutableArray *cookieDictionary = [[NSUserDefaults standardUserDefaults] valueForKey:@"cookieArray"];
     
     for (int i = 0; i < cookieDictionary.count; i++) {
-        NSMutableDictionary* cookieDictionary1 = [[NSUserDefaults standardUserDefaults] valueForKey:[cookieDictionary objectAtIndex:i]];
-        NSHTTPCookie *cookie = [NSHTTPCookie cookieWithProperties:cookieDictionary1];
+        NSMutableDictionary *dic = [[NSUserDefaults standardUserDefaults] valueForKey:[cookieDictionary objectAtIndex:i]];
+        NSHTTPCookie *cookie = [NSHTTPCookie cookieWithProperties:dic];
         [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
     }
 }
@@ -245,8 +216,8 @@
     NSMutableArray *cookieDictionary = [[NSUserDefaults standardUserDefaults] valueForKey:@"cookieArray"];
     
     for (int i = 0; i < cookieDictionary.count; i++) {
-        NSMutableDictionary* cookieDictionary1 = [[NSUserDefaults standardUserDefaults] valueForKey:[cookieDictionary objectAtIndex:i]];
-        NSHTTPCookie *cookie = [NSHTTPCookie cookieWithProperties:cookieDictionary1];
+        NSMutableDictionary* dic = [[NSUserDefaults standardUserDefaults] valueForKey:[cookieDictionary objectAtIndex:i]];
+        NSHTTPCookie *cookie = [NSHTTPCookie cookieWithProperties:dic];
         if (cookie) {
             [[NSUserDefaults standardUserDefaults] removeObjectForKey:cookie.name];
         }
@@ -290,36 +261,6 @@
     }
 }
 
-#pragma mark - AlertView
-
-+ (void)showAlertViewWithTitle:(NSString *)title msg:(NSString *)msg buttonTitle:(NSString *)buttonTitle {
-    [self showAlertViewWithTitle:title msg:msg buttonTitle:buttonTitle ctrl:nil];
-}
-
-+ (void)showAlertViewWithTitle:(NSString *)title msg:(NSString *)msg buttonTitle:(NSString *)buttonTitle ctrl:(UIViewController *)ctrl {
-    if (![NSThread currentThread].isMainThread) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self showAlert:title msg:msg buttonTitle:buttonTitle ctrl:ctrl];
-        });
-    }else {
-        [self showAlert:title msg:msg buttonTitle:buttonTitle ctrl:ctrl];
-    }
-}
-/* 改标题颜色
-    [[alert valueForKey:@"alertController"] setValue:[@"aa" attrWithForegroundColor:[UIColor redColor]] forKey:@"attributedTitle"];
- */
-+ (void)showAlert:(NSString *)title msg:(NSString *)msg buttonTitle:(NSString *)buttonTitle ctrl:(UIViewController *)ctrl {
-    if (ctrl) {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:msg preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *act = [UIAlertAction actionWithTitle:buttonTitle ?: @"知道了" style:UIAlertActionStyleDefault handler:nil];
-        [alert addAction:act];
-        [ctrl presentViewController:alert animated:YES completion:nil];
-    }else {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:msg delegate:nil cancelButtonTitle:@"知道了" otherButtonTitles:nil];
-        [alert show];
-    }
-}
-
 #pragma mark - 系统设置、Message
 
 + (void)openSystemSettingWithType:(SystemSettingType)type {
@@ -353,11 +294,11 @@
 
         [self openURLWithURLString:str completionHandler:^(BOOL success) {
             if (!success) {
-                [self showAlertViewWithTitle:@"设备不支持此功能!" msg:@"" buttonTitle:nil];
+                //[self showAlertViewWithTitle:@"设备不支持此功能!" msg:@"" buttonTitle:nil];
             }
         }];
     }else {
-        [self showAlertViewWithTitle:@"电话号码为空!" msg:@"" buttonTitle:nil];
+        //[self showAlertViewWithTitle:@"电话号码为空!" msg:@"" buttonTitle:nil];
     }
 }
 
@@ -424,7 +365,7 @@
     if (appID.length) {
         [self openURLWithURLString:[NSString stringWithFormat:@"https://itunes.apple.com/cn/app/id%@?mt=8", appID]];
     }else {
-        [self showAlertViewWithTitle:@"APP信息出错" msg:@"" buttonTitle:@"确定"];
+//        [self showAlertViewWithTitle:@"APP信息出错" msg:@"" buttonTitle:@"确定"];
     }
 }
 

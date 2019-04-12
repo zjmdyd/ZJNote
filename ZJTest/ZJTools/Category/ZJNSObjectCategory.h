@@ -32,7 +32,6 @@ typedef NS_ENUM(NSInteger, SystemSettingType) {
  * 获取对象的所有属性
  */
 - (NSArray *)objectProperties;
-- (NSString *)nameWithInstance:(id)instance;    // 功能待完善
 - (id)nextResponderWithTargetClassName:(NSString *)className;
 
 /**
@@ -47,8 +46,6 @@ typedef NS_ENUM(NSInteger, SystemSettingType) {
 /**
  *  根据控制器名字创建控制器
  */
-- (UIViewController *)createVCWithName:(NSString *)name;
-- (UIViewController *)createVCWithName:(NSString *)name isGroupTableVC:(BOOL)isGroup;
 - (UIViewController *)createVCWithName:(NSString *)name title:(NSString *)title;
 - (UIViewController *)createVCWithName:(NSString *)name title:(NSString *)title isGroupTableVC:(BOOL)isGroup;
 
@@ -70,7 +67,9 @@ typedef NS_ENUM(NSInteger, SystemSettingType) {
  */
 + (UIViewController *)currentVC;
 
-
+/**
+ *  Cookie
+ */
 - (void)synCooks;
 - (void)storeCooks;
 - (void)removeCooks;
@@ -101,15 +100,6 @@ typedef NS_ENUM(NSInteger, SystemSettingType) {
  *  @param type         文件类型(.mp3 .wav等)
  */
 + (void)playSoundWithSrcName:(NSString *)srcName type:(NSString *)type;
-
-#pragma mark - Alertiew
-
-+ (void)showAlertViewWithTitle:(NSString *)title msg:(NSString *)msg buttonTitle:(NSString *)buttonTitle;
-
-/**
- iOS 9.0之后
- */
-+ (void)showAlertViewWithTitle:(NSString *)title msg:(NSString *)msg buttonTitle:(NSString *)buttonTitle ctrl:(UIViewController *)ctrl;
 
 #pragma mark - 系统设置、Message
 

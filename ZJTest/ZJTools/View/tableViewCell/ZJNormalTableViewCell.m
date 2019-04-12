@@ -13,7 +13,6 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     
-    NSLog(@"%s", __func__);
     if (!self.synchronSysFont) {
         self.textLabel.font = [UIFont systemFontOfSize:17];
         self.detailTextLabel.font = [UIFont systemFontOfSize:17];

@@ -36,19 +36,6 @@
     NSLog(@"self.navigationController = %@", self.navigationController);
     NSLog(@"navigationItem = %@", self.navigationItem);
     NSLog(@"navigationItem.backBarButtonItem = %@", self.navigationItem.backBarButtonItem);
-    
-    ZJSelectButton *btn = [[ZJSelectButton alloc] initWithFrame:CGRectMake(16, 150, 200, 200)];
-    btn.backgroundColor = [UIColor greenColor];
-    btn.select = YES;
-    btn.unSelectImgName = @"icon_02";
-    btn.selectImgName = @"icon_03";
-    [btn addTarget:self action:@selector(btnEvent:) forControlEvents:UIControlEventTouchUpInside];
-    [scrollView addSubview:btn];
-}
-
-- (void)btnEvent:(ZJSelectButton *)sender {
-    NSLog(@"%s", __func__);
-    sender.select = !sender.select;
 }
 
 - (void)getNavigationBarSubviews {
@@ -175,8 +162,14 @@
     NSLog(@"navigationItem = %@", self.navigationItem);
     NSLog(@"navigationItem.backBarButtonItem = %@", self.navigationItem.backBarButtonItem);
     NSLog(@"items = %@", self.navigationController.navigationBar.items);
+    
+    NSLog(@"topViewController = %@", self.navigationController.topViewController);
+    NSLog(@"visibleViewController = %@", self.navigationController.visibleViewController);
 }
-
+/*
+ 2019-04-12 16:29:44.141645+0800 ZJTest[5537:102314] topViewController     = <ZJTestNavigationBarViewController: 0x7f9799095800>
+ 2019-04-12 16:29:44.141762+0800 ZJTest[5537:102314] visibleViewController = <ZJTestNavigationBarViewController: 0x7f9799095800>
+ */
 /**
  2019-04-02 18:45:47.898658+0800 ZJTest[2097:711747] -[ZJTestNavigationBarViewController viewDidAppear:]
  2019-04-02 18:45:47.899203+0800 ZJTest[2097:711747] items = (

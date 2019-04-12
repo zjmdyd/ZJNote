@@ -10,4 +10,13 @@
 
 @implementation ZJAlertObject
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.cancelTitle = @"取消";
+        self.otherTitle = @"确定";
+    }
+    return self;
+}
+
 @end

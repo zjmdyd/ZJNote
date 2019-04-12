@@ -21,10 +21,10 @@
 }
 
 - (void)initSetting {
-    NSArray *titles = @[@"Fondation", @"UIKit", @"CAAnimation"];
-    NSArray *image = @[@"1", @"2", @"3"];
-    NSArray *selectImage = @[@"1-1", @"2-1", @"3-1"];
-    NSArray *nibNames = @[@"ZJTestFodationTableViewController", @"ZJTestUIKitTableViewController", @"ZJTestCAAnimationTableViewController"];
+    NSArray *titles = @[@"Fondation", @"UIKit", @"System", @"CAAnimation"];
+    NSArray *image = @[@"1", @"2", @"3", @"3"];
+    NSArray *selectImage = @[@"1-1", @"2-1", @"3-1", @"3-1"];
+    NSArray *nibNames = @[@"ZJTestFodationTableViewController", @"ZJTestUIKitTableViewController", @"ZJTestSystemTableViewController", @"ZJTestCAAnimationTableViewController"];
     
     NSMutableArray *ary = [NSMutableArray array];
     for (int i = 0; i < nibNames.count; i++) {
@@ -39,7 +39,7 @@
         [ary addObject:navi];
     }
     
-//    self.tabBar.translucent = NO;   // 防止tabBar返回首页时文字隐藏, 跟系统版本有
+    self.tabBar.translucent = NO;   // 防止tabBar返回首页时文字隐藏, 跟系统版本有关
     self.viewControllers = [ary copy];
 }
 /*
