@@ -28,7 +28,7 @@
     [scrollView setBorderWidth:2 color:[UIColor blackColor]];
     [self.view addSubview:scrollView];
     
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 150, 100)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenW, 100)];
     view.backgroundColor = [UIColor redColor];
     [scrollView addSubview:view];
     

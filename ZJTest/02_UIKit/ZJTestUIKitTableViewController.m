@@ -22,8 +22,8 @@
 }
 
 - (void)initAry {
-    self.cellTitles = @[@"layout加载顺序", @"UINavigationBar", @"UIRectEdge", @"ZJSelectButton", @"ZJAlertObject"];
-    self.vcNames = @[@"", @"ZJTestNavigationBarViewController", @"ZJTestUIRectEdgeTableViewController", @"ZJTestSelectBtnViewController", @"ZJTestAlertViewController"];
+    self.cellTitles = @[@"layout加载顺序", @"UINavigationBar", @"UIRectEdge", @"ZJSelectButton", @"ZJAlertObject", @"nibHead"];
+    self.vcNames = @[@"ZJTestLayoutViewController", @"ZJTestNavigationBarViewController", @"ZJTestUIRectEdgeTableViewController", @"ZJTestSelectBtnViewController", @"ZJTestAlertViewController", @"ZJTestNibHeadTableViewController"];
 }
 
 - (void)initSettiing {
@@ -52,7 +52,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    UIViewController *vc = [self createVCWithName:self.vcNames[indexPath.row] title:self.cellTitles[indexPath.row] isGroupTableVC:NO];
+    UIViewController *vc = [self createVCWithName:self.vcNames[indexPath.row] title:self.cellTitles[indexPath.row] isGroupTableVC:YES];
     [self showViewController:vc sender:nil];
 }
 

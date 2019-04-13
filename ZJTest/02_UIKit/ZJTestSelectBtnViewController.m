@@ -17,9 +17,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
    
-    ZJSelectButton *btn = [[ZJSelectButton alloc] initWithFrame:CGRectMake(50, 150, 200, 200)];
-    btn.backgroundColor = [UIColor greenColor];
-//    btn.select = YES;
+    ZJSelectButton *btn = [[ZJSelectButton alloc] initWithFrame:CGRectMake(0, 0, 200, 200)];
+    btn.center = CGRectGetCenter([UIScreen mainScreen].bounds);
     btn.unSelectImgName = @"icon_02";
     btn.selectImgName = @"icon_03";
     [btn addTarget:self action:@selector(btnEvent:) forControlEvents:UIControlEventTouchUpInside];

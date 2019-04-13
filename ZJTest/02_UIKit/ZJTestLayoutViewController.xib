@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ZJTestLayoutViewController">
+            <connections>
+                <outlet property="scrollView" destination="Zpp-Q1-Fsr" id="XJZ-N2-GdI"/>
+                <outlet property="testView" destination="dgA-Ak-kGc" id="tKf-C2-uy7"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zpp-Q1-Fsr">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZh-AY-Dhm">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="0.0"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dgA-Ak-kGc">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="150"/>
+                            <color key="backgroundColor" red="1" green="0.28394583750000002" blue="0.37136794969999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="150" id="O9i-gq-LxR"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="dgA-Ak-kGc" firstAttribute="top" secondItem="Zpp-Q1-Fsr" secondAttribute="top" id="5NZ-Mm-fFZ"/>
+                        <constraint firstAttribute="trailing" secondItem="dgA-Ak-kGc" secondAttribute="trailing" id="7VP-ki-rqg"/>
+                        <constraint firstItem="dgA-Ak-kGc" firstAttribute="leading" secondItem="Zpp-Q1-Fsr" secondAttribute="leading" id="Ual-yR-ehq"/>
+                        <constraint firstAttribute="bottom" secondItem="fZh-AY-Dhm" secondAttribute="bottom" id="Ue4-Qz-PD8"/>
+                        <constraint firstAttribute="trailing" secondItem="fZh-AY-Dhm" secondAttribute="trailing" id="guX-OG-7ql"/>
+                        <constraint firstItem="fZh-AY-Dhm" firstAttribute="top" secondItem="Zpp-Q1-Fsr" secondAttribute="top" id="oYP-Kn-8gL"/>
+                        <constraint firstItem="dgA-Ak-kGc" firstAttribute="width" secondItem="Zpp-Q1-Fsr" secondAttribute="width" id="qxP-K9-IND"/>
+                        <constraint firstItem="fZh-AY-Dhm" firstAttribute="leading" secondItem="Zpp-Q1-Fsr" secondAttribute="leading" id="sh6-RD-KwZ"/>
+                    </constraints>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Zpp-Q1-Fsr" secondAttribute="trailing" id="Mb4-Af-cAu"/>
+                <constraint firstItem="Zpp-Q1-Fsr" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Z7v-I4-Vtd"/>
+                <constraint firstItem="Zpp-Q1-Fsr" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="nDs-py-tJi"/>
+                <constraint firstAttribute="bottom" secondItem="Zpp-Q1-Fsr" secondAttribute="bottom" id="sZd-6b-f05"/>
+            </constraints>
+            <point key="canvasLocation" x="-238" y="-300"/>
+        </view>
+    </objects>
+</document>

@@ -47,6 +47,10 @@
     return cell;
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return @"push";
+}
+
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -54,10 +58,6 @@
     
     UIViewController *vc = [self createVCWithName:@"ZJTestPopTransitionTableViewController" title:self.cellTitles[indexPath.row] isGroupTableVC:YES];
     [self.navigationController pushViewController:vc direction:self.values[indexPath.row]];
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return @"push";
 }
 
 /*

@@ -26,12 +26,11 @@
 }
 
 - (void)initSettiing {
-    ZJWrapView *view = (ZJWrapView *)[ZJWrapView createSysViewWithName:@"UIImageView" frame:CGRectMake(0, 0, kScreenW, kScreenW) needWrap:YES];
-    UIImageView *headView = (UIImageView *)view.wrapView;
+    UIImageView *headView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenW, kScreenW)];
     headView.clipsToBounds = YES;
     headView.image = [UIImage imageNamed:@"mm_01"];
     headView.contentMode = UIViewContentModeScaleAspectFill;
-    self.tableView.tableHeaderView = view;
+    self.tableView.tableHeaderView = headView;
     
     self.navigationItem.title = @"";
 }
@@ -39,7 +38,7 @@
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.cellTitles.count;
+    return 10;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -47,7 +46,7 @@
     if (!cell) {
         cell = [[ZJNormalTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SystemTableViewCell];
     }
-    cell.textLabel.text = self.cellTitles[indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"row:%ld", (long)indexPath.row];
     
     return cell;
 }

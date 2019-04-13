@@ -29,9 +29,7 @@
 - (void)setDelegate:(id<ZJAboutViewDelegate>)delegate {
     _delegate = delegate;
     
-    if (_delegate) {
-        self.btn.userInteractionEnabled = YES;        
-    }
+    self.btn.userInteractionEnabled = _delegate != nil;
 }
 
 - (void)setCenterConst:(CGFloat)centerConst {
@@ -66,6 +64,8 @@
 
 - (void)setIcon:(NSString *)icon {
     _icon = icon;
+    
+    [self.btn setBackgroundImage:[UIImage imageNamed:_icon] forState:UIControlStateNormal];
 }
 
 /*

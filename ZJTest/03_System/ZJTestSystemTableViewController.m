@@ -22,8 +22,8 @@
 }
 
 - (void)initAry {
-    self.cellTitles = @[@"音视", @"视频"];
-    self.vcNames = @[@"ZJTestAudioTableViewController", @""];
+    self.cellTitles = @[@"系统短音频", @"用户短音频", @"系统服务", @"语言"];
+    self.vcNames = @[@"ZJTestAudioTableViewController", @"ZJTestUserAudioTableViewController", @"ZJTestSysSettingTableViewController", @"ZJTestLanguageTableViewController"];
 }
 
 - (void)initSettiing {
@@ -54,6 +54,14 @@
     
     UIViewController *vc = [self createVCWithName:self.vcNames[indexPath.row] title:self.cellTitles[indexPath.row] isGroupTableVC:YES];
     [self showViewController:vc sender:nil];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return DefaultSectionHeaderHeight;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return FLT_EPSILON;
 }
 
 /*

@@ -18,12 +18,12 @@ typedef NS_ENUM(NSInteger, SystemServiceType) {
     SystemServiceTypeOfMessage,
 };
 
-typedef NS_ENUM(NSInteger, SystemSettingType) {
-    SystemSettingTypeOfLocation,
-    SystemSettingTypeOfMusic,
-    SystemSettingTypeOfWallpaper,
-    SystemSettingTypeOfBluetooth,
-    SystemSettingTypeOfWiFi,
+typedef NS_ENUM(NSInteger, AppInfoType) {
+    AppInfoTypeOfDisplayName,
+    AppInfoTypeOfBundleName,
+    AppInfoTypeOfVersion,
+    AppInfoTypeOfBundleVersion,
+    AppInfoTypeOfBundleIdentifier
 };
 
 @interface NSObject (ZJObject)
@@ -96,32 +96,27 @@ typedef NS_ENUM(NSInteger, SystemSettingType) {
 /**
  *  播放用户提供的音频文件
  *
- *  @param srcName 文件名
+ *  @param name 文件名
  *  @param type         文件类型(.mp3 .wav等)
  */
-+ (void)playSoundWithSrcName:(NSString *)srcName type:(NSString *)type;
++ (void)playSoundWithResourceName:(NSString *)name type:(NSString *)type;
 
-#pragma mark - 系统设置、Message
+#pragma mark - 系统服务
 
-+ (void)openSystemSettingWithType:(SystemSettingType)type;
 + (void)systemServiceWithPhone:(NSString *)phone type:(SystemServiceType)type;
-+ (void)openURLWithURLString:(NSString *)urlString;
 + (void)openURLWithURLString:(NSString *)urlString completionHandler:(void (^)(BOOL success))completion;
++ (void)openAppDownloadPage:(NSString *)appID;
 
 #pragma mark - App info
 
-+ (NSString *)appName;
-+ (NSString *)appDisplayName;
-+ (NSString *)appVersion;
-+ (NSString *)appBuildVersion;
-+ (NSString *)appBundleIdentifier;
-+ (BOOL)isComBundleIdentifier;
-+ (void)downloadAppWithAPPID:(NSString *)appID;
++ (NSString *)appInfoWithType:(AppInfoType)type;
++ (BOOL)isComVersion;
 
 /**
  简体中文判断
  */
 + (BOOL)isSimplifiedChinese;
++ (NSString *)getLanguageTitleWithAbbr:(NSString *)abbr;
 
 #pragma mark - Network state
 

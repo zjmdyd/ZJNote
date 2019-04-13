@@ -38,7 +38,7 @@
     }
     
     free(properties);
-
+    
     return propertiesArray;
 }
 
@@ -69,7 +69,7 @@
     NSString *documentsPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
     NSData *data = [NSData dataWithContentsOfFile:[documentsPath stringByAppendingPathComponent:name]];
     NSLog(@"readPath = %@", [documentsPath stringByAppendingPathComponent:name]);
-
+    
     id value;
     if (data) {
         NSError *error;
@@ -161,7 +161,7 @@
             result = (UIViewController *)[view nextResponder];
         }
     }
-
+    
     else
         result = window.rootViewController;
     
@@ -242,6 +242,13 @@
     [self playWithUrl:url];
 }
 
++ (void)playSoundWithResourceName:(NSString *)name type:(NSString *)type {
+    NSString *path = [[NSBundle mainBundle] pathForResource:name ofType:type];
+    if (path) {
+        [self playWithUrl:[NSURL fileURLWithPath:path]];
+    }
+}
+
 + (void)playWithUrl:(NSURL *)url {
     if (url) {
         SystemSoundID soundID;
@@ -254,34 +261,7 @@
     }
 }
 
-+ (void)playSoundWithSrcName:(NSString *)srcName type:(NSString *)type {
-    NSString *path = [[NSBundle mainBundle] pathForResource:srcName ofType:type];
-    if (path) {
-        [self playWithUrl:[NSURL fileURLWithPath:path]];
-    }
-}
-
-#pragma mark - 系统设置、Message
-
-+ (void)openSystemSettingWithType:(SystemSettingType)type {
-    NSArray *ary = @[@"LOCATION_SERVICES", @"MUSIC", @"Wallpaper", @"Bluetooth", @"WIFI"];
-    if (type > ary.count - 1 || type < 0) {
-        return;
-    }
-    
-    NSString *accessoryStr;
-    CGFloat sysVersion = [UIDevice currentDevice].systemVersion.floatValue;
-    if (sysVersion < 10.0) {
-        accessoryStr = @"prefs";
-    }else if (sysVersion < 11.0) {
-        accessoryStr = @"APP-Prefs";
-    }else {
-        
-    }
-
-    NSString *urlString = [NSString stringWithFormat:@"%@:root=%@", accessoryStr, ary[type]];
-    [self openURLWithURLString:urlString completionHandler:nil];
-}
+#pragma mark - 系统服务
 
 + (void)systemServiceWithPhone:(NSString *)phone type:(SystemServiceType)type {
     if (phone.length) {
@@ -291,20 +271,17 @@
         }else if (type == SystemServiceTypeOfMessage) {         // 信息
             str = [NSString stringWithFormat:@"sms:%@", phone];
         }
-
+        
         [self openURLWithURLString:str completionHandler:^(BOOL success) {
             if (!success) {
-                //[self showAlertViewWithTitle:@"设备不支持此功能!" msg:@"" buttonTitle:nil];
+                NSLog(@"******设备不支持此功能********");
             }
         }];
     }else {
-        //[self showAlertViewWithTitle:@"电话号码为空!" msg:@"" buttonTitle:nil];
+        NSLog(@"******设备不支持此功能********");
     }
 }
 
-+ (void)openURLWithURLString:(NSString *)urlString {
-    [self openURLWithURLString:urlString completionHandler:nil];
-}
 //
 + (void)openURLWithURLString:(NSString * _Nonnull )urlString completionHandler:(void (^)(BOOL success))completion {
     NSURL *url = [NSURL URLWithString:urlString];
@@ -325,31 +302,24 @@
     }
 }
 
++ (void)openAppDownloadPage:(NSString *)appID {
+    if (appID.length) {
+        [self openURLWithURLString:[NSString stringWithFormat:@"https://itunes.apple.com/cn/app/id%@?mt=8", appID] completionHandler:^(BOOL success) {
+            if (!success) {
+                NSLog(@"******下载地址出错********");
+            }
+        }];
+    }else {
+        NSLog(@"******下载地址出错********");
+    }
+}
+
 #pragma mark - App info
 
-+ (NSString *)appName {
++ (NSString *)appInfoWithType:(AppInfoType)type {
+    NSArray *key = @[@"CFBundleDisplayName", @"CFBundleName", @"CFBundleShortVersionString", @"CFBundleVersion", @"CFBundleIdentifier"];
     NSDictionary *infoDictionary = [self appInfoDic];
-    return [infoDictionary objectForKey:@"CFBundleName"];
-}
-
-+ (NSString *)appDisplayName {
-    NSDictionary *infoDictionary = [self appInfoDic];
-    return [infoDictionary objectForKey:@"CFBundleDisplayName"];
-}
-
-+ (NSString *)appVersion {
-    NSDictionary *infoDictionary = [self appInfoDic];
-    return [infoDictionary objectForKey:@"CFBundleShortVersionString"];
-}
-
-+ (NSString *)appBuildVersion {
-    NSDictionary *infoDictionary = [self appInfoDic];
-    return [infoDictionary objectForKey:@"CFBundleVersion"];
-}
-
-+ (NSString *)appBundleIdentifier {
-    NSDictionary *infoDictionary = [self appInfoDic];
-    return [infoDictionary objectForKey:@"CFBundleIdentifier"];
+    return [infoDictionary objectForKey:key[type]];
 }
 
 + (NSDictionary *)appInfoDic {
@@ -357,16 +327,8 @@
     return infoDictionary;
 }
 
-+ (BOOL)isComBundleIdentifier {
-    return [[self appBundleIdentifier] hasPrefix:@"com"];
-}
-
-+ (void)downloadAppWithAPPID:(NSString *)appID {
-    if (appID.length) {
-        [self openURLWithURLString:[NSString stringWithFormat:@"https://itunes.apple.com/cn/app/id%@?mt=8", appID]];
-    }else {
-//        [self showAlertViewWithTitle:@"APP信息出错" msg:@"" buttonTitle:@"确定"];
-    }
++ (BOOL)isComVersion {
+    return [[self appInfoWithType:AppInfoTypeOfBundleIdentifier] hasPrefix:@"com"];
 }
 
 /**
@@ -379,6 +341,45 @@
         return YES;
     }
     return NO;
+}
+
++ (NSString *)getLanguageTitleWithAbbr:(NSString *)abbr {
+    for (NSDictionary *dic in [self languageInfo]) {
+        if ([dic[@"abbr"] isEqualToString:abbr]) {
+            return dic[@"title"];
+        }
+    }
+    
+    return @"获取失败";
+}
+
++ (NSArray *)languageInfo {
+    return @[
+             @{
+                 @"title" : @"简体中文",
+                 @"abbr" : @"zh-Hans-CN",
+                 },
+             @{
+                 @"title" : @"繁体中文",
+                 @"abbr" : @"zh-Hant-CN",
+                 },
+             @{
+                 @"title" : @"繁体中文(香港)",
+                 @"abbr" : @"zh-Hant-HK",
+                 },
+             @{
+                 @"title" : @"繁体中文(澳门)",
+                 @"abbr" : @"zh-Hant-MO",
+                 },
+             @{
+                 @"title" : @"繁体中文(台湾)",
+                 @"abbr" : @"zh-Hant-TW",
+                 },
+             @{
+                 @"title" : @"英文",
+                 @"abbr" : @"en-CN",
+                 },
+             ];
 }
 
 #pragma mark - Network state

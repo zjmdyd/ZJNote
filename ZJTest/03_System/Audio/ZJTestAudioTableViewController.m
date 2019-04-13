@@ -38,7 +38,7 @@ static NSMutableArray *_systemSounds = nil;
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             _systemSounds                 = [NSMutableArray array];
             // 读取文件系统
-            NSFileManager *fileManager  = [[NSFileManager alloc] init];
+            NSFileManager *fileManager  = [NSFileManager defaultManager];
             NSURL         *directoryURL = [NSURL URLWithString:@"/System/Library/Audio/UISounds"];
             NSArray       *keys         = [NSArray arrayWithObject:NSURLIsDirectoryKey];
             NSDirectoryEnumerator *enumerator = [fileManager enumeratorAtURL:directoryURL
@@ -61,6 +61,9 @@ static NSMutableArray *_systemSounds = nil;
                     NSLog(@"获取资源失败url = %@", url);
                 }
             }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.tableView reloadData];
+            });
         });
     });
 }
