@@ -24,7 +24,8 @@
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-
+    
+    NSLog(@"netWorkStates = %@", [UIApplication fetchCurrentWiFiInfo]);
     ZJMainTabBarViewController *vc  = [ZJMainTabBarViewController new];
     self.window.rootViewController = vc;
     

@@ -22,6 +22,8 @@
 
 - (void)initSuperSetting {
     self.tableView.showsVerticalScrollIndicator = NO;
+    self.tableView.estimatedSectionHeaderHeight = 0;
+    self.tableView.estimatedSectionFooterHeight = 0;
 }
 
 - (void)setNeedChangeContentInsetAdjust:(BOOL)needChangeContentInsetAdjust {
@@ -36,8 +38,6 @@
     }else {
         self.automaticallyAdjustsScrollViewInsets = !_needChangeContentInsetAdjust;
     }
-    self.tableView.estimatedSectionHeaderHeight = 0;
-    self.tableView.estimatedSectionFooterHeight = 0;
 }
 
 - (void)setNavigationBarClear:(BOOL)clear {
@@ -54,8 +54,12 @@
 
 #pragma mark - UITableViewDelegate
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return DefaultCellHeight;
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return DefaultSectionHeaderHeight;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return FLT_EPSILON;
 }
 
 /*
