@@ -135,12 +135,11 @@ typedef NS_ENUM(NSInteger, AppInfoType) {
 
 + (NSString *)ipAddress;
 
-
 //#pragma mark - 判断是否安装某APP
-//
-//+ (BOOL)installedQQ;
-//+ (BOOL)installedWeiXin;
-//+ (BOOL)installedAlipay;
+
++ (BOOL)installedQQ;
++ (BOOL)installedWeiXin;
++ (BOOL)installedAlipay;
 
 @end
 
@@ -148,13 +147,6 @@ typedef NS_ENUM(NSInteger, AppInfoType) {
 #pragma mark - Device info
 
 @interface UIDevice (ZJDevice)
-
-/**
- *  设备型号
- *
- *  @return iphone5, iphone6....
- */
-+ (NSString *)deviceType;
 
 + (CGFloat)systemVersion;
 

@@ -102,14 +102,14 @@
 - (UIBarButtonItem *)barButtonItemWithCustomViewWithImageNames:(NSArray *)images {
     SEL sel = NSSelectorFromString(barItemAction);
     
-    CGFloat width = 30;
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, width*images.count+DefaultMargin, width)];
+    CGFloat width = 35;
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, width*images.count+DefaultSpan, width)];
     NSInteger count = images.count;
     if (count > 2) count = 2;
     for (int i = 0; i < count; i++) {
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeSystem];
         btn.tag = i;
-        btn.frame = CGRectMake(i*(view.frame.size.width-width), 0, width, width);
+        btn.frame = CGRectMake(view.width-(width*(i+1) + DefaultSpan*i), 0, width, width);
         [btn setImage:[[UIImage imageNamed:images[i]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
         [btn addTarget:self action:sel forControlEvents:UIControlEventTouchUpInside];
         [view addSubview:btn];

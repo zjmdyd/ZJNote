@@ -46,20 +46,24 @@
     return [UIColor colorWithRed:0.9 green:0 blue:0 alpha:0.2];
 }
 
-+ (UIColor *)mainColor {
-    return UIColorFromHex(0x154992);
-}
+@end
 
-+ (UIColor *)assiColor1 {
-    return UIColorFromHex(0xfdbd34);
-}
 
-+ (UIColor *)assiColor2 {
-    return UIColorFromHex(0x0ec600);
-}
+@implementation CIImage (ZJCIImage)
 
-+ (UIColor *)assiColor3 {
-    return UIColorFromHex(0xB3CA81);
+- (UIImage *)image {
+    CGSize size = CGSizeMake(300, 300);
+    CGImageRef cgImage = [[CIContext contextWithOptions:nil] createCGImage:self fromRect:self.extent];
+    UIGraphicsBeginImageContext(size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetInterpolationQuality(context, kCGInterpolationNone);
+    CGContextScaleCTM(context, 1, -1);
+    CGContextDrawImage(context, CGContextGetClipBoundingBox(context), cgImage);
+    UIImage *codeImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    CGImageRelease(cgImage);
+    
+    return codeImage;
 }
 
 @end
@@ -69,22 +73,26 @@
 
 @implementation UIImage (ZJImage)
 
-+ (UIImage *)imageWithPath:(NSString *)path size:(CGSize)size opaque:(BOOL)opaque {    
++ (UIImage *)imageWithPath:(NSString *)path size:(CGSize)size opaque:(BOOL)opaque {
     return [UIImage imageWithPath:path placehold:@"" size:size opaque:opaque];
 }
 
-+ (UIImage *)imageWithPath:(NSString *)path placehold:(NSString *)placeholdName size:(CGSize)size opaque:(BOOL)opaque {
++ (UIImage *)imageWithPath:(NSString *)path placehold:(NSString *)placehold size:(CGSize)size opaque:(BOOL)opaque {
     UIImage *icon;
     if ([path isOnlinePic]) {
         icon = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:path]]];
     }else {
         icon = [UIImage imageNamed:path];
     }
-    if (!icon) {
-        icon = [UIImage imageNamed:placeholdName];
+    if (icon == nil) {
+        if (placehold.length == 0) {
+            return nil;
+        }
+        icon = [UIImage imageNamed:placehold];
     }
     
-    UIGraphicsBeginImageContextWithOptions(size, opaque, 0.0); // 获得用来处理图片的图形上下文。利用该上下文，你就可以在其上进行绘图，并生成图片 ,三个参数含义是设置大小、透明度 （NO为不透明）、缩放（0代表不缩放）
+    // 获得用来处理图片的图形上下文。利用该上下文，你就可以在其上进行绘图，并生成图片 ,三个参数含义是设置大小、透明度 （NO为不透明）、缩放（0代表不缩放）
+    UIGraphicsBeginImageContextWithOptions(size, opaque, 0.0);
     CGRect frame = CGRectMake(0.0, 0.0, size.width, size.height);
     [icon drawInRect:frame];
     
@@ -114,46 +122,29 @@
 
 #pragma mark - 二维码
 
-+ (CIImage *)qrByContent:(NSString *)content {
-    CIFilter *filter = [CIFilter filterWithName:@"CIQRCodeGenerator"];
++ (CIImage *)imageWithContent:(NSString *)content {
     NSData *data = [content dataUsingEncoding:NSUTF8StringEncoding];
-    [filter setValue:data forKey:@"inputMessage"];
-    [filter setValue:@"H" forKey:@"inputCorrectionLevel"];
     
-    return filter.outputImage;
+    CIFilter *qrFilter = [CIFilter filterWithName:@"CIQRCodeGenerator"];
+    [qrFilter setValue:data forKey:@"inputMessage"];
+    [qrFilter setValue:@"M" forKey:@"inputCorrectionLevel"];
+    
+    CIImage *qrImage = qrFilter.outputImage;
+    return qrImage;
+}
+
++ (UIImage *)qrImageWithContent:(NSString *)content {
+    CIImage *qrImage = [UIImage imageWithContent:content];
+    
+    return [qrImage image];
 }
 
 void ProviderReleaseData (void *info, const void *data, size_t size) {
     free((void*)data);
 }
 
-+ (UIImage *)qrImageWithContent:(NSString *)content size:(CGFloat)size {
-    CIImage *image = [UIImage qrByContent:content];
-    
-    CGRect extent = CGRectIntegral(image.extent);
-    CGFloat scale = MIN(size/CGRectGetWidth(extent), size/CGRectGetHeight(extent));
-    
-    // 创建bitmap;
-    size_t width = CGRectGetWidth(extent) * scale;
-    size_t height = CGRectGetHeight(extent) * scale;
-    CGColorSpaceRef cs = CGColorSpaceCreateDeviceGray();
-    CGContextRef bitmapRef = CGBitmapContextCreate(nil, width, height, 8, 0, cs, (CGBitmapInfo)kCGImageAlphaNone);
-    CIContext *context = [CIContext contextWithOptions:nil];
-    CGImageRef bitmapImage = [context createCGImage:image fromRect:extent];
-    CGContextSetInterpolationQuality(bitmapRef, kCGInterpolationNone);
-    CGContextScaleCTM(bitmapRef, scale, scale);
-    CGContextDrawImage(bitmapRef, extent, bitmapImage);
-    
-    // 保存bitmap到图片
-    CGImageRef scaledImage = CGBitmapContextCreateImage(bitmapRef);
-    CGContextRelease(bitmapRef);
-    CGImageRelease(bitmapImage);
-    
-    return [UIImage imageWithCGImage:scaledImage];
-}
-
 + (UIImage *)qrImageWithContent:(NSString *)content size:(CGFloat)size red:(NSInteger)red green:(NSInteger)green blue:(NSInteger)blue {
-    UIImage *image = [UIImage qrImageWithContent:content size:size];
+    UIImage *image = [UIImage qrImageWithContent:content];
     const int imageWidth = image.size.width;
     const int imageHeight = image.size.height;
     size_t      bytesPerRow = imageWidth * 4;
@@ -208,31 +199,7 @@ void ProviderReleaseData (void *info, const void *data, size_t size) {
     return kk;
 }
 
-+ (UIImage *)qrImageByContent:(NSString *)content {
-    NSData *stringData = [content dataUsingEncoding:NSUTF8StringEncoding];
-    
-    CIFilter *qrFilter = [CIFilter filterWithName:@"CIQRCodeGenerator"];
-    [qrFilter setValue:stringData forKey:@"inputMessage"];
-    [qrFilter setValue:@"M" forKey:@"inputCorrectionLevel"];
-    
-    CIImage *qrImage = qrFilter.outputImage;
-    
-    CGSize size = CGSizeMake(300, 300);
-    CGImageRef cgImage = [[CIContext contextWithOptions:nil] createCGImage:qrImage fromRect:qrImage.extent];
-    UIGraphicsBeginImageContext(size);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSetInterpolationQuality(context, kCGInterpolationNone);
-    CGContextScaleCTM(context, 1, -1);
-    CGContextDrawImage(context, CGContextGetClipBoundingBox(context), cgImage);
-    UIImage *codeImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    CGImageRelease(cgImage);
-    
-    return codeImage;
-}
-
 @end
-
 
 #pragma mark - UIImageView
 

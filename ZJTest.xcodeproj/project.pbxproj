@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3816FEA9226717ED00A0CA03 /* ZJTestBarButtonItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3816FEA8226717ED00A0CA03 /* ZJTestBarButtonItemViewController.m */; };
+		3816FEAC2267253C00A0CA03 /* ZJTestImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3816FEAB2267253C00A0CA03 /* ZJTestImageViewController.m */; };
 		381B08A22255B225008F2D7C /* ZJClearTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 381B08A12255B225008F2D7C /* ZJClearTableViewController.m */; };
 		381B08A52255EF86008F2D7C /* ZJNoClearTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 381B08A42255EF86008F2D7C /* ZJNoClearTableViewController.m */; };
 		381B08BE2255FC76008F2D7C /* ZJCornerButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 381B08B72255FC75008F2D7C /* ZJCornerButton.m */; };
@@ -84,6 +86,10 @@
 
 /* Begin PBXFileReference section */
 		38066325224A04D600CFE479 /* ZJDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJDefine.h; sourceTree = "<group>"; };
+		3816FEA7226717ED00A0CA03 /* ZJTestBarButtonItemViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZJTestBarButtonItemViewController.h; sourceTree = "<group>"; };
+		3816FEA8226717ED00A0CA03 /* ZJTestBarButtonItemViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZJTestBarButtonItemViewController.m; sourceTree = "<group>"; };
+		3816FEAA2267253C00A0CA03 /* ZJTestImageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZJTestImageViewController.h; sourceTree = "<group>"; };
+		3816FEAB2267253C00A0CA03 /* ZJTestImageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZJTestImageViewController.m; sourceTree = "<group>"; };
 		381B08A02255B225008F2D7C /* ZJClearTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZJClearTableViewController.h; sourceTree = "<group>"; };
 		381B08A12255B225008F2D7C /* ZJClearTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZJClearTableViewController.m; sourceTree = "<group>"; };
 		381B08A32255EF86008F2D7C /* ZJNoClearTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZJNoClearTableViewController.h; sourceTree = "<group>"; };
@@ -116,6 +122,7 @@
 		3834E4F3224398A000C23476 /* ZJTestUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZJTestUITests.m; sourceTree = "<group>"; };
 		3834E4F5224398A000C23476 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3834E51222439BFF00C23476 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		38431F392266D0720090B056 /* ZJTest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ZJTest.entitlements; sourceTree = "<group>"; };
 		3847367C226188F300E2C870 /* ZJTestLayoutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZJTestLayoutViewController.h; sourceTree = "<group>"; };
 		3847367D226188F300E2C870 /* ZJTestLayoutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZJTestLayoutViewController.m; sourceTree = "<group>"; };
 		3847367E226188F300E2C870 /* ZJTestLayoutViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ZJTestLayoutViewController.xib; sourceTree = "<group>"; };
@@ -296,6 +303,7 @@
 		3834E4CB2243989F00C23476 /* ZJTest */ = {
 			isa = PBXGroup;
 			children = (
+				38431F392266D0720090B056 /* ZJTest.entitlements */,
 				3834E4CC2243989F00C23476 /* AppDelegate.h */,
 				3834E4CD2243989F00C23476 /* AppDelegate.m */,
 				3882334F2249D02400D444EA /* ZJMainTabBarViewController.h */,
@@ -389,10 +397,10 @@
 				387FA2342254ABB9001E5B98 /* ZJNSObjectCategory.m */,
 				387FA22C2254ABB8001E5B98 /* ZJControllerCategory.h */,
 				387FA2292254ABB8001E5B98 /* ZJControllerCategory.m */,
-				387FA2352254ABB9001E5B98 /* ZJFondationCategory.h */,
-				387FA22F2254ABB8001E5B98 /* ZJFondationCategory.m */,
 				387FA22B2254ABB8001E5B98 /* ZJUIViewCategory.h */,
 				387FA2322254ABB9001E5B98 /* ZJUIViewCategory.m */,
+				387FA2352254ABB9001E5B98 /* ZJFondationCategory.h */,
+				387FA22F2254ABB8001E5B98 /* ZJFondationCategory.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -475,6 +483,8 @@
 				3847367E226188F300E2C870 /* ZJTestLayoutViewController.xib */,
 				3878A2DD225373B900190EDB /* ZJTestNavigationBarViewController.h */,
 				3878A2DE225373B900190EDB /* ZJTestNavigationBarViewController.m */,
+				3816FEA7226717ED00A0CA03 /* ZJTestBarButtonItemViewController.h */,
+				3816FEA8226717ED00A0CA03 /* ZJTestBarButtonItemViewController.m */,
 				38CC76052254BE510045F4F4 /* ZJTestUIRectEdgeTableViewController.h */,
 				38CC76062254BE510045F4F4 /* ZJTestUIRectEdgeTableViewController.m */,
 				38FD280C225F3DA100BD4733 /* ZJTestSelectBtnViewController.h */,
@@ -483,6 +493,8 @@
 				38960972226072B300979951 /* ZJTestAlertViewController.m */,
 				384736812261C43900E2C870 /* ZJTestNibHeadTableViewController.h */,
 				384736822261C43900E2C870 /* ZJTestNibHeadTableViewController.m */,
+				3816FEAA2267253C00A0CA03 /* ZJTestImageViewController.h */,
+				3816FEAB2267253C00A0CA03 /* ZJTestImageViewController.m */,
 				38AF1434224B601200905E37 /* ZJTestSliderViewController.h */,
 				38AF1435224B601200905E37 /* ZJTestSliderViewController.m */,
 			);
@@ -610,6 +622,11 @@
 				TargetAttributes = {
 					3834E4C82243989F00C23476 = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.AccessWiFi = {
+								enabled = 1;
+							};
+						};
 					};
 					3834E4E3224398A000C23476 = {
 						CreatedOnToolsVersion = 10.1;
@@ -702,6 +719,7 @@
 				381B08BF2255FC76008F2D7C /* ZJPullDownButton.m in Sources */,
 				384736922261E54A00E2C870 /* ZJTestLanguageTableViewController.m in Sources */,
 				3882337F2249D5E500D444EA /* ZJTestUIKitTableViewController.m in Sources */,
+				3816FEAC2267253C00A0CA03 /* ZJTestImageViewController.m in Sources */,
 				381B08A52255EF86008F2D7C /* ZJNoClearTableViewController.m in Sources */,
 				384736832261C43900E2C870 /* ZJTestNibHeadTableViewController.m in Sources */,
 				388233772249D5E500D444EA /* ZJNormalTableViewController.m in Sources */,
@@ -718,6 +736,7 @@
 				3896097022603CF300979951 /* ZJTestPopTransitionTableViewController.m in Sources */,
 				388233512249D02400D444EA /* ZJMainTabBarViewController.m in Sources */,
 				381B08C62255FF86008F2D7C /* ZJNormalTableViewCell.m in Sources */,
+				3816FEA9226717ED00A0CA03 /* ZJTestBarButtonItemViewController.m in Sources */,
 				387FA23B2254ABBA001E5B98 /* ZJNSObjectCategory.m in Sources */,
 				38AE064422609175005A0B56 /* ZJTestAudioTableViewController.m in Sources */,
 				381B08A22255B225008F2D7C /* ZJClearTableViewController.m in Sources */,
@@ -886,8 +905,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ZJTest/ZJTest.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7955BVLGNM;
+				DEVELOPMENT_TEAM = X69A28X2L6;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ZJTest/PrefixHeader.pch";
 				INFOPLIST_FILE = ZJTest/Info.plist;
@@ -896,7 +916,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.hanyouapp.ZJTest;
+				PRODUCT_BUNDLE_IDENTIFIER = net.hanyouapp.ZJTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -906,8 +926,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ZJTest/ZJTest.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7955BVLGNM;
+				DEVELOPMENT_TEAM = X69A28X2L6;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ZJTest/PrefixHeader.pch";
 				INFOPLIST_FILE = ZJTest/Info.plist;
@@ -916,7 +937,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.hanyouapp.ZJTest;
+				PRODUCT_BUNDLE_IDENTIFIER = net.hanyouapp.ZJTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

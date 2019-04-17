@@ -43,13 +43,6 @@
  */
 + (UIColor *)pinkColor;
 
-+ (UIColor *)mainColor;
-
-+ (UIColor *)assiColor1;
-
-+ (UIColor *)assiColor2;
-
-+ (UIColor *)assiColor3;
 @end
 
 
@@ -58,7 +51,7 @@
 @interface UIImage (ZJImage)
 
 + (UIImage *)imageWithPath:(NSString *)path size:(CGSize)size opaque:(BOOL)opaque;
-+ (UIImage *)imageWithPath:(NSString *)path placehold:(NSString *)placeholdName size:(CGSize)size opaque:(BOOL)opaque;
++ (UIImage *)imageWithPath:(NSString *)path placehold:(NSString *)placehold size:(CGSize)size opaque:(BOOL)opaque;
 
 /**
  *  根据颜色获取UIImage
@@ -73,10 +66,7 @@
 
 #pragma mark - 生成二维码
 
-+ (UIImage *)qrImageByContent:(NSString *)content;
-
-//pre
-+ (UIImage *)qrImageWithContent:(NSString *)content size:(CGFloat)size;
++ (UIImage *)qrImageWithContent:(NSString *)content;
 
 /**
  *   色值 0~255

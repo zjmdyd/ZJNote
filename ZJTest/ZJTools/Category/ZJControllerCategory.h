@@ -45,7 +45,7 @@
 /**
  *  自定义UIBarButtonItem
  *
- *  @param images 数组元素个数最多为2
+ *  @param images 数组最多支持2张图片
  */
 - (UIBarButtonItem *)barButtonItemWithCustomViewWithImageNames:(NSArray *)images;
 
