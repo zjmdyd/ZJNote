@@ -496,15 +496,6 @@
 
 /// APP信息:
 /*
- NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
- CFShow(infoDictionary);
- // app名称
- NSString *app_Name = [infoDictionary objectForKey:@"CFBundleDisplayName"];
- // app版本
- NSString *app_Version = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
- // app build版本
- NSString *app_build = [infoDictionary objectForKey:@"CFBundleVersion"];
- 
  //手机序列号
  NSString* identifierNumber = [[UIDevice currentDevice] uniqueIdentifier];
  NSLog(@"手机序列号: %@",identifierNumber);

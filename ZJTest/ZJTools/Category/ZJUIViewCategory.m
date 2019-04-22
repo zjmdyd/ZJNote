@@ -30,10 +30,6 @@
 
 @implementation UIColor (ZJColor)
 
-+ (UIColor *)sysTableViewDetailTextColor {
-    return [UIColor colorWithRed:0.556863 green:0.556863 blue:0.576471 alpha:1];
-}
-
 + (UIColor *)maskViewColor {
     return [UIColor colorWithRed:(40/255.0f) green:(40/255.0f) blue:(40/255.0f) alpha:1.0];
 }
@@ -73,12 +69,9 @@
 
 @implementation UIImage (ZJImage)
 
-+ (UIImage *)imageWithPath:(NSString *)path size:(CGSize)size opaque:(BOOL)opaque {
-    return [UIImage imageWithPath:path placehold:@"" size:size opaque:opaque];
-}
-
-+ (UIImage *)imageWithPath:(NSString *)path placehold:(NSString *)placehold size:(CGSize)size opaque:(BOOL)opaque {
++ (UIImage *)imageWithPath:(NSString *)path placehold:(NSString *)placehold {
     UIImage *icon;
+
     if ([path isOnlinePic]) {
         icon = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:path]]];
     }else {
@@ -90,6 +83,16 @@
         }
         icon = [UIImage imageNamed:placehold];
     }
+    
+    return icon;
+}
+
++ (UIImage *)imageWithPath:(NSString *)path size:(CGSize)size opaque:(BOOL)opaque {
+    return [UIImage imageWithPath:path placehold:@"" size:size opaque:opaque];
+}
+
++ (UIImage *)imageWithPath:(NSString *)path placehold:(NSString *)placehold size:(CGSize)size opaque:(BOOL)opaque {
+    UIImage *icon = [UIImage imageWithPath:path placehold:placehold];
     
     // 获得用来处理图片的图形上下文。利用该上下文，你就可以在其上进行绘图，并生成图片 ,三个参数含义是设置大小、透明度 （NO为不透明）、缩放（0代表不缩放）
     UIGraphicsBeginImageContextWithOptions(size, opaque, 0.0);
@@ -205,86 +208,28 @@ void ProviderReleaseData (void *info, const void *data, size_t size) {
 
 @implementation UIImageView (ZJImageView)
 
-+ (UIImageView *)imageWithFrame:(CGRect)frame path:(NSString *)path {
-    return [self imageWithFrame:frame path:path placehold:@""];
++ (UIImageView *)imageViewWithFrame:(CGRect)frame path:(NSString *)path {
+    return [self imageViewWithFrame:frame path:path placehold:@""];
 }
 
-+ (UIImageView *)imageWithFrame:(CGRect)frame path:(NSString *)path placehold:(NSString *)placehold {
++ (UIImageView *)imageViewWithFrame:(CGRect)frame path:(NSString *)path placehold:(NSString *)placehold {
     UIImageView *iv = [[self alloc] initWithFrame:frame];
     iv.clipsToBounds = YES;
     iv.contentMode = UIViewContentModeScaleAspectFill;
-    [iv setImageWithPath:path placehold:placehold];
+    if (path.isOnlinePic) {
+#ifdef ZJSDWebImage
+        [iv sd_setImageWithURL:[NSURL URLWithString:path] placeholderImage:[UIImage imageNamed:placehold] options:SDWebImageRefreshCached];
+#else
+        iv.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:path]]];
+#endif
+    }else {
+        iv.image = [UIImage imageWithPath:path placehold:placehold];
+    }
     
     return iv;
 }
 
-- (void)setImageWithPath:(NSString *)path placehold:(NSString *)placehold {
-    if (!placehold.length) {
-        placehold = @"";
-    }
-    if (!path.length) {
-        path = placehold;
-    }
-    
-    if ([path hasPrefix:@"http:"] || [path hasPrefix:@"https:"]) {
-#ifdef ZJSDWebImage
-        [self sd_setImageWithURL:[NSURL URLWithString:path] placeholderImage:[UIImage imageNamed:placehold] options:SDWebImageRefreshCached];
-#else
-        self.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:path]]];
-#endif
-    }else {
-        UIImage *img = [UIImage imageNamed:path];
-        if (img == nil) {
-            img = [UIImage imageNamed:placehold];
-        }
-        self.image = img;
-    }
-}
-
 #pragma mark - 生成二维码
-
-- (void)setupQRCodeWithContent:(NSString *)content {
-    CIFilter *filter = [CIFilter filterWithName:@"CIQRCodeGenerator"];
-    
-    [filter setDefaults];
-    
-    NSData *data = [content dataUsingEncoding:NSUTF8StringEncoding];
-    [filter setValue:data forKey:@"inputMessage"];
-    
-    CIImage *outputImage = [filter outputImage];
-    
-    CIContext *context = [CIContext contextWithOptions:nil];
-    CGImageRef cgImage = [context createCGImage:outputImage
-                                       fromRect:[outputImage extent]];
-    
-    UIImage *image = [UIImage imageWithCGImage:cgImage
-                                         scale:1.
-                                   orientation:UIImageOrientationUp];
-    
-    // Resize without interpolating
-    UIImage *resized = [self resizeImage:image
-                             withQuality:kCGInterpolationNone
-                                    rate:5.0];
-    
-    self.image = resized;
-    
-    CGImageRelease(cgImage);
-}
-
-- (UIImage *)resizeImage:(UIImage *)image withQuality:(CGInterpolationQuality)quality rate:(CGFloat)rate {
-    UIImage *resized = nil;
-    CGFloat width = image.size.width * rate;
-    CGFloat height = image.size.height * rate;
-    
-    UIGraphicsBeginImageContext(CGSizeMake(width, height));
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSetInterpolationQuality(context, quality);
-    [image drawInRect:CGRectMake(0, 0, width, height)];
-    resized = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return resized;
-}
 
 @end
 
@@ -612,7 +557,7 @@ void ProviderReleaseData (void *info, const void *data, size_t size) {
 
     CGFloat height = view.frame.size.height, width = view.frame.size.width;
     
-    UIImageView *iv = [UIImageView imageWithFrame:frame path:path placehold:placehold];
+    UIImageView *iv = [UIImageView imageViewWithFrame:frame path:path placehold:placehold];
     [view addSubview:iv];
 
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(iv.frame.origin.x + iv.frame.size.width+4, 2.5, width-iv.frame.size.width-4, height-5)];

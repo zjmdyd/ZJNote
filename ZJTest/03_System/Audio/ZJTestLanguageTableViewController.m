@@ -42,7 +42,7 @@
     }
     cell.textLabel.text = [UIApplication getLanguageTitleWithAbbr:self.cellTitles[indexPath.row]];
     if (indexPath.row == 0) {
-        cell.accessoryView = [UIImageView imageWithFrame:CGRectMake(0, 0, 30, 30) path:@"ic_gouxuan_60x60"];
+        cell.accessoryView = [UIImageView imageViewWithFrame:CGRectMake(0, 0, 30, 30) path:@"ic_gouxuan_60x60"];
     }else {
         cell.accessoryView = nil;
     }

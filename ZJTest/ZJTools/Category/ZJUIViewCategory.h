@@ -30,8 +30,6 @@
 
 @interface UIColor (ZJColor)
 
-+ (UIColor *)sysTableViewDetailTextColor;
-
 /**
  *  半透明遮罩层
  */
@@ -50,6 +48,7 @@
 
 @interface UIImage (ZJImage)
 
++ (UIImage *)imageWithPath:(NSString *)path placehold:(NSString *)placehold;
 + (UIImage *)imageWithPath:(NSString *)path size:(CGSize)size opaque:(BOOL)opaque;
 + (UIImage *)imageWithPath:(NSString *)path placehold:(NSString *)placehold size:(CGSize)size opaque:(BOOL)opaque;
 
@@ -85,9 +84,8 @@
  */
 @interface UIImageView (ZJImageView)
 
-+ (UIImageView *)imageWithFrame:(CGRect)frame path:(NSString *)path;
-+ (UIImageView *)imageWithFrame:(CGRect)frame path:(NSString *)path placehold:(NSString *)placehold;
-- (void)setImageWithPath:(NSString *)path placehold:(NSString *)placehold;
++ (UIImageView *)imageViewWithFrame:(CGRect)frame path:(NSString *)path;
++ (UIImageView *)imageViewWithFrame:(CGRect)frame path:(NSString *)path placehold:(NSString *)placehold;
 
 - (void)setupQRCodeWithContent:(NSString *)content;
 
