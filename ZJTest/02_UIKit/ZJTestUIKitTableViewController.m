@@ -43,7 +43,9 @@
     }
     cell.textLabel.text = self.cellTitles[indexPath.row];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    cell.detailTextLabel.text = @"哈哈哈哈哈";
+    cell.imageView.image = [UIImage imageWithPath:@"icon_01" size:CGSizeMake(60, 60) opaque:NO];
+    cell.iconCornerRadius = 60/2;
+    cell.separatorInset = UIEdgeInsetsZero;
     
     return cell;
 }
@@ -57,13 +59,17 @@
     [self showViewController:vc sender:nil];
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return DefaultSectionHeaderHeight;
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return DefaultIconCellRowHeight;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return FLT_EPSILON;
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+//    return DefaultSectionHeaderHeight;
+//}
+//
+//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+//    return FLT_EPSILON;
+//}
 
 /*
  // Override to support conditional editing of the table view.

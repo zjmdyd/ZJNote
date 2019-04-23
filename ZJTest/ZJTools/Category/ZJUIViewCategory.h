@@ -87,8 +87,6 @@
 + (UIImageView *)imageViewWithFrame:(CGRect)frame path:(NSString *)path;
 + (UIImageView *)imageViewWithFrame:(CGRect)frame path:(NSString *)path placehold:(NSString *)placehold;
 
-- (void)setupQRCodeWithContent:(NSString *)content;
-
 @end
 
 #pragma mark - UILabel
@@ -148,18 +146,8 @@ static NSString *const SystemNormalTableViewCell = @"ZJNormalTableViewCell";
 - (void)registerCellWithNibIDs:(NSArray *)nibIDs;
 - (void)registerCellWithNibIDs:(NSArray *)nibIDs sysIDs:(NSArray *)sysIDs;
 
-/**
- *  设置cell的分割线是否需要边距，在VC的viewDidLayoutSubviews方法中调用
- */
-- (void)setNeedSeparatorMargin:(BOOL)needMargin;
-
-/**
- *  设置cell的content是否需要边距
- */
-- (void)setNeedLayoutMargin:(BOOL)needMargin;
-
-- (UISwitch *)accessorySwitchWithTarget:(id)target;
-- (UIButton *)accessoryButtonWithTarget:(id)target title:(NSString *)title;
++ (UISwitch *)accessorySwitchWithTarget:(id)target;
++ (UIButton *)accessoryButtonWithTarget:(id)target title:(NSString *)title;
 
 @end
 
@@ -171,7 +159,7 @@ static NSString *const SystemNormalTableViewCell = @"ZJNormalTableViewCell";
 - (void)setBorderWidth:(CGFloat)width color:(UIColor *)color;
 - (void)setBorderWidth:(CGFloat)width color:(UIColor *)color cornerRadius:(CGFloat)cornerRadius;
 
-- (void)needCornerRadius:(BOOL)need width:(CGFloat)width;
+- (void)setCornerRadius:(CGFloat)radius;
 
 /**
  *  添加tap手势

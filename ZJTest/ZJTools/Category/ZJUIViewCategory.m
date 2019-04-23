@@ -393,49 +393,25 @@ void ProviderReleaseData (void *info, const void *data, size_t size) {
     [self registerCellWithSysIDs:sysIDs];
 }
 
-- (void)setNeedSeparatorMargin:(BOOL)needMargin {
-    if (needMargin == NO) {
-        if ([self respondsToSelector:@selector(setSeparatorInset:)]) {
-            [self setSeparatorInset:UIEdgeInsetsZero];
-        }
-    }
-}
-
-/**
- - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
- if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
- [cell setLayoutMargins:UIEdgeInsetsZero];
- }
- }
- */
-- (void)setNeedLayoutMargin:(BOOL)needMargin {
-    if (needMargin == NO) {
-        if ([self respondsToSelector:@selector(setLayoutMargins:)])  {
-            [self setLayoutMargins:UIEdgeInsetsZero];
-        }
-    }
-}
-
-- (UISwitch *)accessorySwitchWithTarget:(id)target {
++ (UISwitch *)accessorySwitchWithTarget:(id)target {
     UISwitch *sw = [[UISwitch alloc] init];
-    SEL s = NSSelectorFromString(@"switchAction:");
+    SEL s = NSSelectorFromString(@"switchEvent:");
     if (target) {
         [sw addTarget:target action:s forControlEvents:UIControlEventValueChanged];
     }
 #ifdef MainColor
     sw.onTintColor = [UIColor mainColor];
 #endif
-    
     return sw;
 }
 
-- (UIButton *)accessoryButtonWithTarget:(id)target title:(NSString *)title {
++ (UIButton *)accessoryButtonWithTarget:(id)target title:(NSString *)title {
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeSystem];
     btn.frame = CGRectMake(0, 0, 60, 30);
     btn.layer.cornerRadius = 8;
     [btn setTitle:title forState:UIControlStateNormal];
     [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    SEL s = NSSelectorFromString(@"buttonAction:");
+    SEL s = NSSelectorFromString(@"buttonEvent:");
     if (target) {
         [btn addTarget:target action:s forControlEvents:UIControlEventValueChanged];
     }
@@ -458,18 +434,6 @@ void ProviderReleaseData (void *info, const void *data, size_t size) {
         [super touchesBegan:touches withEvent:event];
     }
     //  [[self nextResponder] touchesBegan:touches withEvent:event];
-    
-//    if ([self.nextResponder isKindOfClass:NSClassFromString(@"UITableViewCellContentView")]) {
-//        UITableViewCell *cell = [self nextResponderWithTargetClassName:@"UITableViewCell"];
-//        UITableView *tableView = [self nextResponderWithTargetClassName:@"UITableView"];
-//        UITableViewController *vc = [self nextResponderWithTargetClassName:@"UITableViewController"];
-//
-//        NSIndexPath *indexPath = [tableView indexPathForCell:cell];
-//
-//        if ([vc respondsToSelector:@selector(tableView:didSelectRowAtIndexPath:)]) {
-//            [vc tableView:vc.tableView didSelectRowAtIndexPath:indexPath];
-//        }
-//    }
 }
 
 @end
@@ -478,7 +442,7 @@ void ProviderReleaseData (void *info, const void *data, size_t size) {
 
 #pragma mark - UIView
 
-#define  tapAction @"tapAction:"
+#define tapEvent @"tapEvent:"
 
 @implementation UIView (ZJUIView)
 
@@ -492,17 +456,13 @@ void ProviderReleaseData (void *info, const void *data, size_t size) {
     self.layer.cornerRadius = cornerRadius;
 }
 
-- (void)needCornerRadius:(BOOL)need width:(CGFloat)width {
-    if (need) {
-        self.layer.cornerRadius = width;
-        self.layer.masksToBounds = YES;
-    }else {
-        self.layer.cornerRadius = 0;
-    }
+- (void)setCornerRadius:(CGFloat)radius {
+    self.layer.cornerRadius = radius;
+    self.layer.masksToBounds = YES;
 }
 
 - (void)addTapGestureWithDelegate:(id <UIGestureRecognizerDelegate>)delegate target:(id)target {
-    SEL s = NSSelectorFromString(tapAction);
+    SEL s = NSSelectorFromString(tapEvent);
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:target action:s];
     tap.delegate = delegate;
     [self addGestureRecognizer:tap];
@@ -569,6 +529,24 @@ void ProviderReleaseData (void *info, const void *data, size_t size) {
 }
 
 #pragma mark - supplementView
+
+- (UILabel *)accessoryViewWithText:(id)text bgColor:(UIColor *)color frame:(CGRect)frame {
+    UILabel *label = [[UILabel alloc] initWithFrame:frame];
+    if ([text isKindOfClass:[NSAttributedString class]]) {
+        label.attributedText = text;
+    }else {
+        label.text = text;
+        label.textColor = [UIColor whiteColor];
+        label.textAlignment = NSTextAlignmentCenter;
+    }
+    if (color) {
+        label.backgroundColor = color;
+    }
+    label.layer.cornerRadius = 8;
+    label.layer.masksToBounds = YES;
+    
+    return label;
+}
 
 + (UIView *)supplementViewWithText:(NSString *)text {
     return [self createLabelWithText:text supplementViewBgColor:nil];
@@ -657,45 +635,6 @@ void ProviderReleaseData (void *info, const void *data, size_t size) {
         label.layer.masksToBounds = YES;
         [self addSubview:label];
     }
-    /*
-     CGFloat width;
-     CGRect fm = frame;
-     if (CGRectEqualToRect(fm, CGRectZero)) {
-     width = 10;
-     fm = CGRectMake(self.frame.size.width-10, 0, width, width);
-     }else {
-     width = frame.size.width;
-     }
-     UILabel *label = [[UILabel alloc] initWithFrame:fm];
-     if ([text isKindOfClass:[NSAttributedString class]]) {
-     label.attributedText = text;
-     }else {
-     label.text = text;
-     }
-     if (color) {
-     label.backgroundColor = color;
-     }
-     label.layer.cornerRadius = width / 2;
-     label.layer.masksToBounds = YES;
-     */
-    
-    return label;
-}
-
-- (UILabel *)accessoryViewWithText:(id)text bgColor:(UIColor *)color frame:(CGRect)frame {
-    UILabel *label = [[UILabel alloc] initWithFrame:frame];
-    if ([text isKindOfClass:[NSAttributedString class]]) {
-        label.attributedText = text;
-    }else {
-        label.text = text;
-        label.textColor = [UIColor whiteColor];
-        label.textAlignment = NSTextAlignmentCenter;
-    }
-    if (color) {
-        label.backgroundColor = color;
-    }
-    label.layer.cornerRadius = 8;
-    label.layer.masksToBounds = YES;
     
     return label;
 }
