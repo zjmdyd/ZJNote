@@ -453,7 +453,7 @@ void ProviderReleaseData (void *info, const void *data, size_t size) {
 - (void)setBorderWidth:(CGFloat)width color:(UIColor *)color cornerRadius:(CGFloat)cornerRadius {
     self.layer.borderWidth = width;
     self.layer.borderColor = color.CGColor;
-    self.layer.cornerRadius = cornerRadius;
+    [self setCornerRadius:cornerRadius];
 }
 
 - (void)setCornerRadius:(CGFloat)radius {
@@ -531,7 +531,12 @@ void ProviderReleaseData (void *info, const void *data, size_t size) {
 #pragma mark - supplementView
 
 - (UILabel *)accessoryViewWithText:(id)text bgColor:(UIColor *)color frame:(CGRect)frame {
+    return [self accessoryViewWithText:text bgColor:color frame:frame needCornerRadius:NO];
+}
+
+- (UILabel *)accessoryViewWithText:(id)text bgColor:(UIColor *)color frame:(CGRect)frame needCornerRadius:(BOOL)need {
     UILabel *label = [[UILabel alloc] initWithFrame:frame];
+    label.numberOfLines = 0;
     if ([text isKindOfClass:[NSAttributedString class]]) {
         label.attributedText = text;
     }else {
@@ -542,40 +547,11 @@ void ProviderReleaseData (void *info, const void *data, size_t size) {
     if (color) {
         label.backgroundColor = color;
     }
-    label.layer.cornerRadius = 8;
-    label.layer.masksToBounds = YES;
     
-    return label;
-}
-
-+ (UIView *)supplementViewWithText:(NSString *)text {
-    return [self createLabelWithText:text supplementViewBgColor:nil];
-}
-
-+ (UIView *)supplementViewWithText:(NSString *)text supplementViewBgColor:(UIColor *)color {
-    return [self createLabelWithText:text supplementViewBgColor:color];
-}
-
-+ (UIView *)supplementViewWithAttributeText:(NSAttributedString *)text {
-    return [self createLabelWithText:text supplementViewBgColor:nil];
-}
-
-+ (UIView *)supplementViewWithAttributeText:(NSAttributedString *)text supplementViewBgColor:(UIColor *)color {
-    return [self createLabelWithText:text supplementViewBgColor:color];
-}
-
-+ (UILabel *)createLabelWithText:(id)text supplementViewBgColor:(UIColor *)color {
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, kScreenW, 21)];
-    
-    if (color) label.backgroundColor = color;
-    
-    if ([text isKindOfClass:[NSAttributedString class]]) {
-        label.attributedText = text;
-    }else {
-        label.text = text;
+    if (need) {
+        label.layer.cornerRadius = 8;
+        label.layer.masksToBounds = YES;
     }
-    
-    label.numberOfLines = 0;
     
     return label;
 }

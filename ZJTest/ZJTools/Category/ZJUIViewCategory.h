@@ -179,19 +179,8 @@ static NSString *const SystemNormalTableViewCell = @"ZJNormalTableViewCell";
 
 #pragma mark - supplementView
 
-/**
- 普通文本
- @return 文本背景色
- */
-+ (UIView *)supplementViewWithText:(NSString *)text;
-+ (UIView *)supplementViewWithText:(NSString *)text supplementViewBgColor:(UIColor *)color;
-/**
- 
- 带属性文本
- @return 文本背景色
- */
-+ (UIView *)supplementViewWithAttributeText:(NSAttributedString *)text;
-+ (UIView *)supplementViewWithAttributeText:(NSAttributedString *)text supplementViewBgColor:(UIColor *)color;
+- (UILabel *)accessoryViewWithText:(id)text bgColor:(UIColor *)color frame:(CGRect)frame;
+- (UILabel *)accessoryViewWithText:(id)text bgColor:(UIColor *)color frame:(CGRect)frame needCornerRadius:(BOOL)need;
 
 #pragma mark - iconBadge
 
@@ -202,7 +191,6 @@ static NSString *const SystemNormalTableViewCell = @"ZJNormalTableViewCell";
 - (void)addIconBadgeWithAttributeText:(NSAttributedString *)text;
 - (void)addIconBadgeWithAttributeText:(NSAttributedString *)text bgColor:(UIColor *)color;
 - (UILabel *)createLableWithText:(id)text bgColor:(UIColor *)color frame:(CGRect)frame;
-- (UILabel *)accessoryViewWithText:(id)text bgColor:(UIColor *)color frame:(CGRect)frame;
 
 - (void)addIconBadgeWithImage:(UIImage *)image;
 - (void)addIconBadgeWithImage:(UIImage *)image bgColor:(UIColor *)color;
