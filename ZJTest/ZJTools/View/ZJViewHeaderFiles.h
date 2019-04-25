@@ -13,6 +13,8 @@
 #import "ZJNormalTableViewCell.h"
 
 #import "ZJSelectButton.h"
+#import "ZJIconBadgeButton.h"
+
 #import "ZJWrapView.h"
 #import "ZJAboutView.h"
 

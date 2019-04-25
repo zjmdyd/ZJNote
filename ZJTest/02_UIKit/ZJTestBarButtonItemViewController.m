@@ -17,8 +17,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.rightBarButtonItems = [self barButtonWithImageNames:@[@"ic_xiaoxi", @"ic_setting"]];
+    ZJIconBadgeButton *btn = [ZJIconBadgeButton buttonWithFrame:CGRectMake(0, 0, 25, 25) target:self];
+    [btn setImage:[UIImage imageNamed:@"ic_xiaoxi"] forState:UIControlStateNormal];
+    [btn setBadgeTitle:@"100" badgeBgColor:[UIColor redColor]];
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem barbuttonWithCustomView:btn];
+    
+//    self.navigationItem.rightBarButtonItems = [self barButtonWithImageNames:@[@"ic_xiaoxi", @"ic_setting"]];
 //    self.navigationItem.rightBarButtonItem = [self barButtonItemWithCustomViewWithImageNames:@[@"ic_xiaoxi", @"ic_setting"]];
+}
+
+- (void)badgeBtnEvent:(ZJIconBadgeButton *)sender {
+    NSLog(@"%s", __func__);
+    sender.hidesBadge = !sender.hidesBadge;
 }
 
 - (void)barItemAction:(UIBarButtonItem *)sender {

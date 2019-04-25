@@ -13,6 +13,8 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     
+    NSLog(@"%s, self = %@, select = %d", __func__, self, self.select);
+    
     UIImage *image = self.select ? self.selectImg : self.unSelectImg;
     if (image) {
         if (self.isSetImage) {

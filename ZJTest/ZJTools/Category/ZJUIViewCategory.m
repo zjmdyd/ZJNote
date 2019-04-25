@@ -238,20 +238,25 @@ void ProviderReleaseData (void *info, const void *data, size_t size) {
 
 @implementation UILabel (ZJSelectLabel)
 
-+ (UILabel *)createLabelWithFrame:(CGRect)frame text:(id)text background:(UIColor *)color {
-    return [UILabel createLabelWithFrame:frame text:text background:color needCorner:NO];
+- (UILabel *)accessoryViewWithText:(id)text bgColor:(UIColor *)color frame:(CGRect)frame {
+    return [self accessoryViewWithText:text bgColor:color frame:frame needCornerRadius:NO];
 }
 
-+ (UILabel *)createLabelWithFrame:(CGRect)frame text:(id)text background:(UIColor *)color needCorner:(BOOL)need {
+- (UILabel *)accessoryViewWithText:(id)text bgColor:(UIColor *)color frame:(CGRect)frame needCornerRadius:(BOOL)need {
     UILabel *label = [[UILabel alloc] initWithFrame:frame];
+    label.numberOfLines = 0;
     if ([text isKindOfClass:[NSAttributedString class]]) {
         label.attributedText = text;
     }else {
         label.text = text;
+        label.textColor = [UIColor whiteColor];
+        label.textAlignment = NSTextAlignmentCenter;
     }
+    
     label.backgroundColor = color;
+    
     if (need) {
-        label.layer.cornerRadius = label.frame.size.width / 2.0;
+        label.layer.cornerRadius = 8;
         label.layer.masksToBounds = YES;
     }
     
@@ -446,6 +451,11 @@ void ProviderReleaseData (void *info, const void *data, size_t size) {
 
 @implementation UIView (ZJUIView)
 
+- (void)setCornerRadius:(CGFloat)radius {
+    self.layer.cornerRadius = radius;
+    self.layer.masksToBounds = YES;
+}
+
 - (void)setBorderWidth:(CGFloat)width color:(UIColor *)color {
     [self setBorderWidth:width color:color cornerRadius:0];
 }
@@ -454,11 +464,6 @@ void ProviderReleaseData (void *info, const void *data, size_t size) {
     self.layer.borderWidth = width;
     self.layer.borderColor = color.CGColor;
     [self setCornerRadius:cornerRadius];
-}
-
-- (void)setCornerRadius:(CGFloat)radius {
-    self.layer.cornerRadius = radius;
-    self.layer.masksToBounds = YES;
 }
 
 - (void)addTapGestureWithDelegate:(id <UIGestureRecognizerDelegate>)delegate target:(id)target {
@@ -530,91 +535,6 @@ void ProviderReleaseData (void *info, const void *data, size_t size) {
 
 #pragma mark - supplementView
 
-- (UILabel *)accessoryViewWithText:(id)text bgColor:(UIColor *)color frame:(CGRect)frame {
-    return [self accessoryViewWithText:text bgColor:color frame:frame needCornerRadius:NO];
-}
-
-- (UILabel *)accessoryViewWithText:(id)text bgColor:(UIColor *)color frame:(CGRect)frame needCornerRadius:(BOOL)need {
-    UILabel *label = [[UILabel alloc] initWithFrame:frame];
-    label.numberOfLines = 0;
-    if ([text isKindOfClass:[NSAttributedString class]]) {
-        label.attributedText = text;
-    }else {
-        label.text = text;
-        label.textColor = [UIColor whiteColor];
-        label.textAlignment = NSTextAlignmentCenter;
-    }
-    if (color) {
-        label.backgroundColor = color;
-    }
-    
-    if (need) {
-        label.layer.cornerRadius = 8;
-        label.layer.masksToBounds = YES;
-    }
-    
-    return label;
-}
-
-#pragma mark - iconBadge
-
-- (void)removeIconBadge {
-    UILabel *label = (UILabel *)[self subViewWithTag:0];
-    if (label) {
-        label.hidden = YES;
-    }
-}
-
-- (void)addIconBadgeWithText:(NSString *)text {
-    UILabel *label = [self createLableWithText:text bgColor:nil frame:CGRectZero];
-    [self addSubview:label];
-}
-
-- (void)addIconBadgeWithText:(NSString *)text bgColor:(UIColor *)color {
-    UILabel *label = [self createLableWithText:text bgColor:color frame:CGRectZero];
-    [self addSubview:label];
-}
-
-- (void)addIconBadgeWithAttributeText:(NSAttributedString *)text {
-    UILabel *label = [self createLableWithText:text bgColor:nil frame:CGRectZero];
-    [self addSubview:label];
-}
-
-- (void)addIconBadgeWithAttributeText:(NSAttributedString *)text bgColor:(UIColor *)color {
-    UILabel *label = [self createLableWithText:text bgColor:color frame:CGRectZero];
-    [self addSubview:label];
-}
-
-- (UILabel *)createLableWithText:(id)text bgColor:(UIColor *)color frame:(CGRect)frame {
-    UILabel *label = (UILabel *)[self subViewWithTag:0];
-    if (label) {
-        label.hidden = NO;
-    }else {
-        CGFloat width;
-        CGRect fm = frame;
-        if (CGRectEqualToRect(fm, CGRectZero)) {
-            width = 10;
-            fm = CGRectMake(self.frame.size.width-10, 0, width, width);
-        }else {
-            width = frame.size.width;
-        }
-        label = [[UILabel alloc] initWithFrame:fm];
-        if ([text isKindOfClass:[NSAttributedString class]]) {
-            label.attributedText = text;
-        }else {
-            label.text = text;
-        }
-        if (color) {
-            label.backgroundColor = color;
-        }
-        label.layer.cornerRadius = width / 2;
-        label.layer.masksToBounds = YES;
-        [self addSubview:label];
-    }
-    
-    return label;
-}
-
 - (void)addIconBadgeWithImage:(UIImage *)image {
     [self createImageViewWithImage:image bgColor:nil];
 }
@@ -669,55 +589,6 @@ void ProviderReleaseData (void *info, const void *data, size_t size) {
         return YES;
     }
     return NO;
-}
-
-@end
-
-
-@implementation UINavigationBar (ZJNavigationBar)
-
-/**
- view.backgroundColor = backgroundColor;   // 背景色设置无效
- NSLog(@"view.superclass = %@", view.superclass);  // UIView
- NSLog(@"ssView.superclass1 = %@", ssView.superclass);   // _UIVisualEffectSubview --> UIView
- NSLog(@"ssView.superclass2 = %@", ssView.superclass);    // _UIVisualEffectBackdropView --> _UIVisualEffectSubview
- 
- ssView.hidden = YES;    // [ssView removeFromSuperview];    移除不了, 只能隐藏
- ssView.backgroundColor = [UIColor clearColor]; //  背景色透明设置无效
- */
-- (void)setBackgroundColor:(UIColor *)backgroundColor {
-    for (UIView *view in self.subviews) {
-        if ([view isMemberOfClass:NSClassFromString(@"_UIBarBackground")]) {
-            
-            for (UIView *sView in view.subviews) {
-                if ([sView isMemberOfClass:NSClassFromString(@"UIVisualEffectView")]) {
-                    sView.backgroundColor = backgroundColor;
-                    for (UIView *ssView in sView.subviews) {
-                        if ([ssView isMemberOfClass:NSClassFromString(@"_UIVisualEffectSubview")]) {
-                            ssView.hidden = YES;    // [ssView removeFromSuperview];    移除不了, 只能隐藏
-                        }else {
-                            ssView.hidden = YES;    //  背景色透明设置无效
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
-- (void)setHiddenSeparateLine:(BOOL)hidden {
-    UIView *view = [self fetchSubViewWithClassName:@"UIImageView"];
-    if (view) view.hidden = hidden;
-}
-
-
-/**
- 修改不成功,坑爹的苹果
- NSLog(@"superclass = %@", btn.superclass); --> UIButton
- */
-- (void)setBackBarButtonItemTitle:(NSString *)title {
-    UIButton *btn = (UIButton *)[self fetchSubViewWithClassName:@"_UIModernBarButton"];
-    [btn setTitle:title forState:UIControlStateNormal];
 }
 
 @end

@@ -93,9 +93,6 @@
 
 @interface UILabel (ZJSelectLabel)
 
-+ (UILabel *)createLabelWithFrame:(CGRect)frame text:(id)text background:(UIColor *)color;
-+ (UILabel *)createLabelWithFrame:(CGRect)frame text:(id)text background:(UIColor *)color needCorner:(BOOL)need;
-
 /**
  *  根据文本内容适配Label高度
  */
@@ -156,10 +153,10 @@ static NSString *const SystemNormalTableViewCell = @"ZJNormalTableViewCell";
 
 @interface UIView (ZJUIView)
 
+- (void)setCornerRadius:(CGFloat)radius;
+
 - (void)setBorderWidth:(CGFloat)width color:(UIColor *)color;
 - (void)setBorderWidth:(CGFloat)width color:(UIColor *)color cornerRadius:(CGFloat)cornerRadius;
-
-- (void)setCornerRadius:(CGFloat)radius;
 
 /**
  *  添加tap手势
@@ -178,19 +175,6 @@ static NSString *const SystemNormalTableViewCell = @"ZJNormalTableViewCell";
 + (UIView *)createTitleIVWithFrame:(CGRect)frame path:(NSString *)path placehold:(NSString *)placehold title:(NSString *)title;
 
 #pragma mark - supplementView
-
-- (UILabel *)accessoryViewWithText:(id)text bgColor:(UIColor *)color frame:(CGRect)frame;
-- (UILabel *)accessoryViewWithText:(id)text bgColor:(UIColor *)color frame:(CGRect)frame needCornerRadius:(BOOL)need;
-
-#pragma mark - iconBadge
-
-- (void)removeIconBadge;
-- (void)addIconBadgeWithText:(NSString *)text;
-- (void)addIconBadgeWithText:(NSString *)text bgColor:(UIColor *)color;
-
-- (void)addIconBadgeWithAttributeText:(NSAttributedString *)text;
-- (void)addIconBadgeWithAttributeText:(NSAttributedString *)text bgColor:(UIColor *)color;
-- (UILabel *)createLableWithText:(id)text bgColor:(UIColor *)color frame:(CGRect)frame;
 
 - (void)addIconBadgeWithImage:(UIImage *)image;
 - (void)addIconBadgeWithImage:(UIImage *)image bgColor:(UIColor *)color;
@@ -213,16 +197,6 @@ typedef NS_ENUM(NSInteger, AnnularSeparateType) {
 
 - (QuadrantTouchType)quadrantOfTouchPoint:(CGPoint)point separateType:(AnnularSeparateType)type;
 - (BOOL)touchPointInTheAnnular:(CGPoint)point annularWidth:(CGFloat)annularWidth;
-
-@end
-
-
-#pragma mark - UINavigationBar
-
-@interface UINavigationBar (ZJNavigationBar)
-
-- (void)setBackgroundColor:(UIColor *)backgroundColor;
-- (void)setHiddenSeparateLine:(BOOL)hidden;
 
 @end
 

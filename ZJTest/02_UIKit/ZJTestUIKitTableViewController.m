@@ -22,8 +22,8 @@
 }
 
 - (void)initAry {
-    self.cellTitles = @[@"layout加载顺序", @"UINavigationBar", @"UIBarButtonItem", @"UIRectEdge", @"ZJSelectButton", @"ZJAlertObject", @"nibHead", @"UIImage"];
-    self.vcNames = @[@"ZJTestLayoutViewController", @"ZJTestNavigationBarViewController", @"ZJTestBarButtonItemViewController", @"ZJTestUIRectEdgeTableViewController", @"ZJTestSelectBtnViewController", @"ZJTestAlertViewController", @"ZJTestNibHeadTableViewController", @"ZJTestImageViewController"];
+    self.cellTitles = @[@"layout加载顺序", @"UINavigationBar", @"UIBarButtonItem", @"UIRectEdge", @"ZJSelectButton", @"ZJAlertObject", @"nibHead", @"UIImage", @"UILabel"];
+    self.vcNames = @[@"ZJTestLayoutViewController", @"ZJTestNavigationBarViewController", @"ZJTestBarButtonItemViewController", @"ZJTestUIRectEdgeTableViewController", @"ZJTestSelectBtnViewController", @"ZJTestAlertViewController", @"ZJTestNibHeadTableViewController", @"ZJTestImageViewController", @"ZJTestLabelViewController"];
 }
 
 - (void)initSettiing {
