@@ -1,0 +1,104 @@
+
+- (NSDictionary *)noNullDic;
+- (void)jsonToModel:(id)obj;
+- (void)noNullJsonToModel:(id)obj;
+- (void)noNullJsonToModel:(id)obj withSpecifyKeys:(NSArray *)keys;
+- (BOOL)containsKey:(NSString *)key;
+- (BOOL)containsKeyCaseInsensitive:(NSString *)key;
+- (NSString *)httpParamsString;
+
+/**
+ 十六进制字典
+ 
+ @return @{
+ @"0" : @"0000",
+ @"1" : @"0001",....
+ }*/
++ (NSDictionary *)HexDictionary;
+
+
+
+
+- (NSDictionary *)noNullDic {
+    NSMutableDictionary *dic = self.mutableCopy;
+    
+    for (NSString *key in dic.allKeys) {
+        if ([dic[key] isKindOfClass:[NSNull class]]) {
+            dic[key] = @"";
+        }
+    }
+    return dic;
+}
+
+- (void)jsonToModel:(id)obj {
+    for (NSString *key in self.allKeys) {
+        NSString *key0 = [key checkSysConflictKey];
+        if ([[obj objectProperties] containString:key0]) {
+            [obj setValue:self[key] forKey:key0];
+        }
+    }
+}
+
+- (void)noNullJsonToModel:(id)obj {
+    [self noNullJsonToModel:obj withSpecifyKeys:nil];
+}
+
+- (void)noNullJsonToModel:(id)obj withSpecifyKeys:(NSArray *)keys {
+    NSDictionary *dic = [self noNullDic];
+    
+    for (NSString *key in dic.allKeys) {
+        if (keys && ![keys containString:key]) {
+            continue;
+        }
+        NSString *key0 = [key checkSysConflictKey];
+        if ([[obj objectProperties] containString:key0]) {
+            [obj setValue:dic[key] forKey:key0];
+        }
+    }
+}
+
+- (BOOL)containsKey:(NSString *)key {
+    for (NSString *str in self.allKeys) {
+        if ([str isEqualToString:key]) {
+            return YES;
+        }
+    }
+    
+    return NO;
+}
+
+- (BOOL)containsKeyCaseInsensitive:(NSString *)key {
+    for (NSString *str in self.allKeys) {
+        if ([str caseInsensitiveCompare:key] == NSOrderedSame) {
+            return YES;
+        }
+    }
+    
+    return NO;
+}
+
+- (NSString *)httpParamsString {
+    NSMutableString *str = [NSMutableString string];
+    NSArray *keys = self.allKeys;
+    for (int i = 0; i < keys.count; i++) {
+        NSString *key = keys[i];
+        if (i < keys.count-1) {
+            [str appendString:[NSString stringWithFormat:@"%@=%@&", key, self[key]]];
+        }else {
+            [str appendString:[NSString stringWithFormat:@"%@=%@", key, self[key]]];
+        }
+    }
+    
+    return str.mutableCopy;
+}
+
++ (NSDictionary *)HexDictionary {
+    NSMutableDictionary *hexDic = hexDic = [[NSMutableDictionary alloc] initWithCapacity:16];
+    NSArray *keys = @[@"A", @"B", @"C", @"D", @"E", @"F"];
+    NSArray *values = @[@"0000", @"0001", @"0010", @"0011", @"0100", @"0101", @"0110", @"0111", @"1000", @"1001", @"1010", @"1011", @"1100", @"1101", @"1110", @"1111"];
+    for (int i = 0; i < values.count; i++) {
+        [hexDic setObject:values[i] forKey:[NSString stringWithFormat:@"%@", i<10?@(i):keys[i-10]]];
+    }
+    
+    return [hexDic mutableCopy];
+}

@@ -25,7 +25,6 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
-    NSLog(@"jailbroken = %d", [UIDevice jailbroken]);
     ZJMainTabBarViewController *vc  = [ZJMainTabBarViewController new];
     self.window.rootViewController = vc;
     

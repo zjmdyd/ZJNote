@@ -10,8 +10,6 @@
 
 @interface ZJNavigationController ()
 
-@property (nonatomic, strong) UIView *colorView;
-
 @end
 
 @implementation UIImage(NaviColor)
@@ -88,14 +86,6 @@
         viewController.hidesBottomBarWhenPushed = YES;
     }
     [super pushViewController:viewController animated:animated];
-}
-
-- (UIView *)colorView {
-    if (!_colorView) {
-        _colorView = [self.navigationBar fetchSubViewWithClassName:@"_UIVisualEffectSubview"];
-    }
-    
-    return _colorView;
 }
 
 /**

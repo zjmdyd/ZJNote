@@ -1,0 +1,18 @@
+
+- (void)alertWithTitle:(NSString *)title delegate:(id<UIAlertViewDelegate>)delegate {
+    [self alertWithTitle:title tag:0 delegate:delegate];
+}
+
+- (void)alertWithTitle:(NSString *)title msg:(NSString *)msg delegate:(id<UIAlertViewDelegate>)delegate {
+    [self alertWithTitle:title tag:0 msg:msg delegate:delegate];
+}
+
+- (void)alertWithTitle:(NSString *)title tag:(NSInteger)tag delegate:(id<UIAlertViewDelegate>)delegate {
+    [self alertWithTitle:title tag:tag msg:nil delegate:delegate];
+}
+
+- (void)alertWithTitle:(NSString *)title tag:(NSInteger)tag msg:(NSString *)msg delegate:(id<UIAlertViewDelegate>)delegate {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:msg delegate:delegate cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    alert.tag = tag;
+    [alert show];
+}

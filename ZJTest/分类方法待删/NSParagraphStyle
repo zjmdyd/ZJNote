@@ -1,0 +1,57 @@
+
+@interface NSParagraphStyle (ZJParagraphStyle)
+
++ (NSParagraphStyle *)styleWithHeadIndent:(CGFloat)headIndent;
++ (NSParagraphStyle *)styleWithLineSpacing:(CGFloat)lineSpacing;
++ (NSParagraphStyle *)styleWithIndentSpacing:(CGFloat)indentSpacing lineSpace:(CGFloat)lineSpacing;
++ (NSParagraphStyle *)styleWithTextAlignment:(NSTextAlignment)alignment;
++ (NSParagraphStyle *)styleWithTextAlignment:(NSTextAlignment)alignment lineSpacing:(CGFloat)lineSpacing;
+
+@end
+
+
+
+#pragma mark - NSParagraphStyle
+
+@implementation NSParagraphStyle (ZJParagraphStyle)
+
++ (NSParagraphStyle *)styleWithHeadIndent:(CGFloat)headIndent {
+    NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+    style.firstLineHeadIndent = headIndent;
+    
+    return style;
+}
+
++ (NSParagraphStyle *)styleWithLineSpacing:(CGFloat)lineSpacing {
+    NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+    style.lineSpacing = lineSpacing;
+    
+    return style;
+}
+
++ (NSParagraphStyle *)styleWithIndentSpacing:(CGFloat)indentSpacing lineSpace:(CGFloat)lineSpacing {
+    NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+    style.lineSpacing = lineSpacing;
+    style.headIndent = indentSpacing;
+    style.firstLineHeadIndent = indentSpacing;
+    style.tailIndent = -indentSpacing;
+    
+    return style;
+}
+
++ (NSParagraphStyle *)styleWithTextAlignment:(NSTextAlignment)alignment {
+    NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+    style.alignment = alignment;
+    
+    return style;
+}
+
++ (NSParagraphStyle *)styleWithTextAlignment:(NSTextAlignment)alignment lineSpacing:(CGFloat)lineSpacing {
+    NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+    style.alignment = alignment;
+    style.lineSpacing = lineSpacing;
+    
+    return style;
+}
+
+@end

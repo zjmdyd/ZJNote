@@ -7,6 +7,8 @@
 //
 
 #import "ZJNormalTableViewController.h"
+#import "ZJNavigationController.h"
+#import "ZJDefine.h"
 
 @interface ZJNormalTableViewController ()
 

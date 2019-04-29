@@ -1,0 +1,81 @@
+
+#pragma mark - 属性字符串
+
+/**
+ 文字颜色
+ */
+- (NSAttributedString *)attrWithForegroundColor:(UIColor *)color;
+
+/**
+ 文字字体
+ */
+- (NSAttributedString *)attrWithFont:(UIFont *)font;
+
+/**
+ 文字对齐
+ */
+- (NSAttributedString *)attrWithTextAlignment:(NSTextAlignment)alignment;
+
+/**
+ 文字缩进
+ */
+- (NSAttributedString *)attrWithFirstLineHeadIndent:(CGFloat)headIndent;
+
+/**
+ 文字缩进 颜色
+ */
+- (NSAttributedString *)attrWithFirstLineHeadIndent:(CGFloat)headIndent color:(UIColor *)color;
+
+/**
+ 行间距
+ */
+- (NSAttributedString *)attrWithLineSpace:(CGFloat)lineSpace;
+
+/**
+ 加下划线
+ */
+- (NSAttributedString *)attrWithUnderLine;
+
+/**
+ 行间距 对齐
+ */
+- (NSAttributedString *)attrWithLineSpace:(CGFloat)lineSpace textAlignment:(NSTextAlignment)alignment;
+
+/**
+ 文字颜色、字体
+ */
+- (NSAttributedString *)attrWithForegroundColor:(UIColor *)color font:(UIFont *)font;
+
+/**
+ 文字颜色、对齐
+ */
+- (NSAttributedString *)attrWithForegroundColor:(UIColor *)color textAlignment:(NSTextAlignment)alignment;
+
+/**
+ 文字字体、对齐
+ */
+- (NSAttributedString *)attrWithFont:(UIFont *)font textAlignment:(NSTextAlignment)alignment;
+
+/**
+ 文字颜色、字体、对齐
+ */
+- (NSAttributedString *)attrWithForegroundColor:(UIColor *)color font:(UIFont *)font textAlignment:(NSTextAlignment)alignment;
+
+/**
+ 文字颜色、背景色、对齐
+ */
+- (NSAttributedString *)attrWithForegroundColor:(UIColor *)color background:(UIColor *)bgColor textAlignment:(NSTextAlignment)alignment;
+
+#pragma mark - 为指定的字符串添加属性
+
+/**
+ *  为指定range的string添加属性
+ */
+- (NSAttributedString *)attributedWithRange:(NSRange)range attr:(NSDictionary *)attr;
+
+/**
+ *  为指定字符串添加属性
+ 
+ @param precises 是否是精确匹配搜索字符
+ */
+- (NSAttributedString *)attrWithMatchString:(NSString *)string attr:(NSDictionary *)attr precises:(BOOL)precises;

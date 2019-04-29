@@ -28,7 +28,7 @@
     [self.view addSubview:self.label];
 
     /*
-     ** font匹配Label的size，当Label能放下当前文本时，不会改变Label的font
+     ** font匹配Label的size，当Label能放下当前文本时，不会改变Label的font 
      */
 //    label.adjustsFontSizeToFitWidth = YES;
     
@@ -77,9 +77,9 @@
         [btn setNeedsLayout];
     }
     self.label.numberOfLines = sender.tag;
-    [self.label setNeedsLayout];
     [self.label sizeToFit];
     [self.label setNeedsDisplay];
+//    [self.label setNeedsLayout];
 //
 //    [self.view setNeedsLayout];
 //    [self.view setNeedsDisplay];

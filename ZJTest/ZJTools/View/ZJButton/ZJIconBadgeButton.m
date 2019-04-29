@@ -26,7 +26,8 @@
         self.label.font = [UIFont systemFontOfSize:11];
         self.label.textColor = [UIColor whiteColor];
         self.label.textAlignment = NSTextAlignmentCenter;
-        [self.label setCornerRadius:width/2];
+        self.label.layer.cornerRadius = width/2;
+        self.label.layer.masksToBounds = YES;
         [self addSubview:self.label];
     }
     return self;

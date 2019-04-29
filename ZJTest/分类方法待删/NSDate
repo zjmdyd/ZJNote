@@ -1,0 +1,252 @@
+
+
+#pragma mark - NSDate
+
+@interface NSDate (ZJDate)
+
+- (NSDateComponents *)components;
+
+/**
+ *  判断两日期是否相等   精确到年月日
+ */
+- (BOOL)isEqualToDate:(NSDate *)date;
+
+- (NSString *)timestampString;
++ (NSString *)todayTimestampString;
+- (NSTimeInterval)timestampSpanWithOther:(NSDate *)date;
+
+#pragma mark - 年龄
+
+/**
+ *  日期转化成年龄
+ *
+ *  @return 周岁
+ */
+- (NSInteger)age;
+
+/**
+ *  时间戳转化成年龄
+ *
+ *  @return 周岁
+ */
++ (NSInteger)ageWithTimeIntervel:(NSInteger)timeInterval;
+
+#pragma mark - 天数
+
+/**
+ *  获取天数
+ *
+ *  @param unit > NSCalendarUnitDay
+ */
+- (NSInteger)numberOfDayInUnit:(NSCalendarUnit)unit;
+
+/**
+ *  获取两个日期的间隔日期
+ *  @param date1 开始日期
+ *  @param date2 结束日期
+ */
++ (NSInteger)daySpanFromDate:(NSDate *)date1 toDate:(NSDate *)date2;
+
++ (NSDate *)dateWithDaySpan:(NSInteger)daySpan sinceDate:(NSDate *)date;
+
+#pragma mark - 星期
+
+/**
+ *  @1 ---> 周一
+ */
++ (NSString *)weekdayToChinese:(id)weekday;
+
+/**
+ *  格林威治时间星期
+ *  @1 --> 周日
+ */
++ (NSString *)gregorianWeekdayToChinese:(id)weekday;
+
+- (NSDate *)firsDateOfWeek;
+- (NSDate *)lastDateOfWeek;
+
+- (NSInteger)weekDayIndex;
+
+@end
+
+
+
+#pragma mark - NSDate
+
+@implementation NSDate (CompareDate)
+
+- (NSDateComponents *)components {
+    NSCalendar *calendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
+    NSDateComponents *comps = [calendar components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitWeekday fromDate:self];
+    
+    return comps;
+}
+
+- (BOOL)isEqualToDate:(NSDate *)date {
+    NSDateComponents *componentsA = self.components;
+    NSDateComponents *componentsB = date.components;
+    return componentsA.year == componentsB.year && componentsA.month == componentsB.month && componentsA.day == componentsB.day;
+}
+
+- (NSString *)timestampString {
+    return @((NSInteger)[self timeIntervalSince1970]).stringValue;
+}
+
++ (NSString *)todayTimestampString {
+    return [[NSDate date] timestampString];
+}
+
+- (NSTimeInterval)timestampSpanWithOther:(NSDate *)date {
+    NSTimeInterval time1 = [self timeIntervalSince1970];
+    NSTimeInterval time2 = [date timeIntervalSince1970];
+    
+    return time1 - time2;
+}
+
+#pragma mark - 年龄
+
+- (NSInteger)age {
+    // 出生日期转换 年月日
+    NSDateComponents *comp1 = [self components];
+    NSInteger brithYear  = [comp1 year];
+    NSInteger brithMonth = [comp1 month];
+    NSInteger brithDay   = [comp1 day];
+    
+    // 获取系统当前 年月日
+    NSDateComponents *comp2 = [[NSDate date] components];
+    NSInteger currentYear  = [comp2 year];
+    NSInteger currentMonth = [comp2 month];
+    NSInteger currentDay   = [comp2 day];
+    
+    // 计算年龄
+    NSInteger iAge = currentYear - brithYear - 1;
+    if ((currentMonth > brithMonth) || (currentMonth == brithMonth && currentDay >= brithDay)) {
+        iAge++;
+    }
+    
+    return iAge;
+}
+
++ (NSInteger)ageWithTimeIntervel:(NSInteger)timeInterval {
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:timeInterval];
+    return [date age];
+}
+
+#pragma mark - 天数
+
+- (NSInteger)numberOfDayInUnit:(NSCalendarUnit)unit {
+    NSCalendar *cal = [NSCalendar currentCalendar];
+    NSRange range = [cal rangeOfUnit:NSCalendarUnitDay inUnit:unit forDate:self];
+    
+    return range.length;
+}
+
++ (NSInteger)daySpanFromDate:(NSDate *)date1 toDate:(NSDate *)date2 {
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    [gregorian setFirstWeekday:2];  // 设置每周的第一天从星期几开始，比如：1代表星期日开始，2代表星期一开始，以此类推。默认值是1
+    
+    NSDate *fromDate, *toDate;
+    
+    [gregorian rangeOfUnit:NSCalendarUnitDay startDate:&fromDate interval:NULL forDate:date1];
+    [gregorian rangeOfUnit:NSCalendarUnitDay startDate:&toDate interval:NULL forDate:date2];
+    
+    NSDateComponents *dayComponents = [gregorian components:NSCalendarUnitDay fromDate:fromDate toDate:toDate options:0];
+    return dayComponents.day;
+}
+
++ (NSDate *)dateWithDaySpan:(NSInteger)daySpan sinceDate:(NSDate *)date {
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    return [gregorian dateByAddingUnit:NSCalendarUnitDay value:daySpan toDate:date options:NSCalendarMatchStrictly];
+}
+
+#pragma mark - 星期
+
++ (NSString *)weekdayToChinese:(id)weekday {
+    NSArray *weekdays = @[@"周一", @"周二", @"周三", @"周四", @"周五", @"周六", @"周日"];
+    for (int i = 0; i < weekdays.count; i++) {
+        if (i+1 == [weekday integerValue]) return weekdays[i];
+    }
+    
+    return @"参数错误";
+}
+
++ (NSString *)gregorianWeekdayToChinese:(id)weekday {
+    NSArray *weekdays = @[@"周日", @"周一", @"周二", @"周三", @"周四", @"周五", @"周六"];
+    for (int i = 1; i <= weekdays.count; i++) {
+        if (i+1 == [weekday integerValue]) return weekdays[i];
+    }
+    
+    return @"参数错误";
+}
+
+- (NSInteger)weekDayIndex {
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *comp = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSWeekdayCalendarUnit|NSDayCalendarUnit
+                                         fromDate:self];
+    
+    // 得到星期几
+    // 1(星期天) 2(星期一) 3(星期二) 4(星期三) 5(星期四) 6(星期五) 7(星期六)
+    NSInteger weekDay = [comp weekday];
+    if (weekDay == 1) {
+        return 7;
+    }else {
+        return weekDay - 1;
+    }
+}
+
+- (NSDate *)firsDateOfWeek {
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *comp = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSWeekdayCalendarUnit|NSDayCalendarUnit
+                                         fromDate:self];
+    
+    // 得到星期几
+    // 1(星期天) 2(星期一) 3(星期二) 4(星期三) 5(星期四) 6(星期五) 7(星期六)
+    NSInteger weekDay = [comp weekday];
+    // 得到几号
+    NSInteger day = [comp day];
+    
+    // 计算当前日期和这周的星期一和星期天差的天数
+    long firstDiff;
+    if (weekDay == 1) {
+        firstDiff = -6;
+    }else{
+        firstDiff =  - (weekDay-2);
+    }
+    
+    // 在当前日期(去掉了时分秒)基础上加上差的天数
+    NSDateComponents *firstDayComp = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:self];
+    [firstDayComp setDay:day + firstDiff];
+    NSDate *firstDayOfWeek = [calendar dateFromComponents:firstDayComp];
+    
+    return firstDayOfWeek;
+}
+
+- (NSDate *)lastDateOfWeek {
+    NSDate *now = [NSDate dateWithDaySpan:3 sinceDate:[NSDate date]];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *comp = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSWeekdayCalendarUnit|NSDayCalendarUnit
+                                         fromDate:now];
+    
+    // 得到星期几
+    // 1(星期天) 2(星期一) 3(星期二) 4(星期三) 5(星期四) 6(星期五) 7(星期六)
+    NSInteger weekDay = [comp weekday];
+    // 得到几号
+    NSInteger day = [comp day];
+    
+    // 计算当前日期和这周的星期一和星期天差的天数
+    long lastDiff;
+    if (weekDay == 1) {
+        lastDiff = 1;
+    }else{
+        lastDiff = 9 - weekDay;
+    }
+    
+    // 在当前日期(去掉了时分秒)基础上加上差的天数
+    NSDateComponents *lastDayComp = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:now];
+    [lastDayComp setDay:day + lastDiff];
+    NSDate *lastDayOfWeek = [calendar dateFromComponents:lastDayComp];
+    
+    return lastDayOfWeek;
+}
+
+@end

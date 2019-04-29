@@ -22,8 +22,8 @@
 }
 
 - (void)initAry {
-    self.cellTitles = @[@"NSString"];
-    self.vcNames = @[@"ZJTestNSStringViewController"];
+    self.cellTitles = @[@"NSString", @"NSScanner", @"进制NSData"];
+    self.vcNames = @[@"ZJTestNSStringTableViewController", @"ZJTestNSScannerViewController", @"ZJTestNSDataViewController"];
 }
 
 - (void)initSetting {
@@ -75,7 +75,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    UIViewController *vc = [self createVCWithName:self.vcNames[indexPath.row] title:self.cellTitles[indexPath.row] isGroupTableVC:NO];
+    UIViewController *vc = [self createVCWithName:self.vcNames[indexPath.row] title:self.cellTitles[indexPath.row] isGroupTableVC:YES];
     [self showViewController:vc sender:nil];
 }
 

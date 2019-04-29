@@ -48,7 +48,7 @@
                 <outlet property="titleTopConstraint" destination="zO6-eZ-T4L" id="UfE-NR-pna"/>
                 <outlet property="widthConstraint" destination="A9w-Mm-ieP" id="GZU-5Q-XRK"/>
             </connections>
-            <point key="canvasLocation" x="-1655" y="-877"/>
+            <point key="canvasLocation" x="-1249" y="-867"/>
         </view>
     </objects>
 </document>

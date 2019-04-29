@@ -1,8 +1,8 @@
 //
-//  ZJTestNSStringViewController.h
+//  ZJTestNSScannerViewController.h
 //  ZJTest
 //
-//  Created by ZJ on 2019/3/21.
+//  Created by ZJ on 2019/4/27.
 //  Copyright © 2019 HY. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ZJTestNSStringViewController : ZJNormalViewController
+@interface ZJTestNSScannerViewController : ZJNormalViewController
 
 @end
 

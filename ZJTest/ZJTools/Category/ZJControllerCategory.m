@@ -7,7 +7,6 @@
 //
 
 #import "ZJControllerCategory.h"
-#import <AudioToolbox/AudioToolbox.h>
 #import "ZJDefine.h"
 
 @implementation ZJControllerCategory
@@ -109,7 +108,7 @@
     for (int i = 0; i < count; i++) {
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeSystem];
         btn.tag = i;
-        btn.frame = CGRectMake(view.width-(width*(i+1) + DefaultSpan*i), 0, width, width);
+        btn.frame = CGRectMake(view.frame.size.width-(width*(i+1) + DefaultSpan*i), 0, width, width);
         [btn setImage:[[UIImage imageNamed:images[i]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
         [btn addTarget:self action:sel forControlEvents:UIControlEventTouchUpInside];
         [view addSubview:btn];

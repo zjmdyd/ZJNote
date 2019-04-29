@@ -72,7 +72,7 @@
 + (UIImage *)imageWithPath:(NSString *)path placehold:(NSString *)placehold {
     UIImage *icon;
 
-    if ([path isOnlinePic]) {
+    if ([path hasPrefix:@"http:"] || [path hasPrefix:@"https:"]) {
         icon = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:path]]];
     }else {
         icon = [UIImage imageNamed:path];
@@ -216,7 +216,7 @@ void ProviderReleaseData (void *info, const void *data, size_t size) {
     UIImageView *iv = [[self alloc] initWithFrame:frame];
     iv.clipsToBounds = YES;
     iv.contentMode = UIViewContentModeScaleAspectFill;
-    if (path.isOnlinePic) {
+    if ([path hasPrefix:@"http:"] || [path hasPrefix:@"https:"]) {
 #ifdef ZJSDWebImage
         [iv sd_setImageWithURL:[NSURL URLWithString:path] placeholderImage:[UIImage imageNamed:placehold] options:SDWebImageRefreshCached];
 #else
@@ -270,68 +270,37 @@ void ProviderReleaseData (void *info, const void *data, size_t size) {
     return size;
 }
 
-+ (CGSize)fitSizeWithWidth:(CGFloat)width text:(NSString *)text {
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
-    label.text = text;
-    label.numberOfLines = 0;
-    CGSize size = [label sizeThatFits:CGSizeMake(width, MAXFLOAT)];
+- (CGSize)fitSizeWithHeight:(CGFloat)height {
+    self.numberOfLines = 0;
+    CGSize size = [self sizeThatFits:CGSizeMake(MAXFLOAT, height)];
     
     return size;
 }
 
-+ (CGSize)fitSizeWithHeight:(CGFloat)height text:(NSString *)text {
++ (CGSize)fitSizeWithWidth:(CGFloat)width text:(id)text {
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
-    label.text = text;
-    CGSize size = [label sizeThatFits:CGSizeMake(MAXFLOAT, height)];
-    
-    return size;
-}
-
-+ (CGSize)fitSizeWithWidth:(CGFloat)width text:(NSString *)text font:(UIFont *)font {
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
-    label.text = text;
-    if (font) label.font = font;
-    label.numberOfLines = 0;
-    
-    CGSize size = [label sizeThatFits:CGSizeMake(width, MAXFLOAT)];
-    
-    return size;
-}
-
-+ (CGSize)fitSizeWithMargin:(CGFloat)margin text:(NSString *)text font:(UIFont *)font {
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
-    label.text = text;
-    if (font) label.font = font;
-    label.numberOfLines = 0;
-    
-    if (margin < 0) {
-        margin = DefaultMargin;
-    }
-    CGFloat width = kScreenW - 2*margin;
-    CGSize size = [label sizeThatFits:CGSizeMake(width, MAXFLOAT)];
-    
-    return size;
-}
-
-- (void)fitFontWithPointSize:(CGFloat)pSize width:(CGFloat)width height:(CGFloat)height descend:(BOOL)descend {
-    CGSize size = [self fitSizeWithWidth:width];
-    
-    if (descend) {
-        if (size.height / height > 1.000) {
-            self.font = [self.font fontWithSize:--pSize];
-            
-            [self fitFontWithPointSize:pSize width:width height:height descend:descend];
-        }else {
-            self.font = [self.font fontWithSize:pSize];
-        }
+    if ([text isKindOfClass:[NSAttributedString class]]) {
+        label.attributedText = text;
     }else {
-        if (size.height < height) {     // size.width < width-2*DefaultMargin && size.height < height
-            self.font = [self.font fontWithSize:++pSize];
-            [self fitFontWithPointSize:pSize width:width height:height descend:descend];
-        }else {
-            self.font = [self.font fontWithSize:--pSize];
-        }
+        label.text = text;
     }
+    label.numberOfLines = 0;
+    CGSize size = [label sizeThatFits:CGSizeMake(width, MAXFLOAT)];
+    
+    return size;
+}
+
++ (CGSize)fitSizeWithHeight:(CGFloat)height text:(id)text {
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
+    if ([text isKindOfClass:[NSAttributedString class]]) {
+        label.attributedText = text;
+    }else {
+        label.text = text;
+    }
+    label.numberOfLines = 0;
+    CGSize size = [label sizeThatFits:CGSizeMake(MAXFLOAT, height)];
+
+    return size;
 }
 
 - (void)italicFont {

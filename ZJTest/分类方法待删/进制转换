@@ -1,0 +1,96 @@
+
+#pragma mark - 进制转换
+
+/**
+ *  十进制 --> 十六进制
+ */
++ (NSString *)ToHex:(uint16_t)tmpid;
+
+/**
+ *  二进制 --> 十六进制
+ */
++ (NSString *)binaryToHex:(NSString *)binary;
+
+/**
+ *  十六进制 --> 二进制
+ */
++ (NSString *)HexToBinary:(NSString *)hexString;
+
+#pragma mark - 进制转换
+
++ (NSString *)ToHex:(uint16_t)tmpid {
+    NSString *nLetterValue = @"";
+    NSString *str = @"";
+    uint16_t ttmpig;
+    for (int i = 0; i < 9; i++) {   // 18 --> 12
+        ttmpig = tmpid % 16; // 18 % 16 = 2;    1 % 16 = 1;
+        tmpid = tmpid / 16;  // 18 / 16 = 1;    1 / 16 = 0;
+        switch (ttmpig) {
+            case 10:
+                nLetterValue = @"A"; break;
+            case 11:
+                nLetterValue = @"B"; break;
+            case 12:
+                nLetterValue = @"C"; break;
+            case 13:
+                nLetterValue = @"D"; break;
+            case 14:
+                nLetterValue = @"E"; break;
+            case 15:
+                nLetterValue = @"F"; break;
+            default:
+                nLetterValue = [NSString stringWithFormat:@"%u", ttmpig];    //2    1
+        }
+        str = [nLetterValue stringByAppendingString:str];   // 2  12
+        if (tmpid == 0) {
+            break;
+        }
+    }
+    
+    return str;
+}
+
+// 二进制字符串取反
+
++ (NSString *)oppositiveBinary:(NSString *)binary {
+    NSMutableString *str = [NSMutableString string];
+    for (int i = 0; i < binary.length; i++) {
+        NSRange range = NSMakeRange(i, 1);
+        NSUInteger value = [binary substringWithRange:range].integerValue;
+        [str appendString:[NSString stringWithFormat:@"%zd", (value+1)%2]];
+    }
+    
+    return str;
+}
+
+
++ (NSString *)binaryToHex:(NSString *)binary {
+    NSDictionary *hexDic = [NSDictionary HexDictionary];
+    
+    NSMutableString *hexString = [[NSMutableString alloc] init];
+    for (int i = 0; i < binary.length; i+=4) {
+        NSString *value = [binary substringWithRange:NSMakeRange(i, 4)];       // 取出二进制里面的每4位数对应的value
+        for (NSString *key in hexDic.allKeys) {
+            if ([[hexDic objectForKey:key] isEqualToString:value]) {
+                [hexString appendString:key];
+                break;
+            }
+        }
+    }
+    
+    return [hexString mutableCopy];
+}
+
++ (NSString *)HexToBinary:(NSString *)hexString {
+    NSDictionary *hexDic = [NSDictionary HexDictionary];
+    
+    NSMutableString *binaryString = [[NSMutableString alloc] init];
+    
+    for (int i = 0; i < hexString.length; i++) {
+        NSString *key = [hexString substringWithRange:NSMakeRange(i, 1)];       // 取出16进制里面的每一位数对应的key
+        NSString *value = [NSString stringWithFormat:@"%@", [hexDic objectForKey:[key uppercaseString]]];
+        binaryString = [NSString stringWithFormat:@"%@%@", binaryString, value].mutableCopy;
+    }
+    
+    return [binaryString mutableCopy];
+}

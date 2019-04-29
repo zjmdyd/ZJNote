@@ -1,0 +1,218 @@
+
+#pragma mark - 属性字符串 1
+
+/**
+ 文字颜色
+ */
+- (NSAttributedString *)attrWithForegroundColor:(UIColor *)color {
+    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:self];
+    [str addAttribute:NSForegroundColorAttributeName value:color range:NSMakeRange(0, str.length)];
+    
+    return [str copy];
+}
+
+/**
+ 文字字体
+ */
+- (NSAttributedString *)attrWithFont:(UIFont *)font {
+    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:self];
+    [str addAttribute:NSFontAttributeName value:font range:NSMakeRange(0, str.length)];
+    
+    return [str copy];
+}
+
+/**
+ 文字对齐
+ */
+- (NSAttributedString *)attrWithTextAlignment:(NSTextAlignment)alignment {
+    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:self];
+    NSParagraphStyle *style = [NSParagraphStyle styleWithTextAlignment:alignment];
+    [str addAttribute:NSParagraphStyleAttributeName value:style range:NSMakeRange(0, str.length)];
+    
+    return [str copy];
+}
+
+/**
+ 文字缩进
+ */
+- (NSAttributedString *)attrWithFirstLineHeadIndent:(CGFloat)headIndent {
+    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:self];
+    NSParagraphStyle *style = [NSParagraphStyle styleWithHeadIndent:headIndent];
+    [str addAttribute:NSParagraphStyleAttributeName value:style range:NSMakeRange(0, str.length)];
+    
+    return str;
+}
+
+/**
+ 下划线
+ */
+- (NSAttributedString *)attrWithUnderLine {
+    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:self];
+    NSRange strRange = {0,[str length]};
+    [str addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:strRange];
+    return str;
+}
+
+/**
+ 文字缩进 颜色
+ */
+- (NSAttributedString *)attrWithFirstLineHeadIndent:(CGFloat)headIndent color:(UIColor *)color {
+    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:self];
+    NSParagraphStyle *style = [NSParagraphStyle styleWithHeadIndent:headIndent];
+    
+    NSRange range = NSMakeRange(0, str.length);
+    [str addAttribute:NSParagraphStyleAttributeName value:style range:range];
+    [str addAttribute:NSForegroundColorAttributeName value:color range:range];
+    
+    return str;
+}
+
+/**
+ 行间距
+ */
+- (NSAttributedString *)attrWithLineSpace:(CGFloat)lineSpace {
+    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:self];
+    NSParagraphStyle *style = [NSParagraphStyle styleWithLineSpacing:lineSpace];
+    [str addAttribute:NSParagraphStyleAttributeName value:style range:NSMakeRange(0, str.length)];
+    
+    return str;
+}
+
+/**
+ 行间距 对齐
+ */
+- (NSAttributedString *)attrWithLineSpace:(CGFloat)lineSpace textAlignment:(NSTextAlignment)alignment {
+    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:self];
+    NSRange range = NSMakeRange(0, str.length);
+    
+    NSParagraphStyle *style = [NSParagraphStyle styleWithLineSpacing:lineSpace];
+    [str addAttribute:NSParagraphStyleAttributeName value:style range:range];
+    
+    NSParagraphStyle *style2 = [NSParagraphStyle styleWithTextAlignment:alignment];
+    [str addAttribute:NSParagraphStyleAttributeName value:style2 range:range];
+    
+    return str;
+}
+
+/**
+ 文字颜色、字体
+ */
+- (NSAttributedString *)attrWithForegroundColor:(UIColor *)color font:(UIFont *)font {
+    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:self];
+    
+    NSRange range = NSMakeRange(0, str.length);
+    [str addAttribute:NSForegroundColorAttributeName value:color range:range];
+    [str addAttribute:NSFontAttributeName value:font range:range];
+    
+    return [str copy];
+}
+
+/**
+ 文字颜色、对齐
+ */
+- (NSAttributedString *)attrWithForegroundColor:(UIColor *)color textAlignment:(NSTextAlignment)alignment {
+    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:self];
+    
+    NSRange range = NSMakeRange(0, str.length);
+    [str addAttribute:NSForegroundColorAttributeName value:color range:range];
+    
+    NSParagraphStyle *style = [NSParagraphStyle styleWithTextAlignment:alignment];
+    [str addAttribute:NSParagraphStyleAttributeName value:style range:range];
+    
+    return [str copy];
+}
+
+/**
+ 文字字体、对齐
+ */
+- (NSAttributedString *)attrWithFont:(UIFont *)font textAlignment:(NSTextAlignment)alignment {
+    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:self];
+    
+    NSRange range = NSMakeRange(0, str.length);
+    [str addAttribute:NSFontAttributeName value:font range:range];
+    
+    NSParagraphStyle *style = [NSParagraphStyle styleWithTextAlignment:alignment];
+    [str addAttribute:NSParagraphStyleAttributeName value:style range:range];
+    
+    return [str copy];
+}
+
+/**
+ 文字颜色、字体、对齐
+ */
+- (NSAttributedString *)attrWithForegroundColor:(UIColor *)color font:(UIFont *)font textAlignment:(NSTextAlignment)alignment {
+    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:self];
+    
+    NSRange range = NSMakeRange(0, str.length);
+    [str addAttribute:NSForegroundColorAttributeName value:color range:range];
+    [str addAttribute:NSFontAttributeName value:font range:range];
+    
+    NSParagraphStyle *style = [NSParagraphStyle styleWithTextAlignment:alignment];
+    [str addAttribute:NSParagraphStyleAttributeName value:style range:range];
+    
+    return [str copy];
+}
+
+/**
+ 文字颜色、背景色、对齐
+ */
+- (NSAttributedString *)attrWithForegroundColor:(UIColor *)color background:(UIColor *)bgColor textAlignment:(NSTextAlignment)alignment {
+    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:self];
+    
+    NSRange range = NSMakeRange(0, str.length);
+    [str addAttribute:NSForegroundColorAttributeName value:color range:range];
+    [str addAttribute:NSBackgroundColorAttributeName value:bgColor range:range];
+    
+    NSParagraphStyle *style = [NSParagraphStyle styleWithTextAlignment:alignment];
+    [str addAttribute:NSParagraphStyleAttributeName value:style range:range];
+    
+    return [str copy];
+}
+
+#pragma mark - 属性字符串 2
+
+- (NSAttributedString *)attributedWithRange:(NSRange)range attr:(NSDictionary *)attr {
+    NSMutableAttributedString *backStr = [[NSMutableAttributedString alloc] initWithString:self];
+    [backStr setAttributes:attr range:range];
+    
+    return [backStr copy];
+}
+
+- (NSAttributedString *)attrWithMatchString:(NSString *)string attr:(NSDictionary *)attr precises:(BOOL)precises {
+    NSMutableArray *indexs = [NSMutableArray array];
+    NSMutableAttributedString *backStr = [[NSMutableAttributedString alloc] initWithString:self];
+    
+    if (precises) {
+        for (int i = 0; i < self.length;) {
+            NSRange range = NSMakeRange(i, string.length);
+            if (range.length + range.location <= backStr.length) {
+                NSString *str = [self substringWithRange:range];
+                if ([str isEqualToString:string]) {
+                    [backStr setAttributes:attr range:range];
+                    i += string.length;
+                }else {
+                    i++;
+                }
+            }else {     // 未找到匹配字符串则退出
+                break;
+            }
+        }
+    }else {
+        for (int i = 0; i < string.length; i++) {
+            NSString *s1 = [string substringWithRange:NSMakeRange(i, 1)];
+            for (int j = 0; j < backStr.length; j++) {
+                NSRange range = NSMakeRange(j, 1);
+                NSString *s2 = [self substringWithRange:range];
+                if ([s1 isEqualToString:s2] && [indexs containNumber:@(j)] == NO) {
+                    [backStr setAttributes:attr range:range];
+                    [indexs addObject:@(j)];
+                    
+                    break;
+                }
+            }
+        }
+    }
+    
+    
+    return [backStr copy];
+}

@@ -1,0 +1,161 @@
+
+
++ (NSString *)stringWithFileName:(NSString *)name;
+- (NSString *)birthDayStringWithSeparate:(NSString *)separate;
+
+/**
+ 汉字转拼音
+ */
+- (NSString *)pinYin;
+- (NSDictionary *)jsonStringToDic;
+- (NSString *)checkSysConflictKey;
+- (BOOL)isOnlinePic;
+- (NSString *)pathWithParam:(id)param;
+- (NSString *)filterHTML;
+
+#pragma mark - 时间字符串
+
+/**
+ *  得到一个小时时间区域字符串
+ *
+ *  @return eg: 8:00 ---> 08:00-09:00
+ */
+- (NSString *)timeForOneHourRegioString;
+
+#pragma mark - 填充字符串
+
+/**
+ *  字符串填充0
+ 
+ @param count 数的位数, 1代表2位,2代表3位....
+ @return eg: 8 ---> 08
+ */
+- (NSString *)fillZeroStringOfDigitCount:(NSInteger)count;
+
+/**
+ *  @"8" --> 08:00
+ */
+- (NSString *)fillTimeString;
+
+#pragma mark - 翻转字符串
+
+/**
+ *  字符串翻转
+ */
+- (NSString *)invertString;
+
+- (NSString *)birthDayStringWithSeparate:(NSString *)separate {
+    if (self.length < 8) return @"";
+    
+    NSString *separateString = separate;
+    if (separateString.length) {
+        separateString = @"-";
+    }
+    NSString *year = [self substringToIndex:4];
+    NSString *month = [self substringWithRange:NSMakeRange(4, 2)];
+    NSString *day = [self substringFromIndex:6];
+    return [NSString stringWithFormat:@"%@%@%@%@%@", year, separateString, month, separateString ,day];
+}
+
++ (NSString *)stringWithFileName:(NSString *)name {
+    NSError *error;
+    NSString *path = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:name];
+    NSString *string = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
+    if (error) {
+        NSLog(@"error = %@", error);
+    }
+    return string;
+}
+
+- (NSString *)pinYin {
+    NSMutableString *mutableString = [NSMutableString stringWithString:self];
+    CFStringTransform((CFMutableStringRef)mutableString, NULL, kCFStringTransformToLatin, false);
+    CFStringTransform((CFMutableStringRef)mutableString, NULL, kCFStringTransformStripDiacritics, false);
+    
+    return mutableString;
+}
+
+- (NSDictionary *)jsonStringToDic {
+    if (self == nil) return nil;
+    
+    NSData *jsonData = [self dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *error;
+    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                        options:NSJSONReadingMutableContainers
+                                                          error:&error];
+    if(error) {
+        NSLog(@"json解析失败：%@",error);
+        return nil;
+    }
+    return dic;
+}
+
+- (NSString *)checkSysConflictKey {
+    NSArray *sysKeys = @[@"operator", @"intValue"];
+    for (NSString *key in sysKeys) {
+        if ([self isEqualToString:key]) {
+            return [NSString stringWithFormat:@"i_%@", self];
+        }
+    }
+    
+    return self;
+}
+
+
+- (NSString *)pathWithParam:(id)param {
+    return [NSString stringWithFormat:@"%@/%@", self, param];
+}
+
+// 去除标签的方法
+- (NSString *)filterHTML {
+    NSString *html = self;
+    NSScanner * scanner = [NSScanner scannerWithString:html];
+    NSString * text = nil;
+    while([scanner isAtEnd] == NO) {
+        [scanner scanUpToString:@"<" intoString:nil];
+        [scanner scanUpToString:@">" intoString:&text];
+        html = [html stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"%@>",text] withString:@""];
+        //去除空格
+        html = [html stringByReplacingOccurrencesOfString:@" " withString:@""];
+    }
+    return html;
+}
+
+#pragma mark - 时间字符串
+
+- (NSString *)timeForOneHourRegioString {
+    NSArray *strs = [self componentsSeparatedByString:@":"];
+    
+    NSString *s0 = [NSString stringWithFormat:@"%zd", [strs.firstObject integerValue] + 1];
+    return [NSString stringWithFormat:@"%@:%@-%@:%@", [strs[0] fillZeroStringOfDigitCount:1], strs[1], [s0 fillZeroStringOfDigitCount:1], strs[1]];
+}
+
+#pragma mark - 填充字符串
+
+- (NSString *)fillZeroStringOfDigitCount:(NSInteger)count {
+    NSMutableString *str = [NSMutableString stringWithFormat:@"%@", self];
+    
+    if (self.integerValue < powl(10, count)) {
+        NSInteger len = count + 1 - self.length;
+        for (int i = 0; i < len; i++) {
+            [str insertString:@"0" atIndex:0];
+        }
+    }
+    
+    return [str mutableCopy];
+}
+
+- (NSString *)fillTimeString {
+    NSString *str = [self fillZeroStringOfDigitCount:1];
+    return [NSString stringWithFormat:@"%@:00", str];
+}
+
+#pragma mark - 翻转字符串
+
+- (NSString *)invertString {
+    NSMutableString *str = [NSMutableString string];
+    for (NSUInteger i = self.length; i > 0; i--) {
+        [str appendString:[self substringWithRange:NSMakeRange(i-1, 1)]];
+    }
+    return [str mutableCopy];
+}

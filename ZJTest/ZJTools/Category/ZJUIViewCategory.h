@@ -97,21 +97,9 @@
  *  根据文本内容适配Label高度
  */
 - (CGSize)fitSizeWithWidth:(CGFloat)width;
-
-+ (CGSize)fitSizeWithWidth:(CGFloat)width text:(NSString *)text;
-+ (CGSize)fitSizeWithHeight:(CGFloat)height text:(NSString *)text;
-+ (CGSize)fitSizeWithWidth:(CGFloat)width text:(NSString *)text font:(UIFont *)font;
-+ (CGSize)fitSizeWithMargin:(CGFloat)margin text:(NSString *)text font:(UIFont *)font;
-
-/**
- *  获取适合的font
- *
- *  @param pSize  初始fontSize
- *  @param width  label的宽度
- *  @param height label的高度, label的最大可容纳高度
- *  @param descend font是否是递减
- */
-- (void)fitFontWithPointSize:(CGFloat)pSize width:(CGFloat)width height:(CGFloat)height descend:(BOOL)descend;
+- (CGSize)fitSizeWithHeight:(CGFloat)height;
++ (CGSize)fitSizeWithWidth:(CGFloat)width text:(id)text;
++ (CGSize)fitSizeWithHeight:(CGFloat)height text:(id)text;
 
 /**
  斜体
