@@ -3,15 +3,7 @@
 + (NSString *)stringWithFileName:(NSString *)name;
 - (NSString *)birthDayStringWithSeparate:(NSString *)separate;
 
-/**
- 汉字转拼音
- */
-- (NSString *)pinYin;
-- (NSDictionary *)jsonStringToDic;
-- (NSString *)checkSysConflictKey;
-- (BOOL)isOnlinePic;
-- (NSString *)pathWithParam:(id)param;
-- (NSString *)filterHTML;
+
 
 #pragma mark - 时间字符串
 
@@ -37,12 +29,9 @@
  */
 - (NSString *)fillTimeString;
 
-#pragma mark - 翻转字符串
 
-/**
- *  字符串翻转
- */
-- (NSString *)invertString;
+
+
 
 - (NSString *)birthDayStringWithSeparate:(NSString *)separate {
     if (self.length < 8) return @"";
@@ -67,59 +56,6 @@
     return string;
 }
 
-- (NSString *)pinYin {
-    NSMutableString *mutableString = [NSMutableString stringWithString:self];
-    CFStringTransform((CFMutableStringRef)mutableString, NULL, kCFStringTransformToLatin, false);
-    CFStringTransform((CFMutableStringRef)mutableString, NULL, kCFStringTransformStripDiacritics, false);
-    
-    return mutableString;
-}
-
-- (NSDictionary *)jsonStringToDic {
-    if (self == nil) return nil;
-    
-    NSData *jsonData = [self dataUsingEncoding:NSUTF8StringEncoding];
-    NSError *error;
-    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData
-                                                        options:NSJSONReadingMutableContainers
-                                                          error:&error];
-    if(error) {
-        NSLog(@"json解析失败：%@",error);
-        return nil;
-    }
-    return dic;
-}
-
-- (NSString *)checkSysConflictKey {
-    NSArray *sysKeys = @[@"operator", @"intValue"];
-    for (NSString *key in sysKeys) {
-        if ([self isEqualToString:key]) {
-            return [NSString stringWithFormat:@"i_%@", self];
-        }
-    }
-    
-    return self;
-}
-
-
-- (NSString *)pathWithParam:(id)param {
-    return [NSString stringWithFormat:@"%@/%@", self, param];
-}
-
-// 去除标签的方法
-- (NSString *)filterHTML {
-    NSString *html = self;
-    NSScanner * scanner = [NSScanner scannerWithString:html];
-    NSString * text = nil;
-    while([scanner isAtEnd] == NO) {
-        [scanner scanUpToString:@"<" intoString:nil];
-        [scanner scanUpToString:@">" intoString:&text];
-        html = [html stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"%@>",text] withString:@""];
-        //去除空格
-        html = [html stringByReplacingOccurrencesOfString:@" " withString:@""];
-    }
-    return html;
-}
 
 #pragma mark - 时间字符串
 
@@ -150,12 +86,3 @@
     return [NSString stringWithFormat:@"%@:00", str];
 }
 
-#pragma mark - 翻转字符串
-
-- (NSString *)invertString {
-    NSMutableString *str = [NSMutableString string];
-    for (NSUInteger i = self.length; i > 0; i--) {
-        [str appendString:[self substringWithRange:NSMakeRange(i-1, 1)]];
-    }
-    return [str mutableCopy];
-}

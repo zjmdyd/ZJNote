@@ -19,6 +19,7 @@
 @interface NSString (ZJString)
 
 - (NSString *)pathWithParam:(id)param;
+- (NSDictionary *)stringToJson;
 - (BOOL)isOnlinePic;
 
 /**
@@ -87,6 +88,10 @@ typedef NS_ENUM(NSInteger, MD5Type) {
 
 @interface NSDictionary (ZJDictionary)
 
+- (NSDictionary *)noNullDic;
+- (void)jsonToModel:(id)obj;
+- (void)noNullJsonToModel:(id)obj;
+- (void)noNullJsonToModel:(id)obj withSpecifyKeys:(NSArray *)keys;
 
 @end
 

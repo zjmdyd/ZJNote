@@ -22,8 +22,8 @@
 }
 
 - (void)initAry {
-    self.cellTitles = @[@"系统短音频", @"用户短音频", @"系统服务", @"语言"];
-    self.vcNames = @[@"ZJTestAudioTableViewController", @"ZJTestUserAudioTableViewController", @"ZJTestSysSettingTableViewController", @"ZJTestLanguageTableViewController"];
+    self.cellTitles = @[@"系统短音频", @"用户短音频", @"系统服务", @"语言", @"Map"];
+    self.vcNames = @[@"ZJTestAudioTableViewController", @"ZJTestUserAudioTableViewController", @"ZJTestSysSettingTableViewController", @"ZJTestLanguageTableViewController", @"ZJTestMapViewController"];
 }
 
 - (void)initSettiing {

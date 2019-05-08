@@ -26,6 +26,21 @@
     return [NSString stringWithFormat:@"%@/%@", self, param];
 }
 
+- (NSDictionary *)stringToJson {
+    if (self == nil) return nil;
+    
+    NSData *jsonData = [self dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *error;
+    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                        options:NSJSONReadingMutableContainers
+                                                          error:&error];
+    if(error) {
+        NSLog(@"json转化失败：%@",error);
+        return nil;
+    }
+    return dic;
+}
+
 - (BOOL)isOnlinePic {
     if ([self hasPrefix:@"http:"] || [self hasPrefix:@"https:"]) {
         return YES;
@@ -259,6 +274,58 @@
 
 @implementation NSDictionary (ZJDictionary)
 
+- (NSDictionary *)noNullDic {
+    NSMutableDictionary *dic = self.mutableCopy;
+    
+    for (NSString *key in dic.allKeys) {
+        if ([dic[key] isKindOfClass:[NSNull class]]) {
+            dic[key] = @"";
+        }
+    }
+    return dic;
+}
+
+- (void)jsonToModel:(id)obj {
+    for (NSString *key in self.allKeys) {
+        NSString *key0 = [key checkSysConflictKey];
+        if ([[obj objectProperties] containsObject:key0]) {
+            [obj setValue:self[key] forKey:key0];
+        }
+    }
+}
+
+- (void)noNullJsonToModel:(id)obj {
+    [self noNullJsonToModel:obj withSpecifyKeys:nil];
+}
+
+- (void)noNullJsonToModel:(id)obj withSpecifyKeys:(NSArray *)keys {
+    NSDictionary *dic = [self noNullDic];
+    
+    for (NSString *key in dic.allKeys) {
+        if (keys && ![keys containsObject:key]) {
+            continue;
+        }
+        NSString *key0 = [key checkSysConflictKey];
+        if ([[obj objectProperties] containsObject:key0]) {
+            [obj setValue:dic[key] forKey:key0];
+        }
+    }
+}
+
+- (NSString *)httpParamsString {
+    NSMutableString *str = [NSMutableString string];
+    NSArray *keys = self.allKeys;
+    for (int i = 0; i < keys.count; i++) {
+        NSString *key = keys[i];
+        if (i < keys.count-1) {
+            [str appendString:[NSString stringWithFormat:@"%@=%@&", key, self[key]]];
+        }else {
+            [str appendString:[NSString stringWithFormat:@"%@=%@", key, self[key]]];
+        }
+    }
+    
+    return str.mutableCopy;
+}
 
 @end
 

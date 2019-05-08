@@ -22,8 +22,8 @@
 }
 
 - (void)initAry {
-    self.cellTitles = @[@"NSString", @"NSScanner", @"进制NSData"];
-    self.vcNames = @[@"ZJTestNSStringTableViewController", @"ZJTestNSScannerViewController", @"ZJTestNSDataViewController"];
+    self.cellTitles = @[@"NSString", @"NSScanner", @"进制NSData", @"TestEqual"];
+    self.vcNames = @[@"ZJTestNSStringTableViewController", @"ZJTestNSScannerViewController", @"ZJTestNSDataViewController", @"ZJTestEqualTableViewController"];
 }
 
 - (void)initSetting {
