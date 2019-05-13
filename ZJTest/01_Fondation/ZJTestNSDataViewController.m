@@ -34,6 +34,13 @@
     
     NSLog(@"str = %@", [data dataToHexString]);
     NSLog(@"data = %@", [NSData dataWithHexString:@"f01020a030"]);
+    
+    NSLog(@"\n\n");
+    
+    Byte tt[4];
+    [NSData valueToBytes:tt value:12345];
+    NSLog(@"data = %@", [NSData dataWithBytes:tt length:4]);
+    
 }
 
 /*

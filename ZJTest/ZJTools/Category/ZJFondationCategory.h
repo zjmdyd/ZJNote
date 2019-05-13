@@ -32,6 +32,7 @@
  *  字符串翻转
  */
 - (NSString *)invertString;
+- (NSString *)invertByteString;
 
 /**
  汉字转拼音
@@ -129,6 +130,8 @@ typedef NS_ENUM(NSInteger, MD5Type) {
  根据范围获取data的值   (4字节32位)
  */
 - (uint32_t)valueWithRange:(NSRange)range;
+
++ (void)valueToBytes:(Byte *)srcBytes value:(uint32_t)value;
 
 /**
  *  NSData<Byte*> --> 十六进制字符串

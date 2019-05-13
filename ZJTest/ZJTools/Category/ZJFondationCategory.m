@@ -78,12 +78,23 @@
 }
 
 /**
- 翻转字符串
+ 翻转字符串: abcd-->dcba
  */
 - (NSString *)invertString {
     NSMutableString *str = [NSMutableString string];
     for (NSUInteger i = self.length; i > 0; i--) {
         [str appendString:[self substringWithRange:NSMakeRange(i-1, 1)]];
+    }
+    return [str mutableCopy];
+}
+
+/**
+ 翻转字符串2: abcd-->cdba
+ */
+- (NSString *)invertByteString {
+    NSMutableString *str = [NSMutableString string];
+    for (NSUInteger i = self.length; i > 0; i-=2) {
+        [str appendString:[self substringWithRange:NSMakeRange(i-2, 2)]];
     }
     return [str mutableCopy];
 }
@@ -370,6 +381,22 @@
     }
     
     return value;
+}
+
++ (void)valueToBytes:(Byte *)srcBytes value:(uint32_t)value reverse:(BOOL)reverse {
+    for (int i = 0; i < 4; i++) {
+        if (reverse) {
+            srcBytes[3-i] = (value >> 8*(3-i)) & 0xff;
+        }else {
+            srcBytes[i] = (value >> 8*(3-i)) & 0xff;
+        }
+    }
+}
+
++ (void)valueToBytes:(Byte *)srcBytes value:(uint32_t)value {
+    for (int i = 0; i < 4; i++) {
+        srcBytes[i] = (value >> 8*(3-i)) & 0xff;
+    }
 }
 
 /**
