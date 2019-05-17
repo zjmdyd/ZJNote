@@ -110,6 +110,10 @@ typedef NS_ENUM(NSInteger, AppInfoType) {
 #pragma mark - App info
 
 + (NSString *)appInfoWithType:(AppInfoType)type;
+
+/**
+ 是否是企业版
+ */
 + (BOOL)isComVersion;
 
 /**

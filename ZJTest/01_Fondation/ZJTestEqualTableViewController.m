@@ -26,7 +26,12 @@
 }
 
 - (void)initSettiing {
-    
+    NSArray *ary = @[@(YES), @(YES), @(YES)];
+    NSLog(@"ary = %@", ary);
+    for (id obj in ary) {
+        NSLog(@"%@, %p, %p", obj, obj, &obj);
+    }
+    [NSMutableArray arrayWithObjects:<#(id  _Nonnull const __unsafe_unretained * _Nonnull)#> count:<#(NSUInteger)#>];
 }
 
 - (void)test1 {
@@ -97,9 +102,14 @@
 
 - (void)test4 {
     NSArray *ary = @[@"aa", @"bb"];
-    NSString *str = [NSString stringWithFormat:@"aa"];
+    NSString *str = @"aa";
     NSLog(@"containsObject = %d", [ary containsObject:str]);
 }
+
+/*
+ "==" ，是判断两个对象的引用（reference）是否一样，也就是内存地址是否一样。
+ isEqual ，判断是一个类方法，判断连个对象在类型和值上是否一样。
+ */
 
 /*
  苹果官方重写isEqual方法
@@ -125,7 +135,7 @@
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

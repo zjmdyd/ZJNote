@@ -1,24 +1,17 @@
 
 - (void)resetArrayWithValues:(NSArray *)values;
 
-+ (NSArray *)sexStrings;
+
 + (NSInteger)sexIndexWithName:(NSString *)name;
-+ (NSArray *)hourStrings;
-+ (NSArray *)minuteStrings;
-+ (NSArray *)nationArray;
-+ (NSInteger)nationIndexWithName:(NSString *)name;
+
+
 
 #pragma mark - 处理数据
 
 - (BOOL)containNumber:(NSNumber *)obj;
 - (BOOL)containString:(NSString *)obj;
 
-/**
- *  获取数组中的最值,元素须为NSNumber类型
- */
-- (NSNumber *)maxValue;
-- (NSNumber *)minValue;
-- (NSNumber *)average;
+
 
 #pragma mark - 处理数组
 
@@ -29,10 +22,6 @@
 + (NSArray *)multiArrayWithTypes:(NSArray *)array;
 + (NSArray *)multiArrayWithTypes:(NSArray *)array value:(id)value;
 
-- (NSString *)joinToStringWithSeparateString:(NSString *)str;
-- (NSString *)joinToStringWithSeparateString:(NSString *)str endIndex:(NSInteger)endIndex;
-
-- (NSString *)joinToStringWithSeparateString:(NSString *)str indexs:(NSArray *)indexs beganIdx:(NSInteger)index;
 
 - (BOOL)hasBoolObject;
 
@@ -64,27 +53,55 @@
     return 0;
 }
 
-+ (NSArray *)sexStrings {
-    return @[@"男", @"女"];
+
+#pragma mark - 处理数组
+
+- (NSArray *)multiDimensionalArrayMutableCopy {
+    NSMutableArray *array = [NSMutableArray array];
+    for (id obj in self) {
+        if ([obj isKindOfClass:[NSArray class]]) {
+            [array addObject:[obj multiDimensionalArrayMutableCopy]];
+        }else {
+            [array addObject:[obj mutableCopy]];
+        }
+    }
+    
+    return [array mutableCopy];
 }
 
-+ (NSArray *)hourStrings {
++ (NSArray *)multiArrayWithTypes:(NSArray *)array {
+    return [self multiArrayWithTypes:array value:@""];
+}
+
++ (NSArray *)multiArrayWithTypes:(NSArray *)array value:(id)value {
     NSMutableArray *ary = [NSMutableArray array];
-    for (int i = 0; i < 24; i++) {
-        [ary addObject:[NSString stringWithFormat:@"%02d", i]];
+    for (int i = 0; i < array.count; i++) {
+        NSMutableArray *sAry = [NSMutableArray arrayWithObject:value count:[array[i] count]];
+        [ary addObject:sAry];
     }
     
     return ary;
 }
 
-+ (NSArray *)minuteStrings {
-    NSMutableArray *ary = [NSMutableArray array];
-    for (int i = 0; i < 60; i++) {
-        [ary addObject:[NSString stringWithFormat:@"%02d", i]];
+// 处理布尔值
+
+- (BOOL)hasBoolObject {
+    for (id obj in self) {
+        if ([obj isKindOfClass:[NSArray class]]) {
+            BOOL hasMatch = [obj hasBoolObject];
+            if (hasMatch) {
+                return YES;
+            }
+        }else {
+            if ([obj boolValue]) {
+                return YES;
+            }
+        }
     }
     
-    return ary;
+    return NO;
 }
+
 
 + (NSInteger)nationIndexWithName:(NSString *)name {
     NSArray *nations = [self nationArray];
@@ -268,149 +285,4 @@
                  @"key": @"56", @"value": @"基诺族"
                  }
              ];
-}
-
-#pragma mark - 处理数据
-
-- (BOOL)containNumber:(NSNumber *)obj {
-    for (NSNumber *num in self) {
-        if ([obj isEqualToNumber:num]) {
-            return YES;
-        }
-    }
-    
-    return NO;
-}
-
-- (BOOL)containString:(NSString *)obj {
-    for (NSString *str in self) {
-        if ([obj isEqualToString:str]) {
-            return YES;
-        }
-    }
-    
-    return NO;
-}
-
-- (NSNumber *)maxValue {
-    CGFloat max = FLT_MIN;
-    for (int i = 0; i < self.count; i++) {
-        NSNumber *value = self[i];
-        if ([value isKindOfClass:[NSNumber class]]) {
-            if (max < value.floatValue) {
-                max = value.floatValue;
-                break;
-            }
-        }
-    }
-    
-    return @(max);
-}
-
-- (NSNumber *)minValue {
-    CGFloat min = FLT_MAX;
-    for (int i = 0; i < self.count; i++) {
-        NSNumber *value = self[i];
-        if ([value isKindOfClass:[NSNumber class]]) {
-            if (min > value.floatValue) {
-                min = value.floatValue;
-                break;
-            }
-        }
-    }
-    
-    return @(min);
-}
-
-- (NSNumber *)average {
-    CGFloat sum = 0.0;
-    for (int i = 0; i < self.count; i++) {
-        NSNumber *value = self[i];
-        if ([value isKindOfClass:[NSNumber class]]) {
-            sum += value.floatValue;
-        }
-    }
-    
-    return @(sum/self.count);
-}
-
-#pragma mark - 处理数组
-
-- (NSArray *)multiDimensionalArrayMutableCopy {
-    NSMutableArray *array = [NSMutableArray array];
-    for (id obj in self) {
-        if ([obj isKindOfClass:[NSArray class]]) {
-            [array addObject:[obj multiDimensionalArrayMutableCopy]];
-        }else {
-            [array addObject:[obj mutableCopy]];
-        }
-    }
-    
-    return [array mutableCopy];
-}
-
-+ (NSArray *)multiArrayWithTypes:(NSArray *)array {
-    return [self multiArrayWithTypes:array value:@""];
-}
-
-+ (NSArray *)multiArrayWithTypes:(NSArray *)array value:(id)value {
-    NSMutableArray *ary = [NSMutableArray array];
-    for (int i = 0; i < array.count; i++) {
-        NSMutableArray *sAry = [NSMutableArray arrayWithObject:value count:[array[i] count]];
-        [ary addObject:sAry];
-    }
-    
-    return ary;
-}
-
-- (NSString *)joinToStringWithSeparateString:(NSString *)str {
-    return [self joinToStringWithSeparateString:str endIndex:self.count];
-}
-
-- (NSString *)joinToStringWithSeparateString:(NSString *)str endIndex:(NSInteger)endIndex {
-    if (![self isKindOfClass:[NSArray class]]) return @"";
-    
-    NSMutableString *string = [NSMutableString string];
-    for (int i = 0; i < endIndex; i++) {
-        if (i < endIndex - 1) {
-            [string appendString:[NSString stringWithFormat:@"%@%@", self[i], str]];
-        }else {
-            [string appendString:[NSString stringWithFormat:@"%@", self[i]]];
-        }
-    }
-    return string;
-}
-
-- (NSString *)joinToStringWithSeparateString:(NSString *)str indexs:(NSArray *)indexs beganIdx:(NSInteger)index {
-    if (![self isKindOfClass:[NSArray class]]) return @"";
-    
-    NSMutableString *string = [NSMutableString string];
-    for (int i = 0; i < indexs.count; i++) {
-        NSInteger idx = [indexs[i] integerValue];
-        if (i < indexs.count - 1) {
-            [string appendString:[NSString stringWithFormat:@"%@%@", self[idx-index], str]];
-        }else {
-            [string appendString:self[idx-index]];
-        }
-    }
-    return string;
-}
-
-// 处理布尔值
-
-- (BOOL)hasBoolObject {
-    for (id obj in self) {
-        if ([obj isKindOfClass:[NSArray class]]) {
-            BOOL hasMatch = [obj hasBoolObject];
-            if (hasMatch) {
-                return YES;
-            }
-        }else {
-            if ([obj boolValue]) {
-                return YES;
-            }
-        }
-    }
-    
-    return NO;
 }

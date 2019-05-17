@@ -271,12 +271,117 @@
 
 @implementation NSArray (ZJNSArray)
 
+#pragma mark - 处理数据
+
+- (NSNumber *)maxValue {
+    CGFloat max = FLT_MIN;
+    for (int i = 0; i < self.count; i++) {
+        NSNumber *value = self[i];
+        if ([value isKindOfClass:[NSNumber class]]) {
+            if (max < value.floatValue) {
+                max = value.floatValue;
+                break;
+            }
+        }
+    }
+    
+    return @(max);
+}
+
+- (NSNumber *)minValue {
+    CGFloat min = FLT_MAX;
+    for (int i = 0; i < self.count; i++) {
+        NSNumber *value = self[i];
+        if ([value isKindOfClass:[NSNumber class]]) {
+            if (min > value.floatValue) {
+                min = value.floatValue;
+                break;
+            }
+        }
+    }
+    
+    return @(min);
+}
+
+- (NSNumber *)average {
+    CGFloat sum = 0.0;
+    for (int i = 0; i < self.count; i++) {
+        NSNumber *value = self[i];
+        if ([value isKindOfClass:[NSNumber class]]) {
+            sum += value.floatValue;
+        }
+    }
+    
+    return @(sum/self.count);
+}
+
+#pragma mark - 常量字符串
+
++ (NSArray *)sexStrings {
+    return @[@"男", @"女"];
+}
+
++ (NSArray *)hourStrings {
+    NSMutableArray *ary = [NSMutableArray array];
+    for (int i = 0; i < 24; i++) {
+        [ary addObject:[NSString stringWithFormat:@"%02d", i]];
+    }
+    
+    return ary;
+}
+
++ (NSArray *)minuteStrings {
+    NSMutableArray *ary = [NSMutableArray array];
+    for (int i = 0; i < 60; i++) {
+        [ary addObject:[NSString stringWithFormat:@"%02d", i]];
+    }
+    
+    return ary;
+}
 @end
 
 
 #pragma mark - NSMutableArray
 
 @implementation NSMutableArray (ZJMutableArray)
+
++ (NSMutableArray *)arrayWithObject:(id)obj count:(NSInteger)count {
+    NSMutableArray *array = [NSMutableArray array];
+    for (int i = 0; i < count; i++) {
+        [array addObject:obj?:@""];
+    }
+    
+    return array;
+}
+
++ (NSMutableArray *)arrayWithEmptyObjectWithCount:(NSInteger)count {
+    NSMutableArray *array = [NSMutableArray array];
+    for (int i = 0; i < count; i++) {
+        [array addObject:@""];
+    }
+    
+    return array;
+}
+
+- (void)resetBoolValues {
+    for(int i = 0; i < self.count; i++) {
+        if ([self[i] boolValue]) {
+            self[i] = @(NO);
+        }
+    }
+}
+
+- (void)changeBoolValueAtIndex:(NSInteger)index needReset:(BOOL)need {
+    BOOL select = [self[index] boolValue];
+    self[index] = @(!select);
+    if (need) {
+        for(int i = 0; i < self.count; i++) {
+            if (i != index && [self[i] boolValue]) {
+                self[i] = @(NO);
+            }
+        }
+    }
+}
 
 @end
 
@@ -287,7 +392,6 @@
 
 - (NSDictionary *)noNullDic {
     NSMutableDictionary *dic = self.mutableCopy;
-    
     for (NSString *key in dic.allKeys) {
         if ([dic[key] isKindOfClass:[NSNull class]]) {
             dic[key] = @"";
@@ -338,6 +442,26 @@
     return str.mutableCopy;
 }
 
+- (BOOL)containsKey:(NSString *)key {
+    for (NSString *str in self.allKeys) {
+        if ([str isEqualToString:key]) {
+            return YES;
+        }
+    }
+    
+    return NO;
+}
+
+- (BOOL)containsKeyCaseInsensitive:(NSString *)key {
+    for (NSString *str in self.allKeys) {
+        if ([str caseInsensitiveCompare:key] == NSOrderedSame) {
+            return YES;
+        }
+    }
+    
+    return NO;
+}
+
 @end
 
 
@@ -362,7 +486,7 @@
 }
 
 // byte数组取反运算
-+ (void)bitwiseNot:(Byte *)bytes reBytes:(Byte *)reBytes len:(uint8_t)len {
++ (void)bitwiseNot:(Byte *)bytes desBytes:(Byte *)reBytes len:(uint8_t)len {
     for (int i = 0; i < len; i++) {
         Byte byte = bytes[i];
         reBytes[i] = ~byte;
@@ -371,13 +495,23 @@
 
 // 根据范围获取data的值
 - (uint32_t)valueWithRange:(NSRange)range {
+    return [self valueWithRange:range reverse:NO];
+}
+
+- (uint32_t)valueWithRange:(NSRange)range reverse:(BOOL)reverse {
     Byte *bytes = (Byte *)self.bytes;
     NSUInteger len = range.length;
     uint32_t value = 0;
     for (int i = 0; i < len; i++) {
-        NSUInteger offset = 8 * (len-1-i);
-        uint32_t v = (bytes[range.location+i] << offset) & (0xff << offset);
-        value += v;
+        if (reverse) {
+            NSUInteger offset = 8 * i;
+            uint32_t v = (bytes[range.location+i] << offset) & (0xff << offset);
+            value += v;
+        }else {
+            NSUInteger offset = 8 * (len-1-i);
+            uint32_t v = (bytes[range.location+i] << offset) & (0xff << offset);
+            value += v;
+        }
     }
     
     return value;
@@ -394,9 +528,7 @@
 }
 
 + (void)valueToBytes:(Byte *)srcBytes value:(uint32_t)value {
-    for (int i = 0; i < 4; i++) {
-        srcBytes[i] = (value >> 8*(3-i)) & 0xff;
-    }
+    [self valueToBytes:srcBytes value:value reverse:NO];
 }
 
 /**

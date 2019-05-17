@@ -1,0 +1,21 @@
+
+/**
+ 十六进制字典
+ 
+ @return @{
+ @"0" : @"0000",
+ @"1" : @"0001",....
+ }*/
++ (NSDictionary *)HexDictionary;
+
+
++ (NSDictionary *)HexDictionary {
+    NSMutableDictionary *hexDic = hexDic = [[NSMutableDictionary alloc] initWithCapacity:16];
+    NSArray *keys = @[@"A", @"B", @"C", @"D", @"E", @"F"];
+    NSArray *values = @[@"0000", @"0001", @"0010", @"0011", @"0100", @"0101", @"0110", @"0111", @"1000", @"1001", @"1010", @"1011", @"1100", @"1101", @"1110", @"1111"];
+    for (int i = 0; i < values.count; i++) {
+        [hexDic setObject:values[i] forKey:[NSString stringWithFormat:@"%@", i<10?@(i):keys[i-10]]];
+    }
+    
+    return [hexDic mutableCopy];
+}

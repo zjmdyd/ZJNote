@@ -311,21 +311,30 @@ void ProviderReleaseData (void *info, const void *data, size_t size) {
 @end
 
 
-#pragma mark - UICollectionView
 
-@implementation UICollectionView (ZJCollectionView)
+#pragma mark - UIScrollView
+
+@implementation UIScrollView (ZJScrollView)
 
 - (void)registerCellWithSysIDs:(NSArray *)sysIDs {
     for (int i = 0; i < sysIDs.count; i++) {
         NSString *cellID = sysIDs[i];
-        [self registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:cellID];
+        if ([self isKindOfClass:[UITableView class]]) {
+            [((UITableView *)self) registerClass:[UITableViewCell class] forCellReuseIdentifier:cellID];
+        }else if([self isKindOfClass:[UICollectionView class]]){
+            [((UICollectionView *)self) registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:cellID];
+        }
     }
 }
 
 - (void)registerCellWithNibIDs:(NSArray *)nibIDs {
     for (int i = 0; i < nibIDs.count; i++) {
         NSString *cellID = nibIDs[i];
-        [self registerNib:[UINib nibWithNibName:cellID bundle:nil] forCellWithReuseIdentifier:cellID];
+        if ([self isKindOfClass:[UITableView class]]) {
+            [((UITableView *)self) registerNib:[UINib nibWithNibName:cellID bundle:nil] forCellReuseIdentifier:cellID];
+        }else if([self isKindOfClass:[UICollectionView class]]){
+            [((UICollectionView *)self) registerNib:[UINib nibWithNibName:cellID bundle:nil] forCellWithReuseIdentifier:cellID];
+        }
     }
 }
 
@@ -333,6 +342,13 @@ void ProviderReleaseData (void *info, const void *data, size_t size) {
     [self registerCellWithNibIDs:nibIDs];
     [self registerCellWithSysIDs:sysIDs];
 }
+
+@end
+
+
+#pragma mark - UICollectionView
+
+@implementation UICollectionView (ZJCollectionView)
 
 - (void)registerNibs:(NSArray *)nibIDs forSupplementaryViewOfKind:(NSString *)kind {
     for (int i = 0; i < nibIDs.count; i++) {
@@ -347,25 +363,6 @@ void ProviderReleaseData (void *info, const void *data, size_t size) {
 #pragma mark - UITableView
 
 @implementation UITableView (ZJTableView)
-
-- (void)registerCellWithSysIDs:(NSArray *)sysIDs {
-    for (int i = 0; i < sysIDs.count; i++) {
-        NSString *cellID = sysIDs[i];
-        [self registerClass:[UITableViewCell class] forCellReuseIdentifier:cellID];
-    }
-}
-
-- (void)registerCellWithNibIDs:(NSArray *)nibIDs {
-    for (int i = 0; i < nibIDs.count; i++) {
-        NSString *cellID = nibIDs[i];
-        [self registerNib:[UINib nibWithNibName:cellID bundle:nil] forCellReuseIdentifier:cellID];
-    }
-}
-
-- (void)registerCellWithNibIDs:(NSArray *)nibIDs sysIDs:(NSArray *)sysIDs {
-    [self registerCellWithNibIDs:nibIDs];
-    [self registerCellWithSysIDs:sysIDs];
-}
 
 + (UISwitch *)accessorySwitchWithTarget:(id)target {
     UISwitch *sw = [[UISwitch alloc] init];

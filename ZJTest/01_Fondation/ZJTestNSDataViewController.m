@@ -26,7 +26,7 @@
     NSLog(@"data = %@", data);
     
     Byte notBytes[len];
-    [NSData bitwiseNot:bytes reBytes:notBytes len:len];
+    [NSData bitwiseNot:bytes desBytes:notBytes len:len];
     NSData *notData = [NSData dataWithBytes:notBytes length:len];
     NSLog(@"notData = %@", notData);
     NSLog(@"backdata = %@", [data bitwiseNot]);

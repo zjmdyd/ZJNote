@@ -109,13 +109,21 @@
 @end
 
 
-#pragma mark - UICollectionView
+#pragma mark - UIScrollView
 
-@interface UICollectionView (ZJCollectionView)
+@interface UIScrollView (ZJScrollViewView)
 
 - (void)registerCellWithSysIDs:(NSArray *)sysIDs;
 - (void)registerCellWithNibIDs:(NSArray *)nibIDs;
 - (void)registerCellWithNibIDs:(NSArray *)nibIDs sysIDs:(NSArray *)sysIDs;
+
+@end
+
+
+#pragma mark - UICollectionView
+
+@interface UICollectionView (ZJCollectionView)
+
 - (void)registerNibs:(NSArray *)nibIDs forSupplementaryViewOfKind:(NSString *)kind;
 
 @end
@@ -126,10 +134,6 @@ static NSString *const SystemTableViewCell = @"UITableViewCell";
 static NSString *const SystemNormalTableViewCell = @"ZJNormalTableViewCell";
 
 @interface UITableView (ZJTableView)
-
-- (void)registerCellWithSysIDs:(NSArray *)sysIDs;
-- (void)registerCellWithNibIDs:(NSArray *)nibIDs;
-- (void)registerCellWithNibIDs:(NSArray *)nibIDs sysIDs:(NSArray *)sysIDs;
 
 + (UISwitch *)accessorySwitchWithTarget:(id)target;
 + (UIButton *)accessoryButtonWithTarget:(id)target title:(NSString *)title;

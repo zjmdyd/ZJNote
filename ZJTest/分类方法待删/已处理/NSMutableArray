@@ -1,0 +1,21 @@
+
+
+
+- (void)replaceDicInfoAtIndex:(NSIndexPath *)indexPath value:(NSString *)value;
+
+
+- (void)replaceDicInfoAtIndex:(NSIndexPath *)indexPath value:(NSString *)value {
+    NSDictionary *dic = self[indexPath.row];
+    NSString *val = dic[dic.allKeys.firstObject];
+    if ([val isEqualToString:value]) {  // 如果相同就不需要更新
+        return;
+    }
+    
+    dic = @{dic.allKeys.firstObject : value};
+    [self replaceObjectAtIndex:indexPath.row withObject:dic];
+}
+
+
+
+
+
