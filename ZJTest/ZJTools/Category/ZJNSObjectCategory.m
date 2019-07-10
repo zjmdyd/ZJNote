@@ -314,6 +314,7 @@
     }
 }
 
+
 #pragma mark - App info
 
 + (NSString *)appInfoWithType:(AppInfoType)type {

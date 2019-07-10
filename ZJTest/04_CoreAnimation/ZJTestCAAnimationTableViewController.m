@@ -22,8 +22,8 @@
 }
 
 - (void)initAry {
-    self.cellTitles = @[@"CAGradientLayer", @"CATransition"];
-    self.vcNames = @[@"ZJTestCAGradientLayerViewController", @"ZJTestPushTransitionTableViewController"];
+    self.cellTitles = @[@"CALayer", @"CAGradientLayer", @"CATransition"];
+    self.vcNames = @[@"ZJTestLayerViewController", @"ZJTestCAGradientLayerViewController", @"ZJTestPushTransitionTableViewController"];
 }
 
 - (void)initSettiing {

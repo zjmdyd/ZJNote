@@ -31,7 +31,6 @@
     for (id obj in ary) {
         NSLog(@"%@, %p, %p", obj, obj, &obj);
     }
-    [NSMutableArray arrayWithObjects:<#(id  _Nonnull const __unsafe_unretained * _Nonnull)#> count:<#(NSUInteger)#>];
 }
 
 - (void)test1 {

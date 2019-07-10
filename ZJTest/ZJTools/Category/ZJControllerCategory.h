@@ -53,6 +53,11 @@
 
 - (void)alertWithAlertObject:(ZJAlertObject *)object;
 
+
+#pragma mark - 系统分享
+
+- (void)systemShareWithIcon:(NSString *)icon path:(NSString *)path;
+
 #pragma mark - NSNotificationCenter
 
 - (void)removeNotificationObserver;
