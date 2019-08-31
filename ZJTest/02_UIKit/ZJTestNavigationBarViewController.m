@@ -184,7 +184,7 @@
 /*
  结论:
  1.控制器的navigationController属性要在viewWillAppear才有
- 2.控制器的navigationItem属性值在viewDidAppear已经有了
+ 2.控制器的navigationItem属性值在viewDidLoad已经有了
  3.navigationBar.items要在viewDidAppear方法里面才加载完
  4.self.navigationItem.backBarButtonItem默认为null，要想改变返回按钮其实要改变的是父控制器的navigationItem.backBarButtonItem
  5.self.navigationController.navigationBar.backItem和父控制器的navigationItem.backBarButtonItem不是一个回事，父控制器的navigationItem.backBarButtonItem改变不影响navigationBar.backItem

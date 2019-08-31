@@ -21,10 +21,10 @@
 }
 
 - (void)initSetting {
-    NSArray *titles = @[@"Fondation", @"UIKit", @"System", @"CAAnimation"];
-    NSArray *image = @[@"1", @"2", @"3", @"3"];
-    NSArray *selectImage = @[@"1-1", @"2-1", @"3-1", @"3-1"];
-    NSArray *nibNames = @[@"ZJTestFodationTableViewController", @"ZJTestUIKitTableViewController", @"ZJTestSystemTableViewController", @"ZJTestCAAnimationTableViewController"];
+    NSArray *titles = @[@"Fondation", @"UIKit", @"System", @"CAAnimation", @"专题"];
+    NSArray *image = @[@"1", @"2", @"3", @"3", @"3"];
+    NSArray *selectImage = @[@"1-1", @"2-1", @"3-1", @"3-1", @"3-1"];
+    NSArray *nibNames = @[@"ZJTestFodationTableViewController", @"ZJTestUIKitTableViewController", @"ZJTestSystemTableViewController", @"ZJTestCAAnimationTableViewController", @"ZJAVTableViewController"];
     
     NSMutableArray *ary = [NSMutableArray array];
     for (int i = 0; i < nibNames.count; i++) {

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ZJVideoViewController">
+            <connections>
+                <outlet property="cameraShowView" destination="03d-tL-Ezg" id="yLU-r1-khF"/>
+                <outlet property="shutterButton" destination="OIb-dV-LCb" id="fr3-Pv-uOZ"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="03d-tL-Ezg">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <view hidden="YES" alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qBj-IT-Fal">
+                    <rect key="frame" x="0.0" y="64" width="375" height="50"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="l4Y-OL-bkb"/>
+                    </constraints>
+                </view>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1DT-bu-PB7">
+                    <rect key="frame" x="178" y="79" width="19" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RjA-BO-Ffp">
+                    <rect key="frame" x="0.0" y="587" width="375" height="80"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="80" id="ffu-dr-A5t"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iD0-8Q-DLo">
+                    <rect key="frame" x="310" y="609.5" width="35" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="54s-pY-h30"/>
+                        <constraint firstAttribute="width" constant="35" id="hcG-AN-keS"/>
+                    </constraints>
+                    <state key="normal" backgroundImage="ic_switch"/>
+                    <connections>
+                        <action selector="toggleCamera:" destination="-1" eventType="touchUpInside" id="6gB-NI-5XJ"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OIb-dV-LCb">
+                    <rect key="frame" x="157.5" y="597" width="60" height="60"/>
+                    <color key="backgroundColor" red="1" green="0.11827956990000001" blue="0.11827956990000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="OIb-dV-LCb" secondAttribute="height" multiplier="1:1" id="dhX-g3-0TP"/>
+                        <constraint firstAttribute="width" constant="60" id="uEi-gW-K9s"/>
+                    </constraints>
+                    <state key="normal" title="拍摄">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="shutterCamera:" destination="-1" eventType="touchUpInside" id="7yd-Hb-Ags"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="qBj-IT-Fal" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="9f0-pd-cI2"/>
+                <constraint firstItem="RjA-BO-Ffp" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="BRW-1v-CtT"/>
+                <constraint firstAttribute="bottom" secondItem="03d-tL-Ezg" secondAttribute="bottom" id="HZa-4M-MgV"/>
+                <constraint firstItem="03d-tL-Ezg" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="JrE-hN-stN"/>
+                <constraint firstItem="iD0-8Q-DLo" firstAttribute="centerY" secondItem="OIb-dV-LCb" secondAttribute="centerY" id="Phy-wQ-h66"/>
+                <constraint firstAttribute="bottom" secondItem="OIb-dV-LCb" secondAttribute="bottom" constant="10" id="Qf6-vE-YPk"/>
+                <constraint firstAttribute="trailing" secondItem="RjA-BO-Ffp" secondAttribute="trailing" id="S74-ZS-czB"/>
+                <constraint firstItem="1DT-bu-PB7" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="U80-v6-Gle"/>
+                <constraint firstItem="qBj-IT-Fal" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="Xcd-Bd-yoi"/>
+                <constraint firstItem="qBj-IT-Fal" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="ZNK-yO-0Ls"/>
+                <constraint firstItem="1DT-bu-PB7" firstAttribute="top" secondItem="qBj-IT-Fal" secondAttribute="top" constant="15" id="ZOF-NB-FOh"/>
+                <constraint firstAttribute="trailing" secondItem="03d-tL-Ezg" secondAttribute="trailing" id="dUz-fS-Vhx"/>
+                <constraint firstAttribute="bottom" secondItem="RjA-BO-Ffp" secondAttribute="bottom" id="ggX-dA-GE9"/>
+                <constraint firstItem="03d-tL-Ezg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="gxo-dg-pRa"/>
+                <constraint firstAttribute="trailing" secondItem="iD0-8Q-DLo" secondAttribute="trailing" constant="30" id="vhW-9f-onm"/>
+                <constraint firstItem="OIb-dV-LCb" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="xWZ-8r-U6f"/>
+            </constraints>
+            <point key="canvasLocation" x="250" y="-45"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ic_switch" width="32" height="32"/>
+    </resources>
+</document>

@@ -54,4 +54,6 @@
 #define kIsIphoneXMax (kScreenH > 812)       // 是否是iphoneX Max系列
 #endif
 
+#define kIsAboveiOS11 [UIDevice currentDevice].systemVersion.integerValue >= 11
+
 #endif /* ZJLayoutDefines_h */

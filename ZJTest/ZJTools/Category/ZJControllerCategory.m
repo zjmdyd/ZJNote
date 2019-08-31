@@ -139,6 +139,29 @@
     [alert show];
 }
 
+#define  alertSheetEvent @"alertSheetEvent:"
+
+- (void)alertSheetWithWithAlertObject:(ZJAlertObject *)object {
+    UIAlertController *ctrl = [UIAlertController alertControllerWithTitle:object.title message:object.msg preferredStyle:UIAlertControllerStyleActionSheet];
+    for (int i = 0; i < object.sheetTitles.count; i++) {
+        NSString *title = object.sheetTitles[i];
+        UIAlertAction *act = [UIAlertAction actionWithTitle:title style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            SEL sel = NSSelectorFromString(alertSheetEvent);
+            if ([self respondsToSelector:sel]) {
+                [self performSelector:sel withObject:@(i)];
+            }
+            [ctrl addAction:act];
+        }];
+    }
+    
+    if (object.needCancel) {
+        UIAlertAction *act = [UIAlertAction actionWithTitle:object.cancelTitle style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            
+        }];
+        [ctrl addAction:act];
+    }
+    [self presentViewController:ctrl animated:YES completion:nil];
+}
 
 #pragma mark - 系统分享
 

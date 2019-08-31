@@ -166,6 +166,24 @@ static NSString *const SystemNormalTableViewCell = @"ZJNormalTableViewCell";
 // 左文字右图片
 + (UIView *)createTitleIVWithFrame:(CGRect)frame path:(NSString *)path placehold:(NSString *)placehold title:(NSString *)title;
 
+/**
+ 添加圆角
+ 
+ @param corners 四个角
+ @param cornerRadii 角度
+ */
+- (void)addMaskLayerAtRoundingCorners:(UIRectCorner)corners cornerRadii:(CGSize)cornerRadii;
+
+typedef NS_OPTIONS(NSUInteger, UIBorderSideType) {
+    UIBorderSideTypeAll  = 0,
+    UIBorderSideTypeTop = 1 << 0,
+    UIBorderSideTypeBottom = 1 << 1,
+    UIBorderSideTypeLeft = 1 << 2,
+    UIBorderSideTypeRight = 1 << 3,
+};
+
+- (void)addBorderForColor:(UIColor *)color borderWidth:(CGFloat)borderWidth borderType:(UIBorderSideType)borderType;
+
 #pragma mark - supplementView
 
 - (void)addIconBadgeWithImage:(UIImage *)image;

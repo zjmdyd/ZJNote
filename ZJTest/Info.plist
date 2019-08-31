@@ -45,5 +45,11 @@
 	<false/>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>使用地图定位当前位置</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>用户使用麦克风需要您的同意</string>
+	<key>NSCameraUsageDescription</key>
+	<string>用户使用摄像头需要您的同意</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>用户使用系统相册需要您的同意</string>
 </dict>
 </plist>

@@ -52,7 +52,7 @@
 #pragma mark - alert
 
 - (void)alertWithAlertObject:(ZJAlertObject *)object;
-
+- (void)alertSheetWithWithAlertObject:(ZJAlertObject *)object;
 
 #pragma mark - 系统分享
 

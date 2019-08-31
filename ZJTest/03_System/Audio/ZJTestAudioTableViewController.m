@@ -11,6 +11,8 @@
 
 @interface ZJTestAudioTableViewController ()
 
+@property (nonatomic, assign) SystemSoundID sysID;
+
 @end
 
 static NSMutableArray *_systemSounds = nil;
@@ -29,6 +31,7 @@ static NSMutableArray *_systemSounds = nil;
 }
 
 - (void)initSettiing {
+    self.sysID = 0;
     [self accessSystemSoundsList];
 }
 
@@ -92,7 +95,13 @@ static NSMutableArray *_systemSounds = nil;
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     NSURL *url = _systemSounds[indexPath.row];
-    [UIApplication playWithUrl:url];
+    NSLog(@"url = %@", url);
+    
+    if (self.sysID <= 0) {
+        self.sysID = [UIApplication playWithUrl:url repeat:YES];
+    }else {
+        [UIApplication stopSystemSoundWithSoundID:self.sysID];
+    }
 }
 
 /*

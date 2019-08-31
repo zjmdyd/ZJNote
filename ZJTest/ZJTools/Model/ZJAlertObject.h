@@ -25,6 +25,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) UIAlertViewStyle alertViewStyle;
 @property (nonatomic, weak) id<UIAlertViewDelegate> delegate;
 
+//
+@property (nonatomic, strong) NSArray *sheetTitles;
+@property (nonatomic, assign) BOOL needCancel;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -22,12 +22,12 @@
 }
 
 - (void)initAry {
-    self.cellTitles = @[@"layout加载顺序", @"UINavigationBar", @"UIBarButtonItem", @"UIRectEdge", @"ZJSelectButton", @"ZJAlertObject", @"nibHead", @"UIImage", @"UILabel"];
-    self.vcNames = @[@"ZJTestLayoutViewController", @"ZJTestNavigationBarViewController", @"ZJTestBarButtonItemViewController", @"ZJTestUIRectEdgeTableViewController", @"ZJTestSelectBtnViewController", @"ZJTestAlertViewController", @"ZJTestNibHeadTableViewController", @"ZJTestImageViewController", @"ZJTestLabelViewController"];
+    self.cellTitles = @[@"layout加载顺序", @"UINavigationBar", @"UIBarButtonItem", @"UIRectEdge", @"ZJSelectButton", @"ZJAlertObject", @"nibHead", @"UIImage", @"UILabel", @"UIScrollView"];
+    self.vcNames = @[@"ZJTestLayoutViewController", @"ZJTestNavigationBarViewController", @"ZJTestBarButtonItemViewController", @"ZJTestUIRectEdgeTableViewController", @"ZJTestSelectBtnViewController", @"ZJTestAlertViewController", @"ZJTestNibHeadTableViewController", @"ZJTestImageViewController", @"ZJTestLabelViewController", @"ZJTestScrollViewController"];
 }
 
 - (void)initSettiing {
-
+    
 }
 
 #pragma mark - UITableViewDataSource
@@ -54,7 +54,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
+    self.navigationItem.hidesBackButton = YES;  // 垃圾，不起作用
     UIViewController *vc = [self createVCWithName:self.vcNames[indexPath.row] title:self.cellTitles[indexPath.row] isGroupTableVC:YES];
     [self showViewController:vc sender:nil];
 }

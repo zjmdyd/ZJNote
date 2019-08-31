@@ -13,7 +13,6 @@
 #import <ifaddrs.h>
 #import <arpa/inet.h>
 #import <sys/stat.h>
-#import <AudioToolbox/AudioToolbox.h>
 
 // 方法弃用警告
 #pragma clang diagnostic push
@@ -249,16 +248,41 @@
     }
 }
 
-+ (void)playWithUrl:(NSURL *)url {
++ (SystemSoundID)playWithUrl:(NSURL *)url {
+    return [self playWithUrl:url repeat:NO];
+}
+
++ (void)stopSystemSoundWithSoundID:(SystemSoundID)sound {
+    AudioServicesDisposeSystemSoundID(kSystemSoundID_Vibrate);
+    AudioServicesDisposeSystemSoundID(sound);
+    AudioServicesRemoveSystemSoundCompletion(sound);
+}
+
+void soundCompleteCallback(SystemSoundID sound, void * clientData) {
+//    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);  //震动
+    AudioServicesPlaySystemSound(sound);  // 播放系统声音 这里的sound是我自定义的，不要 copy 哈，没有的
+}
+
++ (SystemSoundID)playWithUrl:(NSURL *)url repeat:(BOOL)repeat {
     if (url) {
         SystemSoundID soundID;
         OSStatus error = AudioServicesCreateSystemSoundID((__bridge CFURLRef)(url), &soundID);
         if (error == kAudioServicesNoError) {
-            AudioServicesPlayAlertSound(soundID);
+            NSLog(@"soundID = %d", soundID);
+//            AudioServicesPlayAlertSound(soundID);
+            AudioServicesPlaySystemSound(soundID);
+            
+            if (repeat) {
+                AudioServicesAddSystemSoundCompletion(soundID, NULL, NULL, soundCompleteCallback, NULL);
+            }
+            return soundID;
         }else {
             NSLog(@"******Failed to create sound********");
+            return 0;
         }
     }
+    
+    return 0;
 }
 
 #pragma mark - 系统服务

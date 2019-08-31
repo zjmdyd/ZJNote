@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <AudioToolbox/AudioToolbox.h>
 
 @interface ZJNSObjectCategory : NSObject
 
@@ -91,7 +92,9 @@ typedef NS_ENUM(NSInteger, AppInfoType) {
 /**
  根据地址播放音频
  */
-+ (void)playWithUrl:(NSURL *)url;
++ (SystemSoundID)playWithUrl:(NSURL *)url;
++ (SystemSoundID)playWithUrl:(NSURL *)url repeat:(BOOL)repeat;
++ (void)stopSystemSoundWithSoundID:(SystemSoundID)sound;
 
 /**
  *  播放用户提供的音频文件
