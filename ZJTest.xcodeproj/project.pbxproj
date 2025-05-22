@@ -12,22 +12,6 @@
 		381B08BE2255FC76008F2D7C /* ZJCornerButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 381B08B72255FC75008F2D7C /* ZJCornerButton.m */; };
 		381B08C12255FC76008F2D7C /* ZJSelectButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 381B08BC2255FC76008F2D7C /* ZJSelectButton.m */; };
 		381B08C62255FF86008F2D7C /* ZJNormalTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 381B08C52255FF86008F2D7C /* ZJNormalTableViewCell.m */; };
-		38251C5422E16EB200723568 /* alert_message.wav in Resources */ = {isa = PBXBuildFile; fileRef = 38251C3D22E16EB200723568 /* alert_message.wav */; };
-		38251C5722E16EB200723568 /* gezaifei.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 38251C4322E16EB200723568 /* gezaifei.mp4 */; };
-		38251C6122E16EB200723568 /* song.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 38251C5122E16EB200723568 /* song.mp3 */; };
-		38251C7822E1729700723568 /* ZJVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38251C7022E1729700723568 /* ZJVideoViewController.m */; };
-		38251C7922E1729700723568 /* ZJCameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38251C7122E1729700723568 /* ZJCameraViewController.xib */; };
-		38251C7A22E1729700723568 /* ZJCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38251C7222E1729700723568 /* ZJCameraViewController.m */; };
-		38251C7B22E1729700723568 /* ZJAVCaptureSessionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38251C7422E1729700723568 /* ZJAVCaptureSessionTableViewController.m */; };
-		38251C7C22E1729700723568 /* ZJVideoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38251C7522E1729700723568 /* ZJVideoViewController.xib */; };
-		38251C8C22E172DA00723568 /* ZJAVTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38251C7F22E172D800723568 /* ZJAVTableViewController.m */; };
-		38251C8D22E172DA00723568 /* ZJAudioToolboxTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38251C8022E172D800723568 /* ZJAudioToolboxTableViewController.m */; };
-		38251C8E22E172DA00723568 /* ZJAVAudioPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38251C8122E172D800723568 /* ZJAVAudioPlayerViewController.m */; };
-		38251C8F22E172DA00723568 /* ZJAVPlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38251C8422E172D900723568 /* ZJAVPlayerViewController.xib */; };
-		38251C9022E172DA00723568 /* ZJPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 38251C8522E172D900723568 /* ZJPlayerView.m */; };
-		38251C9122E172DA00723568 /* ZJAVPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38251C8622E172D900723568 /* ZJAVPlayerViewController.m */; };
-		38251C9222E172DA00723568 /* ZJRecorderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38251C8922E172D900723568 /* ZJRecorderViewController.xib */; };
-		38251C9322E172DA00723568 /* ZJRecorderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38251C8A22E172DA00723568 /* ZJRecorderViewController.m */; };
 		3834E4CE2243989F00C23476 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3834E4CD2243989F00C23476 /* AppDelegate.m */; };
 		3834E4D72243989F00C23476 /* ZJTest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3834E4D52243989F00C23476 /* ZJTest.xcdatamodeld */; };
 		3834E4D9224398A000C23476 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3834E4D8224398A000C23476 /* Assets.xcassets */; };
@@ -35,24 +19,8 @@
 		3834E4DF224398A000C23476 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3834E4DE224398A000C23476 /* main.m */; };
 		3834E4E9224398A000C23476 /* ZJTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3834E4E8224398A000C23476 /* ZJTestTests.m */; };
 		3834E4F4224398A000C23476 /* ZJTestUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3834E4F3224398A000C23476 /* ZJTestUITests.m */; };
-		3847368A2261D5EA00E2C870 /* mysong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 384736872261D5E600E2C870 /* mysong.mp3 */; };
-		3847368B2261D5EA00E2C870 /* gezaifei.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 384736882261D5EA00E2C870 /* gezaifei.mp4 */; };
 		3847368C2261D5EA00E2C870 /* alert_message.wav in Resources */ = {isa = PBXBuildFile; fileRef = 384736892261D5EA00E2C870 /* alert_message.wav */; };
 		38600BF3227198FF0043A242 /* ZJIconBadgeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 38600BF2227198FF0043A242 /* ZJIconBadgeButton.m */; };
-		386CB6A122F7E201001B2DC5 /* ZJTestSelectBtnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 386CB68C22F7E200001B2DC5 /* ZJTestSelectBtnViewController.m */; };
-		386CB6A222F7E201001B2DC5 /* ZJTestImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 386CB68D22F7E200001B2DC5 /* ZJTestImageViewController.m */; };
-		386CB6A322F7E201001B2DC5 /* ZJTestAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 386CB68E22F7E200001B2DC5 /* ZJTestAlertViewController.m */; };
-		386CB6A422F7E201001B2DC5 /* ZJTestUIRectEdgeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 386CB68F22F7E200001B2DC5 /* ZJTestUIRectEdgeTableViewController.m */; };
-		386CB6A522F7E201001B2DC5 /* ZJTestNavigationBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 386CB69222F7E200001B2DC5 /* ZJTestNavigationBarViewController.m */; };
-		386CB6A622F7E201001B2DC5 /* ZJTestUIKitTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 386CB69322F7E200001B2DC5 /* ZJTestUIKitTableViewController.m */; };
-		386CB6A722F7E201001B2DC5 /* ZJTestBarButtonItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 386CB69422F7E200001B2DC5 /* ZJTestBarButtonItemViewController.m */; };
-		386CB6A822F7E201001B2DC5 /* ZJTestLabelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 386CB69822F7E200001B2DC5 /* ZJTestLabelViewController.m */; };
-		386CB6A922F7E201001B2DC5 /* ZJTestNibHeadTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 386CB69922F7E200001B2DC5 /* ZJTestNibHeadTableViewController.m */; };
-		386CB6AA22F7E201001B2DC5 /* ZJTestSliderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 386CB69A22F7E200001B2DC5 /* ZJTestSliderViewController.m */; };
-		386CB6AB22F7E201001B2DC5 /* ZJTestLayoutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 386CB69D22F7E201001B2DC5 /* ZJTestLayoutViewController.xib */; };
-		386CB6AC22F7E201001B2DC5 /* ZJTestLayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 386CB69F22F7E201001B2DC5 /* ZJTestLayoutViewController.m */; };
-		386CB6AF22F7E67F001B2DC5 /* ZJTestScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 386CB6AE22F7E67F001B2DC5 /* ZJTestScrollViewController.m */; };
-		386CB6B122F7E698001B2DC5 /* ZJTestScrollViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 386CB6B022F7E698001B2DC5 /* ZJTestScrollViewController.xib */; };
 		386D8EBB227EDB5000AA8414 /* ZJTestUserAudioTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 386D8EB3227EDB5000AA8414 /* ZJTestUserAudioTableViewController.m */; };
 		386D8EBC227EDB5000AA8414 /* ZJTestLanguageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 386D8EB4227EDB5000AA8414 /* ZJTestLanguageTableViewController.m */; };
 		386D8EBD227EDB5000AA8414 /* ZJTestSysSettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 386D8EB5227EDB5000AA8414 /* ZJTestSysSettingTableViewController.m */; };
@@ -69,6 +37,9 @@
 		388233772249D5E500D444EA /* ZJNormalTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3882335D2249D5E500D444EA /* ZJNormalTableViewController.m */; };
 		388233782249D5E500D444EA /* ZJNormalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 388233612249D5E500D444EA /* ZJNormalViewController.m */; };
 		388233792249D5E500D444EA /* ZJNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 388233642249D5E500D444EA /* ZJNavigationController.m */; };
+		3899E0C5232108880002108C /* ZJTestBlockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3899E0C4232108880002108C /* ZJTestBlockViewController.m */; };
+		3899E0C82321093B0002108C /* ZJTestSubjectTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3899E0C72321093B0002108C /* ZJTestSubjectTableViewController.m */; };
+		3899E0CB2321578A0002108C /* ZJPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 3899E0CA2321578A0002108C /* ZJPerson.m */; };
 		38A8F2762280178600EDC592 /* ZJTestEqualTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A8F2752280178600EDC592 /* ZJTestEqualTableViewController.m */; };
 		38A8F27A228038C300EDC592 /* ZJTestMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A8F278228038C300EDC592 /* ZJTestMapViewController.m */; };
 		38A8F27B228038C300EDC592 /* ZJTestMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38A8F279228038C300EDC592 /* ZJTestMapViewController.xib */; };
@@ -79,6 +50,18 @@
 		38A958A42275A14E0001974D /* ZJTestNSStringTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A9589C2275A14D0001974D /* ZJTestNSStringTableViewController.m */; };
 		38A958A52275A14E0001974D /* ZJTestNSScannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A9589E2275A14D0001974D /* ZJTestNSScannerViewController.m */; };
 		38A958A62275A14E0001974D /* ZJTestNSDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A958A12275A14E0001974D /* ZJTestNSDataViewController.m */; };
+		38AC16142312163A0014E5E5 /* ZJTestBarButtonItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38AC1604231216390014E5E5 /* ZJTestBarButtonItemViewController.m */; };
+		38AC16152312163A0014E5E5 /* ZJTestImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38AC1605231216390014E5E5 /* ZJTestImageViewController.m */; };
+		38AC16162312163A0014E5E5 /* ZJTestNavigationBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38AC1606231216390014E5E5 /* ZJTestNavigationBarViewController.m */; };
+		38AC16172312163A0014E5E5 /* ZJTestUIKitTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38AC1607231216390014E5E5 /* ZJTestUIKitTableViewController.m */; };
+		38AC16182312163A0014E5E5 /* ZJTestLabelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38AC1609231216390014E5E5 /* ZJTestLabelViewController.m */; };
+		38AC16192312163A0014E5E5 /* ZJTestAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38AC160B2312163A0014E5E5 /* ZJTestAlertViewController.m */; };
+		38AC161A2312163A0014E5E5 /* ZJTestNibHeadTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38AC160D2312163A0014E5E5 /* ZJTestNibHeadTableViewController.m */; };
+		38AC161B2312163A0014E5E5 /* ZJTestLayoutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38AC160E2312163A0014E5E5 /* ZJTestLayoutViewController.xib */; };
+		38AC161C2312163A0014E5E5 /* ZJTestSelectBtnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38AC160F2312163A0014E5E5 /* ZJTestSelectBtnViewController.m */; };
+		38AC161D2312163A0014E5E5 /* ZJTestLayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38AC16102312163A0014E5E5 /* ZJTestLayoutViewController.m */; };
+		38AC161E2312163A0014E5E5 /* ZJTestSliderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38AC16112312163A0014E5E5 /* ZJTestSliderViewController.m */; };
+		38AC161F2312163A0014E5E5 /* ZJTestUIRectEdgeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38AC16122312163A0014E5E5 /* ZJTestUIRectEdgeTableViewController.m */; };
 		38CC760E2254BED20045F4F4 /* ZJWrapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 38CC760B2254BED20045F4F4 /* ZJWrapView.m */; };
 		38CC760F2254BED20045F4F4 /* ZJAboutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 38CC760C2254BED20045F4F4 /* ZJAboutView.m */; };
 		38CC76102254BED20045F4F4 /* ZJAboutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38CC760D2254BED20045F4F4 /* ZJAboutView.xib */; };
@@ -122,31 +105,6 @@
 		381B08BC2255FC76008F2D7C /* ZJSelectButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJSelectButton.m; sourceTree = "<group>"; };
 		381B08C42255FF86008F2D7C /* ZJNormalTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZJNormalTableViewCell.h; sourceTree = "<group>"; };
 		381B08C52255FF86008F2D7C /* ZJNormalTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZJNormalTableViewCell.m; sourceTree = "<group>"; };
-		38251C3D22E16EB200723568 /* alert_message.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = alert_message.wav; sourceTree = "<group>"; };
-		38251C4322E16EB200723568 /* gezaifei.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = gezaifei.mp4; sourceTree = "<group>"; };
-		38251C5122E16EB200723568 /* song.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = song.mp3; sourceTree = "<group>"; };
-		38251C7022E1729700723568 /* ZJVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJVideoViewController.m; sourceTree = "<group>"; };
-		38251C7122E1729700723568 /* ZJCameraViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZJCameraViewController.xib; sourceTree = "<group>"; };
-		38251C7222E1729700723568 /* ZJCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJCameraViewController.m; sourceTree = "<group>"; };
-		38251C7322E1729700723568 /* ZJCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJCameraViewController.h; sourceTree = "<group>"; };
-		38251C7422E1729700723568 /* ZJAVCaptureSessionTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJAVCaptureSessionTableViewController.m; sourceTree = "<group>"; };
-		38251C7522E1729700723568 /* ZJVideoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZJVideoViewController.xib; sourceTree = "<group>"; };
-		38251C7622E1729700723568 /* ZJVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJVideoViewController.h; sourceTree = "<group>"; };
-		38251C7722E1729700723568 /* ZJAVCaptureSessionTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJAVCaptureSessionTableViewController.h; sourceTree = "<group>"; };
-		38251C7E22E172D800723568 /* ZJAVTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJAVTableViewController.h; sourceTree = "<group>"; };
-		38251C7F22E172D800723568 /* ZJAVTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJAVTableViewController.m; sourceTree = "<group>"; };
-		38251C8022E172D800723568 /* ZJAudioToolboxTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJAudioToolboxTableViewController.m; sourceTree = "<group>"; };
-		38251C8122E172D800723568 /* ZJAVAudioPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJAVAudioPlayerViewController.m; sourceTree = "<group>"; };
-		38251C8222E172D800723568 /* ZJPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJPlayerView.h; sourceTree = "<group>"; };
-		38251C8322E172D800723568 /* ZJAudioToolboxTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJAudioToolboxTableViewController.h; sourceTree = "<group>"; };
-		38251C8422E172D900723568 /* ZJAVPlayerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZJAVPlayerViewController.xib; sourceTree = "<group>"; };
-		38251C8522E172D900723568 /* ZJPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJPlayerView.m; sourceTree = "<group>"; };
-		38251C8622E172D900723568 /* ZJAVPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJAVPlayerViewController.m; sourceTree = "<group>"; };
-		38251C8722E172D900723568 /* ZJAVPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJAVPlayerViewController.h; sourceTree = "<group>"; };
-		38251C8822E172D900723568 /* ZJAVAudioPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJAVAudioPlayerViewController.h; sourceTree = "<group>"; };
-		38251C8922E172D900723568 /* ZJRecorderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZJRecorderViewController.xib; sourceTree = "<group>"; };
-		38251C8A22E172DA00723568 /* ZJRecorderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJRecorderViewController.m; sourceTree = "<group>"; };
-		38251C8B22E172DA00723568 /* ZJRecorderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJRecorderViewController.h; sourceTree = "<group>"; };
 		3834E4C92243989F00C23476 /* ZJTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZJTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3834E4CC2243989F00C23476 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3834E4CD2243989F00C23476 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -163,37 +121,9 @@
 		3834E4F5224398A000C23476 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3834E51222439BFF00C23476 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		38431F392266D0720090B056 /* ZJTest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ZJTest.entitlements; sourceTree = "<group>"; };
-		384736872261D5E600E2C870 /* mysong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = mysong.mp3; sourceTree = "<group>"; };
-		384736882261D5EA00E2C870 /* gezaifei.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = gezaifei.mp4; sourceTree = "<group>"; };
 		384736892261D5EA00E2C870 /* alert_message.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = alert_message.wav; sourceTree = "<group>"; };
 		38600BF1227198FF0043A242 /* ZJIconBadgeButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZJIconBadgeButton.h; sourceTree = "<group>"; };
 		38600BF2227198FF0043A242 /* ZJIconBadgeButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZJIconBadgeButton.m; sourceTree = "<group>"; };
-		386CB68A22F7E200001B2DC5 /* ZJTestLabelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTestLabelViewController.h; sourceTree = "<group>"; };
-		386CB68B22F7E200001B2DC5 /* ZJTestUIRectEdgeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTestUIRectEdgeTableViewController.h; sourceTree = "<group>"; };
-		386CB68C22F7E200001B2DC5 /* ZJTestSelectBtnViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTestSelectBtnViewController.m; sourceTree = "<group>"; };
-		386CB68D22F7E200001B2DC5 /* ZJTestImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTestImageViewController.m; sourceTree = "<group>"; };
-		386CB68E22F7E200001B2DC5 /* ZJTestAlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTestAlertViewController.m; sourceTree = "<group>"; };
-		386CB68F22F7E200001B2DC5 /* ZJTestUIRectEdgeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTestUIRectEdgeTableViewController.m; sourceTree = "<group>"; };
-		386CB69022F7E200001B2DC5 /* ZJTestLayoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTestLayoutViewController.h; sourceTree = "<group>"; };
-		386CB69122F7E200001B2DC5 /* ZJTestBarButtonItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTestBarButtonItemViewController.h; sourceTree = "<group>"; };
-		386CB69222F7E200001B2DC5 /* ZJTestNavigationBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTestNavigationBarViewController.m; sourceTree = "<group>"; };
-		386CB69322F7E200001B2DC5 /* ZJTestUIKitTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTestUIKitTableViewController.m; sourceTree = "<group>"; };
-		386CB69422F7E200001B2DC5 /* ZJTestBarButtonItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTestBarButtonItemViewController.m; sourceTree = "<group>"; };
-		386CB69522F7E200001B2DC5 /* ZJTestAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTestAlertViewController.h; sourceTree = "<group>"; };
-		386CB69622F7E200001B2DC5 /* ZJTestSelectBtnViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTestSelectBtnViewController.h; sourceTree = "<group>"; };
-		386CB69722F7E200001B2DC5 /* ZJTestNibHeadTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTestNibHeadTableViewController.h; sourceTree = "<group>"; };
-		386CB69822F7E200001B2DC5 /* ZJTestLabelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTestLabelViewController.m; sourceTree = "<group>"; };
-		386CB69922F7E200001B2DC5 /* ZJTestNibHeadTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTestNibHeadTableViewController.m; sourceTree = "<group>"; };
-		386CB69A22F7E200001B2DC5 /* ZJTestSliderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTestSliderViewController.m; sourceTree = "<group>"; };
-		386CB69B22F7E201001B2DC5 /* ZJTestNavigationBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTestNavigationBarViewController.h; sourceTree = "<group>"; };
-		386CB69C22F7E201001B2DC5 /* ZJTestUIKitTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTestUIKitTableViewController.h; sourceTree = "<group>"; };
-		386CB69D22F7E201001B2DC5 /* ZJTestLayoutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZJTestLayoutViewController.xib; sourceTree = "<group>"; };
-		386CB69E22F7E201001B2DC5 /* ZJTestImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTestImageViewController.h; sourceTree = "<group>"; };
-		386CB69F22F7E201001B2DC5 /* ZJTestLayoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTestLayoutViewController.m; sourceTree = "<group>"; };
-		386CB6A022F7E201001B2DC5 /* ZJTestSliderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTestSliderViewController.h; sourceTree = "<group>"; };
-		386CB6AD22F7E67F001B2DC5 /* ZJTestScrollViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZJTestScrollViewController.h; sourceTree = "<group>"; };
-		386CB6AE22F7E67F001B2DC5 /* ZJTestScrollViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZJTestScrollViewController.m; sourceTree = "<group>"; };
-		386CB6B022F7E698001B2DC5 /* ZJTestScrollViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ZJTestScrollViewController.xib; sourceTree = "<group>"; };
 		386D8EB3227EDB5000AA8414 /* ZJTestUserAudioTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTestUserAudioTableViewController.m; sourceTree = "<group>"; };
 		386D8EB4227EDB5000AA8414 /* ZJTestLanguageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTestLanguageTableViewController.m; sourceTree = "<group>"; };
 		386D8EB5227EDB5000AA8414 /* ZJTestSysSettingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTestSysSettingTableViewController.m; sourceTree = "<group>"; };
@@ -231,6 +161,12 @@
 		388233642249D5E500D444EA /* ZJNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJNavigationController.m; sourceTree = "<group>"; };
 		388233662249D5E500D444EA /* ZJViewHeaderFiles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJViewHeaderFiles.h; sourceTree = "<group>"; };
 		388233672249D5E500D444EA /* ZJToolsHeadFiles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJToolsHeadFiles.h; sourceTree = "<group>"; };
+		3899E0C3232108880002108C /* ZJTestBlockViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZJTestBlockViewController.h; sourceTree = "<group>"; };
+		3899E0C4232108880002108C /* ZJTestBlockViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZJTestBlockViewController.m; sourceTree = "<group>"; };
+		3899E0C62321093B0002108C /* ZJTestSubjectTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZJTestSubjectTableViewController.h; sourceTree = "<group>"; };
+		3899E0C72321093B0002108C /* ZJTestSubjectTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZJTestSubjectTableViewController.m; sourceTree = "<group>"; };
+		3899E0C92321578A0002108C /* ZJPerson.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZJPerson.h; sourceTree = "<group>"; };
+		3899E0CA2321578A0002108C /* ZJPerson.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZJPerson.m; sourceTree = "<group>"; };
 		38A8F2742280178600EDC592 /* ZJTestEqualTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZJTestEqualTableViewController.h; sourceTree = "<group>"; };
 		38A8F2752280178600EDC592 /* ZJTestEqualTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZJTestEqualTableViewController.m; sourceTree = "<group>"; };
 		38A8F277228038C300EDC592 /* ZJTestMapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZJTestMapViewController.h; sourceTree = "<group>"; };
@@ -249,6 +185,29 @@
 		38A958A02275A14E0001974D /* ZJTestFodationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTestFodationTableViewController.h; sourceTree = "<group>"; };
 		38A958A12275A14E0001974D /* ZJTestNSDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTestNSDataViewController.m; sourceTree = "<group>"; };
 		38A958A22275A14E0001974D /* ZJTestNSScannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTestNSScannerViewController.h; sourceTree = "<group>"; };
+		38AC15FD231216390014E5E5 /* ZJTestBarButtonItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTestBarButtonItemViewController.h; sourceTree = "<group>"; };
+		38AC15FE231216390014E5E5 /* ZJTestUIRectEdgeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTestUIRectEdgeTableViewController.h; sourceTree = "<group>"; };
+		38AC15FF231216390014E5E5 /* ZJTestLayoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTestLayoutViewController.h; sourceTree = "<group>"; };
+		38AC1600231216390014E5E5 /* ZJTestAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTestAlertViewController.h; sourceTree = "<group>"; };
+		38AC1601231216390014E5E5 /* ZJTestSelectBtnViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTestSelectBtnViewController.h; sourceTree = "<group>"; };
+		38AC1602231216390014E5E5 /* ZJTestImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTestImageViewController.h; sourceTree = "<group>"; };
+		38AC1603231216390014E5E5 /* ZJTestSliderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTestSliderViewController.h; sourceTree = "<group>"; };
+		38AC1604231216390014E5E5 /* ZJTestBarButtonItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTestBarButtonItemViewController.m; sourceTree = "<group>"; };
+		38AC1605231216390014E5E5 /* ZJTestImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTestImageViewController.m; sourceTree = "<group>"; };
+		38AC1606231216390014E5E5 /* ZJTestNavigationBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTestNavigationBarViewController.m; sourceTree = "<group>"; };
+		38AC1607231216390014E5E5 /* ZJTestUIKitTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTestUIKitTableViewController.m; sourceTree = "<group>"; };
+		38AC1608231216390014E5E5 /* ZJTestLabelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTestLabelViewController.h; sourceTree = "<group>"; };
+		38AC1609231216390014E5E5 /* ZJTestLabelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTestLabelViewController.m; sourceTree = "<group>"; };
+		38AC160A2312163A0014E5E5 /* ZJTestNavigationBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTestNavigationBarViewController.h; sourceTree = "<group>"; };
+		38AC160B2312163A0014E5E5 /* ZJTestAlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTestAlertViewController.m; sourceTree = "<group>"; };
+		38AC160C2312163A0014E5E5 /* ZJTestNibHeadTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTestNibHeadTableViewController.h; sourceTree = "<group>"; };
+		38AC160D2312163A0014E5E5 /* ZJTestNibHeadTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTestNibHeadTableViewController.m; sourceTree = "<group>"; };
+		38AC160E2312163A0014E5E5 /* ZJTestLayoutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZJTestLayoutViewController.xib; sourceTree = "<group>"; };
+		38AC160F2312163A0014E5E5 /* ZJTestSelectBtnViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTestSelectBtnViewController.m; sourceTree = "<group>"; };
+		38AC16102312163A0014E5E5 /* ZJTestLayoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTestLayoutViewController.m; sourceTree = "<group>"; };
+		38AC16112312163A0014E5E5 /* ZJTestSliderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTestSliderViewController.m; sourceTree = "<group>"; };
+		38AC16122312163A0014E5E5 /* ZJTestUIRectEdgeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTestUIRectEdgeTableViewController.m; sourceTree = "<group>"; };
+		38AC16132312163A0014E5E5 /* ZJTestUIKitTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTestUIKitTableViewController.h; sourceTree = "<group>"; };
 		38CC76092254BED20045F4F4 /* ZJWrapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJWrapView.h; sourceTree = "<group>"; };
 		38CC760A2254BED20045F4F4 /* ZJAboutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJAboutView.h; sourceTree = "<group>"; };
 		38CC760B2254BED20045F4F4 /* ZJWrapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJWrapView.m; sourceTree = "<group>"; };
@@ -337,62 +296,6 @@
 			path = tableViewCell;
 			sourceTree = "<group>";
 		};
-		38251C3622E16E8F00723568 /* 05_专题 */ = {
-			isa = PBXGroup;
-			children = (
-				38251C3722E16EB200723568 /* 01_AV */,
-			);
-			path = "05_专题";
-			sourceTree = "<group>";
-		};
-		38251C3722E16EB200723568 /* 01_AV */ = {
-			isa = PBXGroup;
-			children = (
-				38251C8322E172D800723568 /* ZJAudioToolboxTableViewController.h */,
-				38251C8022E172D800723568 /* ZJAudioToolboxTableViewController.m */,
-				38251C8822E172D900723568 /* ZJAVAudioPlayerViewController.h */,
-				38251C8122E172D800723568 /* ZJAVAudioPlayerViewController.m */,
-				38251C8722E172D900723568 /* ZJAVPlayerViewController.h */,
-				38251C8622E172D900723568 /* ZJAVPlayerViewController.m */,
-				38251C8422E172D900723568 /* ZJAVPlayerViewController.xib */,
-				38251C7E22E172D800723568 /* ZJAVTableViewController.h */,
-				38251C7F22E172D800723568 /* ZJAVTableViewController.m */,
-				38251C8222E172D800723568 /* ZJPlayerView.h */,
-				38251C8522E172D900723568 /* ZJPlayerView.m */,
-				38251C8B22E172DA00723568 /* ZJRecorderViewController.h */,
-				38251C8A22E172DA00723568 /* ZJRecorderViewController.m */,
-				38251C8922E172D900723568 /* ZJRecorderViewController.xib */,
-				38251C4622E16EB200723568 /* AVCaptureSession */,
-				38251C7D22E172AA00723568 /* src */,
-			);
-			path = 01_AV;
-			sourceTree = "<group>";
-		};
-		38251C4622E16EB200723568 /* AVCaptureSession */ = {
-			isa = PBXGroup;
-			children = (
-				38251C7722E1729700723568 /* ZJAVCaptureSessionTableViewController.h */,
-				38251C7422E1729700723568 /* ZJAVCaptureSessionTableViewController.m */,
-				38251C7322E1729700723568 /* ZJCameraViewController.h */,
-				38251C7222E1729700723568 /* ZJCameraViewController.m */,
-				38251C7122E1729700723568 /* ZJCameraViewController.xib */,
-				38251C7622E1729700723568 /* ZJVideoViewController.h */,
-				38251C7022E1729700723568 /* ZJVideoViewController.m */,
-				38251C7522E1729700723568 /* ZJVideoViewController.xib */,
-			);
-			path = AVCaptureSession;
-			sourceTree = "<group>";
-		};
-		38251C7D22E172AA00723568 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				38251C3D22E16EB200723568 /* alert_message.wav */,
-				38251C4322E16EB200723568 /* gezaifei.mp4 */,
-				38251C5122E16EB200723568 /* song.mp3 */,
-			);
-			name = src;
-			sourceTree = "<group>";
-		};
 		3834E4C02243989F00C23476 = {
 			isa = PBXGroup;
 			children = (
@@ -422,7 +325,7 @@
 				3834E4CD2243989F00C23476 /* AppDelegate.m */,
 				38A9584922759F390001974D /* ZJMainTabBarViewController.h */,
 				38A9584A22759F3A0001974D /* ZJMainTabBarViewController.m */,
-				38251C3622E16E8F00723568 /* 05_专题 */,
+				3899E0C22321081C0002108C /* 05_专题 */,
 				38A9587022759F720001974D /* 01_Fondation */,
 				38A9585822759F710001974D /* 02_UIKit */,
 				38A9584C22759F710001974D /* 03_System */,
@@ -455,8 +358,6 @@
 			isa = PBXGroup;
 			children = (
 				384736892261D5EA00E2C870 /* alert_message.wav */,
-				384736882261D5EA00E2C870 /* gezaifei.mp4 */,
-				384736872261D5E600E2C870 /* mysong.mp3 */,
 				3834E51222439BFF00C23476 /* PrefixHeader.pch */,
 				3834E4D8224398A000C23476 /* Assets.xcassets */,
 				3834E4DA224398A000C23476 /* LaunchScreen.storyboard */,
@@ -556,6 +457,19 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		3899E0C22321081C0002108C /* 05_专题 */ = {
+			isa = PBXGroup;
+			children = (
+				3899E0C62321093B0002108C /* ZJTestSubjectTableViewController.h */,
+				3899E0C72321093B0002108C /* ZJTestSubjectTableViewController.m */,
+				3899E0C3232108880002108C /* ZJTestBlockViewController.h */,
+				3899E0C4232108880002108C /* ZJTestBlockViewController.m */,
+				3899E0C92321578A0002108C /* ZJPerson.h */,
+				3899E0CA2321578A0002108C /* ZJPerson.m */,
+			);
+			path = "05_专题";
+			sourceTree = "<group>";
+		};
 		38A8F27C2280394400EDC592 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -595,32 +509,29 @@
 		38A9585822759F710001974D /* 02_UIKit */ = {
 			isa = PBXGroup;
 			children = (
-				386CB69C22F7E201001B2DC5 /* ZJTestUIKitTableViewController.h */,
-				386CB69322F7E200001B2DC5 /* ZJTestUIKitTableViewController.m */,
-				386CB69522F7E200001B2DC5 /* ZJTestAlertViewController.h */,
-				386CB68E22F7E200001B2DC5 /* ZJTestAlertViewController.m */,
-				386CB69122F7E200001B2DC5 /* ZJTestBarButtonItemViewController.h */,
-				386CB69422F7E200001B2DC5 /* ZJTestBarButtonItemViewController.m */,
-				386CB69E22F7E201001B2DC5 /* ZJTestImageViewController.h */,
-				386CB68D22F7E200001B2DC5 /* ZJTestImageViewController.m */,
-				386CB68A22F7E200001B2DC5 /* ZJTestLabelViewController.h */,
-				386CB69822F7E200001B2DC5 /* ZJTestLabelViewController.m */,
-				386CB69022F7E200001B2DC5 /* ZJTestLayoutViewController.h */,
-				386CB69F22F7E201001B2DC5 /* ZJTestLayoutViewController.m */,
-				386CB69D22F7E201001B2DC5 /* ZJTestLayoutViewController.xib */,
-				386CB69B22F7E201001B2DC5 /* ZJTestNavigationBarViewController.h */,
-				386CB69222F7E200001B2DC5 /* ZJTestNavigationBarViewController.m */,
-				386CB69722F7E200001B2DC5 /* ZJTestNibHeadTableViewController.h */,
-				386CB69922F7E200001B2DC5 /* ZJTestNibHeadTableViewController.m */,
-				386CB69622F7E200001B2DC5 /* ZJTestSelectBtnViewController.h */,
-				386CB68C22F7E200001B2DC5 /* ZJTestSelectBtnViewController.m */,
-				386CB6A022F7E201001B2DC5 /* ZJTestSliderViewController.h */,
-				386CB69A22F7E200001B2DC5 /* ZJTestSliderViewController.m */,
-				386CB68B22F7E200001B2DC5 /* ZJTestUIRectEdgeTableViewController.h */,
-				386CB68F22F7E200001B2DC5 /* ZJTestUIRectEdgeTableViewController.m */,
-				386CB6AD22F7E67F001B2DC5 /* ZJTestScrollViewController.h */,
-				386CB6AE22F7E67F001B2DC5 /* ZJTestScrollViewController.m */,
-				386CB6B022F7E698001B2DC5 /* ZJTestScrollViewController.xib */,
+				38AC1600231216390014E5E5 /* ZJTestAlertViewController.h */,
+				38AC160B2312163A0014E5E5 /* ZJTestAlertViewController.m */,
+				38AC15FD231216390014E5E5 /* ZJTestBarButtonItemViewController.h */,
+				38AC1604231216390014E5E5 /* ZJTestBarButtonItemViewController.m */,
+				38AC1602231216390014E5E5 /* ZJTestImageViewController.h */,
+				38AC1605231216390014E5E5 /* ZJTestImageViewController.m */,
+				38AC1608231216390014E5E5 /* ZJTestLabelViewController.h */,
+				38AC1609231216390014E5E5 /* ZJTestLabelViewController.m */,
+				38AC15FF231216390014E5E5 /* ZJTestLayoutViewController.h */,
+				38AC16102312163A0014E5E5 /* ZJTestLayoutViewController.m */,
+				38AC160E2312163A0014E5E5 /* ZJTestLayoutViewController.xib */,
+				38AC160A2312163A0014E5E5 /* ZJTestNavigationBarViewController.h */,
+				38AC1606231216390014E5E5 /* ZJTestNavigationBarViewController.m */,
+				38AC160C2312163A0014E5E5 /* ZJTestNibHeadTableViewController.h */,
+				38AC160D2312163A0014E5E5 /* ZJTestNibHeadTableViewController.m */,
+				38AC1601231216390014E5E5 /* ZJTestSelectBtnViewController.h */,
+				38AC160F2312163A0014E5E5 /* ZJTestSelectBtnViewController.m */,
+				38AC1603231216390014E5E5 /* ZJTestSliderViewController.h */,
+				38AC16112312163A0014E5E5 /* ZJTestSliderViewController.m */,
+				38AC16132312163A0014E5E5 /* ZJTestUIKitTableViewController.h */,
+				38AC1607231216390014E5E5 /* ZJTestUIKitTableViewController.m */,
+				38AC15FE231216390014E5E5 /* ZJTestUIRectEdgeTableViewController.h */,
+				38AC16122312163A0014E5E5 /* ZJTestUIRectEdgeTableViewController.m */,
 			);
 			path = 02_UIKit;
 			sourceTree = "<group>";
@@ -735,7 +646,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = ZJTest;
-				LastUpgradeCheck = 1010;
+				LastUpgradeCheck = 1250;
 				ORGANIZATIONNAME = HY;
 				TargetAttributes = {
 					3834E4C82243989F00C23476 = {
@@ -784,23 +695,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				386CB6AB22F7E201001B2DC5 /* ZJTestLayoutViewController.xib in Resources */,
-				3847368B2261D5EA00E2C870 /* gezaifei.mp4 in Resources */,
-				3847368A2261D5EA00E2C870 /* mysong.mp3 in Resources */,
-				38251C7C22E1729700723568 /* ZJVideoViewController.xib in Resources */,
 				3834E4DC224398A000C23476 /* LaunchScreen.storyboard in Resources */,
 				3847368C2261D5EA00E2C870 /* alert_message.wav in Resources */,
-				38251C8F22E172DA00723568 /* ZJAVPlayerViewController.xib in Resources */,
-				38251C9222E172DA00723568 /* ZJRecorderViewController.xib in Resources */,
-				38251C5422E16EB200723568 /* alert_message.wav in Resources */,
 				38FF2B9C22D5D86100C76577 /* ZJTestLayerViewController.xib in Resources */,
-				386CB6B122F7E698001B2DC5 /* ZJTestScrollViewController.xib in Resources */,
 				3834E4D9224398A000C23476 /* Assets.xcassets in Resources */,
 				38A8F27B228038C300EDC592 /* ZJTestMapViewController.xib in Resources */,
-				38251C5722E16EB200723568 /* gezaifei.mp4 in Resources */,
-				38251C6122E16EB200723568 /* song.mp3 in Resources */,
 				38CC76102254BED20045F4F4 /* ZJAboutView.xib in Resources */,
-				38251C7922E1729700723568 /* ZJCameraViewController.xib in Resources */,
+				38AC161B2312163A0014E5E5 /* ZJTestLayoutViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -826,63 +727,56 @@
 			buildActionMask = 2147483647;
 			files = (
 				38A8F27A228038C300EDC592 /* ZJTestMapViewController.m in Sources */,
-				386CB6AF22F7E67F001B2DC5 /* ZJTestScrollViewController.m in Sources */,
-				386CB6A922F7E201001B2DC5 /* ZJTestNibHeadTableViewController.m in Sources */,
+				38AC161C2312163A0014E5E5 /* ZJTestSelectBtnViewController.m in Sources */,
 				38A958A32275A14E0001974D /* ZJTestFodationTableViewController.m in Sources */,
 				387FA2382254ABBA001E5B98 /* ZJFondationCategory.m in Sources */,
 				387FA2372254ABBA001E5B98 /* UIViewExt.m in Sources */,
+				38AC16152312163A0014E5E5 /* ZJTestImageViewController.m in Sources */,
+				3899E0CB2321578A0002108C /* ZJPerson.m in Sources */,
 				3834E4D72243989F00C23476 /* ZJTest.xcdatamodeld in Sources */,
 				38A9584B22759F3A0001974D /* ZJMainTabBarViewController.m in Sources */,
 				38CC760E2254BED20045F4F4 /* ZJWrapView.m in Sources */,
 				387FA23A2254ABBA001E5B98 /* ZJUIViewCategory.m in Sources */,
 				38600BF3227198FF0043A242 /* ZJIconBadgeButton.m in Sources */,
 				3834E4DF224398A000C23476 /* main.m in Sources */,
+				38AC161A2312163A0014E5E5 /* ZJTestNibHeadTableViewController.m in Sources */,
 				386D8EBB227EDB5000AA8414 /* ZJTestUserAudioTableViewController.m in Sources */,
 				387FA24D2254ACC6001E5B98 /* ZJPageSizeObjectInfo.m in Sources */,
 				386D8EBE227EDB5000AA8414 /* ZJTestAudioTableViewController.m in Sources */,
 				387FA2392254ABBA001E5B98 /* UITextView+Placeholder.m in Sources */,
-				38251C9322E172DA00723568 /* ZJRecorderViewController.m in Sources */,
-				38251C8D22E172DA00723568 /* ZJAudioToolboxTableViewController.m in Sources */,
 				38FF2B9B22D5D86100C76577 /* ZJTestLayerViewController.m in Sources */,
-				386CB6A322F7E201001B2DC5 /* ZJTestAlertViewController.m in Sources */,
+				38AC161D2312163A0014E5E5 /* ZJTestLayoutViewController.m in Sources */,
+				38AC16172312163A0014E5E5 /* ZJTestUIKitTableViewController.m in Sources */,
 				387FA24E2254ACC6001E5B98 /* ZJAlertObject.m in Sources */,
+				3899E0C82321093B0002108C /* ZJTestSubjectTableViewController.m in Sources */,
 				38A8F2762280178600EDC592 /* ZJTestEqualTableViewController.m in Sources */,
-				38251C7B22E1729700723568 /* ZJAVCaptureSessionTableViewController.m in Sources */,
 				38FF2B9722D5D83300C76577 /* ZJTestPushTransitionTableViewController.m in Sources */,
 				381B08A52255EF86008F2D7C /* ZJNoClearTableViewController.m in Sources */,
-				386CB6AC22F7E201001B2DC5 /* ZJTestLayoutViewController.m in Sources */,
-				38251C8E22E172DA00723568 /* ZJAVAudioPlayerViewController.m in Sources */,
-				386CB6A522F7E201001B2DC5 /* ZJTestNavigationBarViewController.m in Sources */,
 				38FF2B9422D5D83300C76577 /* ZJTestCAGradientLayerViewController.m in Sources */,
-				38251C7A22E1729700723568 /* ZJCameraViewController.m in Sources */,
-				386CB6A622F7E201001B2DC5 /* ZJTestUIKitTableViewController.m in Sources */,
 				388233772249D5E500D444EA /* ZJNormalTableViewController.m in Sources */,
-				38251C8C22E172DA00723568 /* ZJAVTableViewController.m in Sources */,
-				386CB6A122F7E201001B2DC5 /* ZJTestSelectBtnViewController.m in Sources */,
 				38CC760F2254BED20045F4F4 /* ZJAboutView.m in Sources */,
 				386D8EBC227EDB5000AA8414 /* ZJTestLanguageTableViewController.m in Sources */,
 				381B08BE2255FC76008F2D7C /* ZJCornerButton.m in Sources */,
-				386CB6A222F7E201001B2DC5 /* ZJTestImageViewController.m in Sources */,
+				38AC16182312163A0014E5E5 /* ZJTestLabelViewController.m in Sources */,
 				387FA24F2254ACC6001E5B98 /* ZJMentionObject.m in Sources */,
+				38AC161E2312163A0014E5E5 /* ZJTestSliderViewController.m in Sources */,
+				3899E0C5232108880002108C /* ZJTestBlockViewController.m in Sources */,
 				388233792249D5E500D444EA /* ZJNavigationController.m in Sources */,
 				38A958A52275A14E0001974D /* ZJTestNSScannerViewController.m in Sources */,
+				38AC161F2312163A0014E5E5 /* ZJTestUIRectEdgeTableViewController.m in Sources */,
 				38A958A42275A14E0001974D /* ZJTestNSStringTableViewController.m in Sources */,
 				388233782249D5E500D444EA /* ZJNormalViewController.m in Sources */,
 				381B08C62255FF86008F2D7C /* ZJNormalTableViewCell.m in Sources */,
 				38A958A62275A14E0001974D /* ZJTestNSDataViewController.m in Sources */,
-				38251C9022E172DA00723568 /* ZJPlayerView.m in Sources */,
 				387FA23B2254ABBA001E5B98 /* ZJNSObjectCategory.m in Sources */,
-				386CB6A822F7E201001B2DC5 /* ZJTestLabelViewController.m in Sources */,
-				386CB6A422F7E201001B2DC5 /* ZJTestUIRectEdgeTableViewController.m in Sources */,
-				38251C7822E1729700723568 /* ZJVideoViewController.m in Sources */,
+				38AC16192312163A0014E5E5 /* ZJTestAlertViewController.m in Sources */,
 				38FF2B9622D5D83300C76577 /* ZJTestCAAnimationTableViewController.m in Sources */,
-				386CB6AA22F7E201001B2DC5 /* ZJTestSliderViewController.m in Sources */,
+				38AC16142312163A0014E5E5 /* ZJTestBarButtonItemViewController.m in Sources */,
+				38AC16162312163A0014E5E5 /* ZJTestNavigationBarViewController.m in Sources */,
 				381B08A22255B225008F2D7C /* ZJClearTableViewController.m in Sources */,
 				38FF2B9522D5D83300C76577 /* ZJTestPopTransitionTableViewController.m in Sources */,
-				386CB6A722F7E201001B2DC5 /* ZJTestBarButtonItemViewController.m in Sources */,
 				386D8EBD227EDB5000AA8414 /* ZJTestSysSettingTableViewController.m in Sources */,
 				38A9588222759F740001974D /* ZJTestSystemTableViewController.m in Sources */,
-				38251C9122E172DA00723568 /* ZJAVPlayerViewController.m in Sources */,
 				387FA2362254ABBA001E5B98 /* ZJControllerCategory.m in Sources */,
 				381B08C12255FC76008F2D7C /* ZJSelectButton.m in Sources */,
 				3834E4CE2243989F00C23476 /* AppDelegate.m in Sources */,
@@ -958,6 +852,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1017,6 +912,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1054,7 +950,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ZJTest/PrefixHeader.pch";
 				INFOPLIST_FILE = ZJTest/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1075,7 +971,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ZJTest/PrefixHeader.pch";
 				INFOPLIST_FILE = ZJTest/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

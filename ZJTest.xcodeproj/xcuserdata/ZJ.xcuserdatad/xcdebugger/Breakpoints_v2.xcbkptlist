@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Bucket
+   uuid = "C3082C26-D73C-4216-9C3F-DDA213B4FC47"
    type = "1"
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "0BC86FC9-1786-4EF0-B443-65485F3739DA"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ZJTest/01_Fondation/ZJTestEqualTableViewController.m"
-            timestampString = "580025560.864741"
+            filePath = "ZJTest/Fondation/ZJTestFodationTableViewController.m"
+            timestampString = "576402912.519792"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
-            landmarkName = "-initSettiing"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "-getMonthFirstAndLastDay"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

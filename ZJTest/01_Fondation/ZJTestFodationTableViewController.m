@@ -10,6 +10,9 @@
 
 @interface ZJTestFodationTableViewController ()
 
+@property (nonatomic, strong) NSTimer *timer;
+
+
 @end
 
 @implementation ZJTestFodationTableViewController
@@ -29,6 +32,21 @@
 - (void)initSetting {
     self.tableView.separatorInset = UIEdgeInsetsMake(0, 70, 0, 10);
     NSLog(@"%@", [self getMonthFirstAndLastDay]);
+    
+    self.timer = [NSTimer timerWithTimeInterval:1.0 target:self selector:@selector(runTimer) userInfo:nil repeats:YES];
+//    [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];    // 重复执行
+//   [self.timer fire]; //只会执行一次
+    CADisplayLink *obj = nil;
+    
+}
+
+- (void)runTimer{
+    NSLog(@"%s", __func__);
+    [NSThread detachNewThreadSelector:@selector(startTimer) toTarget:self withObject:nil];
+}
+
+- (void)startTimer{
+    NSLog(@"开始执行");
 }
 
 - (NSArray *)getMonthFirstAndLastDay {

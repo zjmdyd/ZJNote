@@ -24,7 +24,7 @@
     NSArray *titles = @[@"Fondation", @"UIKit", @"System", @"CAAnimation", @"专题"];
     NSArray *image = @[@"1", @"2", @"3", @"3", @"3"];
     NSArray *selectImage = @[@"1-1", @"2-1", @"3-1", @"3-1", @"3-1"];
-    NSArray *nibNames = @[@"ZJTestFodationTableViewController", @"ZJTestUIKitTableViewController", @"ZJTestSystemTableViewController", @"ZJTestCAAnimationTableViewController", @"ZJAVTableViewController"];
+    NSArray *nibNames = @[@"ZJTestFodationTableViewController", @"ZJTestUIKitTableViewController", @"ZJTestSystemTableViewController", @"ZJTestCAAnimationTableViewController", @"ZJTestSubjectTableViewController"];
     
     NSMutableArray *ary = [NSMutableArray array];
     for (int i = 0; i < nibNames.count; i++) {

@@ -22,7 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenW - 60, 40)];
+    self.bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 100, kScreenW - 60, 40)];
     self.bgView.center = CGPointMake(kScreenW/2, 100);
     [self.view addSubview:self.bgView];
     
